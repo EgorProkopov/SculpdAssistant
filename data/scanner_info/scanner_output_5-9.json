@@ -1,0 +1,55 @@
+{
+  "disclaimer": "This analysis is generated based on a hypothetical summary and is for simulation purposes only. It is not a substitute for professional medical or fitness advice.",
+  "physical_attributes": {
+    "body_shape": "mesomorphic",
+    "muscle_tone": "muscular and well-defined",
+    "muscle_symmetry": "balanced",
+    "major_muscle_groups": ["chest", "shoulders", "arms", "abdominals"],
+    "major_muscle_groups_indicators": ["visible muscle lines", "significant definition", "vascularity"],
+    "weak_muscle_groups": [],
+    "weak_muscle_groups_indicators": []
+  },
+  "estimated_body_fat": {
+    "percentage_range": "6-10",
+    "indicators": ["visible muscle lines", "pronounced abdominal definition", "vascularity"]
+  },
+  "training_readiness": {
+    "score": 9,
+    "indicators": ["strong posture", "balanced muscle development", "high energy levels"]
+  },
+  "training_recommendations": {
+    "body_development": {
+      "upper_body": {
+        "chest": ["bench presses", "push-ups"],
+        "back": ["pull-ups"],
+        "shoulders": ["shoulder presses"],
+        "arms": ["bench presses", "push-ups"]
+      },
+      "lower_body": {
+        "legs": ["squats", "lunges"],
+        "calves": []
+      },
+      "core": ["planks"],
+      "postural_balance": []
+    },
+    "body_maintenance": {
+      "upper_body": {
+        "chest": ["bench presses", "push-ups"],
+        "back": ["pull-ups"],
+        "shoulders": ["shoulder presses"],
+        "arms": ["bench presses", "push-ups"]
+      },
+      "lower_body": {
+        "legs": ["squats", "lunges"],
+        "calves": []
+      },
+      "core": {
+        "exercises": ["planks"]
+      },
+      "postural_balance": {}
+    },
+    "fat_loosing": {
+      "cardiovascular": []
+    }
+  }
+}

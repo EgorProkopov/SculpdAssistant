@@ -1,0 +1,53 @@
+{
+    "disclaimer": "This analysis is based solely on provided data and is for simulation purposes only. It is not a substitute for professional medical or fitness advice.",
+    "physical_attributes": {
+      "body_shape": "endomorph",
+      "muscle_tone": "less visible muscle definition",
+      "muscle_symmetry": "balanced",
+      "major_muscle_groups": ["chest", "back", "shoulders", "arms", "legs", "calves", "core"],
+      "major_muscle_groups_indicators": ["stable posture"],
+      "weak_muscle_groups": ["core"],
+      "weak_muscle_groups_indicators": ["less visible muscle definition"]
+    },
+    "estimated_body_fat": {
+      "percentage_range": "20-25",
+      "indicators": ["less visible muscle definition", "abdominal definition not pronounced"]
+    },
+    "training_readiness": {
+      "score": 5.5,
+      "indicators": ["moderate energy levels", "stable posture"]
+    },
+    "training_recommendations": {
+      "body_development": {
+        "upper_body": {
+          "chest": ["bench presses", "push-ups"],
+          "back": ["pull-ups", "rows"],
+          "shoulders": ["shoulder presses", "lateral raises"],
+          "arms": ["bicep curls", "triceps dips"]
+        },
+        "lower_body": {
+          "legs": ["squats", "lunges"],
+          "calves": ["calf raises"]
+        },
+        "core": ["planks", "back extensions"],
+        "postural_balance": ["face pulls", "reverse flyes"]
+      },
+      "body_maintenance": {
+        "upper_body": {
+          "chest": ["bench presses", "push-ups"],
+          "back": ["pull-ups", "rows"],
+          "shoulders": ["shoulder presses", "lateral raises"],
+          "arms": ["bicep curls", "triceps dips"]
+        },
+        "lower_body": {
+          "legs": ["squats", "lunges"],
+          "calves": ["calf raises"]
+        },
+        "core": ["planks", "back extensions"],
+        "postural_balance": ["face pulls", "reverse flyes"]
+      },
+      "fat_loosing": {
+        "cardiovascular": ["running", "cycling", "HIIT", "brisk walking"]
+      }
+    }
+  }

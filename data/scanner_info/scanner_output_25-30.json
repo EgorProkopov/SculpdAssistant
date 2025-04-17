@@ -1,0 +1,53 @@
+{
+    "disclaimer": "This analysis is based solely on the provided summary and is for simulation purposes only. It is not a substitute for professional medical or fitness advice.",
+    "physical_attributes": {
+      "body_shape": "endomorphic",
+      "muscle_tone": "moderate muscle mass with less visible muscle definition",
+      "muscle_symmetry": "balanced",
+      "major_muscle_groups": ["chest", "arms", "back"],
+      "major_muscle_groups_indicators": ["moderate muscle mass"],
+      "weak_muscle_groups": ["chest", "arms"],
+      "weak_muscle_groups_indicators": ["less visible muscle definition"]
+    },
+    "estimated_body_fat": {
+      "percentage_range": "20-25",
+      "indicators": ["limited muscle definition", "presence of body fat around the abdomen"]
+    },
+    "training_readiness": {
+      "score": 6,
+      "indicators": ["stable posture", "moderate energy levels"]
+    },
+    "training_recommendations": {
+      "body_development": {
+        "upper_body": {
+          "chest": ["bench presses", "push-ups"],
+          "back": ["pull-ups", "rows"],
+          "shoulders": [],
+          "arms": ["bicep curls", "tricep extensions"]
+        },
+        "lower_body": {
+          "legs": ["squats", "deadlifts"],
+          "calves": []
+        },
+        "core": ["planks", "crunches"],
+        "postural_balance": ["face pulls", "reverse flyes"]
+      },
+      "body_maintenance": {
+        "upper_body": {
+          "chest": [],
+          "back": [],
+          "shoulders": [],
+          "arms": []
+        },
+        "lower_body": {
+          "legs": [],
+          "calves": []
+        },
+        "core": {},
+        "postural_balance": {}
+      },
+      "fat_loosing": {
+        "cardiovascular": ["running", "cycling", "HIIT", "brisk walking"]
+      }
+    }
+  }

@@ -1,0 +1,57 @@
+{
+    "disclaimer": "This analysis is based solely on the hypothetical data provided and is for simulation purposes only. It is not a substitute for professional medical or fitness advice. For a comprehensive evaluation, consult a qualified health professional.",
+    "physical_attributes": {
+      "body_shape": "mesomorphic",
+      "muscle_tone": "muscular and well-defined",
+      "muscle_symmetry": "balanced",
+      "major_muscle_groups": ["chest", "arms", "abdominals"],
+      "major_muscle_groups_indicators": ["good definition", "evenly developed"],
+      "weak_muscle_groups": [],
+      "weak_muscle_groups_indicators": []
+    },
+    "estimated_body_fat": {
+      "percentage_range": "6-14",
+      "indicators": ["visible muscle definition", "abdominal visibility", "overall muscle delineation"]
+    },
+    "training_readiness": {
+      "score": 9,
+      "indicators": ["strong posture", "high energy levels", "good core and upper body strength"]
+    },
+    "training_recommendations": {
+      "body_development": {
+        "upper_body": {
+          "chest": ["bench presses", "push-ups"],
+          "back": ["pull-ups", "rows"],
+          "shoulders": ["shoulder presses"],
+          "arms": []
+        },
+        "lower_body": {
+          "legs": ["squats", "lunges"],
+          "calves": []
+        },
+        "core": ["planks", "crunches"],
+        "postural_balance": ["face pulls", "seated rows"]
+      },
+      "body_maintenance": {
+        "upper_body": {
+          "chest": ["bench presses", "push-ups"],
+          "back": ["pull-ups", "rows"],
+          "shoulders": ["shoulder presses"],
+          "arms": []
+        },
+        "lower_body": {
+          "legs": ["squats", "lunges"],
+          "calves": []
+        },
+        "core": {
+          "exercises": ["planks", "crunches"]
+        },
+        "postural_balance": {
+          "exercises": ["face pulls", "seated rows"]
+        }
+      },
+      "fat_loosing": {
+        "cardiovascular": []
+      }
+    }
+}

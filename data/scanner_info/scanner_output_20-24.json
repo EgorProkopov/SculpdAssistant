@@ -1,0 +1,53 @@
+{
+    "disclaimer": "This summary is based on general fitness principles and hypothetical scenarios. It is for illustrative purposes and is not a substitute for professional medical or fitness advice. For personalized guidance, consult a certified fitness professional.",
+    "physical_attributes": {
+      "body_shape": "unknown",
+      "muscle_tone": "unknown",
+      "muscle_symmetry": "unknown",
+      "major_muscle_groups": [],
+      "major_muscle_groups_indicators": [],
+      "weak_muscle_groups": [],
+      "weak_muscle_groups_indicators": []
+    },
+    "estimated_body_fat": {
+      "percentage_range": "unknown",
+      "indicators": []
+    },
+    "training_readiness": {
+      "score": "unknown",
+      "indicators": []
+    },
+    "training_recommendations": {
+      "body_development": {
+        "upper_body": {
+          "chest": ["bench presses", "push-ups"],
+          "back": ["pull-ups", "rows"],
+          "shoulders": ["shoulder presses"],
+          "arms": ["bicep curls", "tricep extensions"]
+        },
+        "lower_body": {
+          "legs": ["squats", "lunges"],
+          "calves": ["calf raises"]
+        },
+        "core": ["planks", "crunches"],
+        "postural_balance": ["single-arm rows"]
+      },
+      "body_maintenance": {
+        "upper_body": {
+          "chest": ["bench presses", "push-ups"],
+          "back": ["pull-ups", "rows"],
+          "shoulders": ["shoulder presses"],
+          "arms": ["bicep curls", "tricep extensions"]
+        },
+        "lower_body": {
+          "legs": ["squats", "lunges"],
+          "calves": ["calf raises"]
+        },
+        "core": ["planks", "crunches"],
+        "postural_balance": ["single-arm rows"]
+      },
+      "fat_loosing": {
+        "cardiovascular": ["running", "cycling", "HIIT", "brisk walking"]
+      }
+    }
+  }
