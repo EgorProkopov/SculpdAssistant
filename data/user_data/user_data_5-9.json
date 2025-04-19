@@ -1,0 +1,18 @@
+{
+  "email": "newuser@example.com",
+  "image": "http://example.com/image.jpg",
+  "name": "New User",
+  "gender": "male",
+  "birthday": "1995-05-15T00:00:00Z",
+  "height": 180.5,
+  "height_type": "cm",
+  "weight": 75.2,
+  "weight_type": "kg",
+  "fitness_level": "advanced",
+  "improve_body_parts": ["none"],
+  "exercise_limitations": [],
+  "nutrition_goal": "maintain",
+  "equipment_list": ["barbell", "dumbbells", "machines", "cables"],
+  "training_days": [1, 2, 3, 4, 5, 6],
+  "workout_time": 90
+}
