@@ -1,0 +1,59 @@
+user_data_processing:
+  expected_keys: [
+    "gender", "birthday", "height", "height_type", "weight", "weight_type",
+    "fitness_level", "improve_body_parts", "exercise_limitations", "nutrition_goal",
+    "equipment_list", "training_days", "workout_time"
+  ]
+  keys:
+    gender_key: "gender"
+    birthday_key: "birthday"
+    height_key: "height"
+    height_type_key: "height_type"
+    weight_key: "weight"
+    weight_type_key: "weight_type"
+    fitness_level_key: "fitness_level"
+    improve_body_parts_key: "improve_body_parts"
+    exercise_limitations_key: "exercise_limitations"
+    possible_exercise_limitations: [
+      "no_overhead_pressing",
+      "no_squatting",
+      "no_hip_hinge_movements"
+    ]
+    nutrition_goal_key: "nutrition_goal"
+    possible_nutrition_goals: [
+      "gain_weight", "lose_weight",
+      "maintain_weight", "just_exploring"
+    ]
+    equipment_list_key: "equipment_list"
+    training_days_key: "training_days"
+    workout_time_key: "workout_time"
+
+  data_descriptions:
+    exercise_limitations:
+      no_overhead_pressing: "
+      Avoids all exercises that require pushing weights above the head. 
+      This includes movements like shoulder presses, overhead barbell or dumbbell presses, and similar vertical pressing motions.
+      "
+      no_squatting: "
+      Excludes all exercises that involve a squatting motion or place significant load on the knees and hips through a bent-leg position. 
+      This includes barbell squats, goblet squats, and bodyweight squats.
+      "
+      no_hip_hinge_movements: "
+      Removes exercises that involve bending at the hips with a neutral spine, such as deadlifts, Romanian deadlifts, kettlebell swings, and good mornings. 
+      "
+    nutrition_goals:
+      gain_weight: "
+      Focuses on creating a calorie surplus to support muscle growth and healthy weight gain.
+      The training program should contain a low number of repetitions in one approach on strength exercises and a small number of cardiovascular exercises.
+      "
+      lose_weight: "
+      Targets a calorie deficit to promote fat loss while preserving muscle mass.
+      The training program should contain a high number of repetitions in one approach of strength exercises and a high number of cardiovascular exercises.
+      "
+      maintain_weight: "
+      Designed to keep current body weight stable while supporting balanced nutrition and physical activity.
+      The training program should contain a balanced number of repetitions in one approach of strength exercises and a balanced number of cardiovascular exercises.
+      "
+      just_exploring: "
+      For users who are browsing or trying out the app without a specific weight goal in mind.
+      "

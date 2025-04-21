@@ -11,7 +11,7 @@
   "fitness_level": "beginner",
   "improve_body_parts": ["abs", "shoulders", "chest"],
   "exercise_limitations": [],
-  "nutrition_goal": "cut",
+  "nutrition_goal": "lose_weight",
   "equipment_list": ["dumbbells", "machines", "bodyweight"],
   "training_days": [1, 3, 5],
   "workout_time": 45

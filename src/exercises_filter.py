@@ -12,7 +12,7 @@ class ExercisesFilter:
         self.exercises_processor = exercises_processor
         self.exercises_planner_config = exercises_planner_config
 
-    def get_available_exercises_by_skill_level(self, df: pd.DataFrame, skill_level: str):
+    def get_available_exercises_by_skill_level(self, df: pd.DataFrame, skill_level: str) -> pd.DataFrame:
         skills_columns = self.exercises_processor.get_skills_columns()
         current_skill_grade = self.exercises_planner_config['skills'][skill_level]
 
@@ -26,7 +26,7 @@ class ExercisesFilter:
         filtered_df = df[df[matching_skills_columns].any(axis=1)]
         return filtered_df
 
-    def get_available_exercises_by_equipment(self, df: pd.DataFrame, available_equipment: list):
+    def get_available_exercises_by_equipment(self, df: pd.DataFrame, available_equipment: list) -> pd.DataFrame:
         equipment_columns = self.exercises_processor.get_equipment_columns()
 
         matching_cols = [

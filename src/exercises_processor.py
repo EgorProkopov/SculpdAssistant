@@ -29,13 +29,13 @@ class ExercisesProcessor:
                 d[muscle] = int(pct)
         return d
 
-    def get_muscules_columns(self):
+    def get_muscules_columns(self) -> list:
         return self.muscles_df.columns.tolist()
 
-    def get_equipment_columns(self):
+    def get_equipment_columns(self) -> list:
         return self.equipment_df.columns.tolist()
 
-    def get_skills_columns(self):
+    def get_skills_columns(self) -> list:
         return self.skills_df.columns.tolist()
 
     def process_muscle_groups(self, muscles_key: str) -> pd.DataFrame:
@@ -77,7 +77,7 @@ class ExercisesProcessor:
 
         return skill_df
 
-    def merge_df(self, exercise_names_key: str, exercise_groups_key: str, body_parts_key: str, muscle_key: str):
+    def merge_df(self, exercise_names_key: str, exercise_groups_key: str, body_parts_key: str, muscle_key: str) -> pd.DataFrame:
         exercises_name_df = self.raw_exercises_df[exercise_names_key]
         exercises_group_df = self.raw_exercises_df[exercise_groups_key]
         exercises_body_pard_df = self.raw_exercises_df[body_parts_key]
