@@ -58,5 +58,9 @@ user_data_processing:
       For users who are browsing or trying out the app without a specific weight goal in mind.
       "
 
-scanner_data_processing:
+user_data_formatter:
+
+
+
+scanner_data_formatter:
   print_disclaimer: false

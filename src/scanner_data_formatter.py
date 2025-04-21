@@ -5,14 +5,14 @@ from omegaconf import OmegaConf, DictConfig
 
 
 class ScannerDataFormatter:
-    def __init__(self, scanner_data: dict, scanner_data_processing_config: DictConfig):
+    def __init__(self, scanner_data: dict, scanner_data_formatter_config: DictConfig):
         self.scanner_data = scanner_data
-        self.scanner_data_processing_config = scanner_data_processing_config
+        self.scanner_data_formatter_config = scanner_data_formatter_config
         self.lines = []
 
     def scanner_data_processing(self) -> str:
         self.lines = []
-        if self.scanner_data_processing_config["print_disclaimer"]:
+        if self.scanner_data_formatter_config["print_disclaimer"]:
             self._process_disclaimer()
         self._process_physical_attributes()
         self._process_estimated_body_fat()
@@ -113,15 +113,15 @@ if __name__ == "__main__":
 
     DATA_PROCESSING_CONFIG_PATH = os.getenv("DATA_PROCESSING_CONFIG_PATH")
     data_processing_config = OmegaConf.load(DATA_PROCESSING_CONFIG_PATH)
-    scanner_data_processing_config = data_processing_config["scanner_data_processing"]
+    scanner_data_formatter_config = data_processing_config["scanner_data_formatter"]
 
     scanner_data_json_path = r"F:\SCULPD\SculpdAssistant\data\scanner_info\scanner_output_15-19.json"
     with open(scanner_data_json_path, "r", encoding="utf-8") as file:
         raw_scanner_data = json.load(file)
 
 
-    scanner_data_processor = ScannerDataProcessor(
-        scanner_data=raw_scanner_data, scanner_data_processing_config=scanner_data_processing_config
+    scanner_data_processor = ScannerDataFormatter(
+        scanner_data=raw_scanner_data, scanner_data_formatter_config=scanner_data_formatter_config
     )
 
     print(scanner_data_processor.scanner_data_processing())
