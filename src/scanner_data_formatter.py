@@ -10,7 +10,7 @@ class ScannerDataFormatter:
         self.scanner_data_formatter_config = scanner_data_formatter_config
         self.lines = []
 
-    def scanner_data_processing(self) -> str:
+    def data_format(self) -> str:
         self.lines = []
         if self.scanner_data_formatter_config["print_disclaimer"]:
             self._process_disclaimer()
@@ -124,5 +124,5 @@ if __name__ == "__main__":
         scanner_data=raw_scanner_data, scanner_data_formatter_config=scanner_data_formatter_config
     )
 
-    print(scanner_data_processor.scanner_data_processing())
+    print(scanner_data_processor.data_format())
 

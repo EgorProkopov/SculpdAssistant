@@ -59,7 +59,17 @@ user_data_processing:
       "
 
 user_data_formatter:
-
+  print_gender: true
+  print_age: false
+  print_height: true
+  print_weight: true
+  print_fitness_level: false
+  print_improve_body_parts: true
+  print_exercise_limitations: true
+  print_nutrition_goal: true
+  print_equipment_list: false
+  print_training_days: false
+  print_workout_time: true
 
 
 scanner_data_formatter:
