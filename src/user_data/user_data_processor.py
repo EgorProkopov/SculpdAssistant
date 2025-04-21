@@ -123,7 +123,7 @@ if __name__ == "__main__":
     data_processing_config = OmegaConf.load(DATA_PROCESSING_CONFIG_PATH)
     user_data_processing_config = data_processing_config["user_data_processing"]
 
-    user_data_json_path = r"F:\SCULPD\SculpdAssistant\data\user_data\user_data_15-19.json"
+    user_data_json_path = r"/data/user_data/user_data_15-19.json"
     with open(user_data_json_path, "r", encoding="utf-8") as file:
         raw_user_data = json.load(file)
 

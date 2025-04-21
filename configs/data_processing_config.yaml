@@ -57,3 +57,6 @@ user_data_processing:
       just_exploring: "
       For users who are browsing or trying out the app without a specific weight goal in mind.
       "
+
+scanner_data_processing:
+  print_disclaimer: false
