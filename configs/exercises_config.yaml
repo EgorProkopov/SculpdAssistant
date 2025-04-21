@@ -1,0 +1,16 @@
+exercises_processor:
+  keys:
+    exercise_names_key: 'Exercise Name'
+    equipments_key: 'Equipment Used'
+    skill_levels_key: 'Skill Level'
+    muscles_key: 'Muscle Groups Targeted (%)'
+    exercise_groups_key: 'Exercise Group'
+    body_parts_key: 'Body Part'
+
+exercises_planner:
+  skills:
+    Beginner: 0
+    Intermediate: 1
+    Advanced: 2
+
+
