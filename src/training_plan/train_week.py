@@ -25,6 +25,12 @@ class TrainWeek:
         week_template = self.week_templates[key]
         return week_template
 
+    def get_week_formatted(self) -> str:
+        week_text = str(self.week)
+        week_text = week_text.replace("{", "{{")
+        week_text = week_text.replace("}", "}}")
+        return week_text
+
 
 if __name__ == "__main__":
     dotenv.load_dotenv()

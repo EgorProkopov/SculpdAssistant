@@ -13,6 +13,6 @@
   "exercise_limitations": ["lower_back_pain", "low_endurance"],
   "nutrition_goal": "cut",
   "equipment_list": ["bodyweight", "resistance_bands", "light_cardio"],
-  "training_days": [2, 4],
+  "training_days": 2,
   "workout_time": 30
 }

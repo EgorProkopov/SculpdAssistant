@@ -76,14 +76,20 @@ class UserDataProcessor:
 
         exercise_limitations = self.user_data[exercise_limitations_key]
         possible_exercise_limitations = self.user_data_processing_config["keys"]["possible_exercise_limitations"]
-        exercise_limitations = [exercise_limitation for exercise_limitation in possible_exercise_limitations and exercise_limitations]
+
+        filtered_exercise_limitations = []
+        for exercise_limitation in exercise_limitations:
+            if exercise_limitation in possible_exercise_limitations:
+                filtered_exercise_limitations.append(exercise_limitation)
+        exercise_limitations = filtered_exercise_limitations
+
         exercise_limitations_descriptions = {}
         data_descriptions = self.user_data_processing_config["data_descriptions"]["exercise_limitations"]
         for exercise_limitation in exercise_limitations:
             description = data_descriptions[exercise_limitation]
             exercise_limitations_descriptions[exercise_limitation] = description
 
-        return data_descriptions
+        return exercise_limitations_descriptions
 
     def get_nutrition_goal_description(self) -> dict:
         nutrition_goal_key = self.user_data_processing_config["keys"]["nutrition_goal_key"]

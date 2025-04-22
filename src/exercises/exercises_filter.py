@@ -20,7 +20,7 @@ class ExercisesFilter:
             if skill_grade <= current_skill_grade:
                 matching_cols.append(skill)
 
-        matching_skills_columns = [skill for skill in skills_columns and matching_cols]
+        matching_skills_columns = [skill.lower() for skill in skills_columns and matching_cols]
         filtered_df = df[df[matching_skills_columns].any(axis=1)]
         return filtered_df
 

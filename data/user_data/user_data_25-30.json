@@ -13,6 +13,6 @@
   "exercise_limitations": ["joint_pain"],
   "nutrition_goal": "cut",
   "equipment_list": ["bodyweight", "resistance_bands", "machines"],
-  "training_days": [1, 3, 5],
+  "training_days": 3,
   "workout_time": 35
 }

@@ -9,8 +9,15 @@ exercises_processor:
 
 exercises_planner:
   skills:
-    Beginner: 0
-    Intermediate: 1
-    Advanced: 2
+    beginner: 0
+    intermediate: 1
+    advanced: 2
+
+exercises_formatter:
+  print_exercises_names: true
+  print_exercises_group: true
+  print_body_part: true
+  print_muscle_groups_targeted: true
+
 
 

@@ -13,6 +13,6 @@
   "exercise_limitations": [],
   "nutrition_goal": "cut",
   "equipment_list": ["bodyweight", "resistance_bands", "dumbbells"],
-  "training_days": [2, 4, 6],
+  "training_days": 3,
   "workout_time": 40
 }

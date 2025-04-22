@@ -84,7 +84,6 @@ class ScannerDataFormatter:
                     elif isinstance(exercises, list):
                         items = exercises
                     else:
-                        # nested muscle groups
                         self.lines.append(f"    {subgroup_title}:")
                         for part, part_exs in exercises.items():
                             part_title = part.replace("_", " ").capitalize()

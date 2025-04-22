@@ -23,7 +23,7 @@ class ExercisesProcessor:
     def __parse_muscle(s):
         d = {}
         for item in s.split(', '):
-            m = re.match(r'(.+?)\s+(\d+)%', item)
+            m = re.match(r'(.+?)\s+(\d+)%', item, flags=re.IGNORECASE)
             if m:
                 muscle, pct = m.groups()
                 d[muscle] = int(pct)
@@ -49,6 +49,12 @@ class ExercisesProcessor:
         muscle_parsed = self.raw_exercises_df[muscles_key].apply(self.__parse_muscle)
         muscles_df = pd.json_normalize(muscle_parsed).fillna(0).astype(int)
 
+        muscles_df.columns = (
+            muscles_df.columns
+                .str.strip()
+                .str.lower()
+        )
+
         return muscles_df
 
     def process_equipment(self, equipments_key: str) -> pd.DataFrame:
@@ -62,6 +68,12 @@ class ExercisesProcessor:
         equipment_df = self.raw_exercises_df[equipments_key]
         equipment_df = equipment_df.str.get_dummies(sep=', ')
 
+        equipment_df.columns = (
+            equipment_df.columns
+                .str.strip()
+                .str.lower()
+        )
+
         return equipment_df
 
     def process_skill_level(self, skill_levels_key) -> pd.DataFrame:
@@ -74,6 +86,12 @@ class ExercisesProcessor:
         """
         skill_df = self.raw_exercises_df[skill_levels_key]
         skill_df = skill_df.str.get_dummies()
+
+        skill_df.columns = (
+            skill_df.columns
+            .str.strip()
+            .str.lower()
+        )
 
         return skill_df
 
