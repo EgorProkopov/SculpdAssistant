@@ -21,7 +21,6 @@ class ExercisesFilter:
                 matching_cols.append(skill)
 
         matching_skills_columns = [skill for skill in skills_columns and matching_cols]
-        print(matching_skills_columns)
         filtered_df = df[df[matching_skills_columns].any(axis=1)]
         return filtered_df
 
@@ -35,6 +34,8 @@ class ExercisesFilter:
 
         filtered_df = df[df[matching_cols].any(axis=1)]
         return filtered_df
+
+
 
 
 if __name__ == "__main__":
