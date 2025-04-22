@@ -1,0 +1,116 @@
+age_periods:
+  young_adults:
+    lower_bound: 18
+    upper_bound: 29
+    label: "18-29 years old"
+    summary: "Peak Performance and Adaptability"
+    training_recommendations: "
+    - Training Focus: Strength & Hypertrophy 
+    - Volume: High volume & frequency (4-6 days per week optimal). 
+    - Intensity: 70-90% of 1RM (One‑Rep Max), pushing closer to failure (0-2 RIR (Reps In Reserve)). 
+    - Recovery Considerations: Less focus on recovery aids; faster muscle recovery. 
+    - Tempo-controlled reps still prioritized  (3-1-1-0 or 2-1-1-0). 
+    - Squats, Deadlifts, Bench Press, Overhead Press, Weighted Pull-ups/Chin-ups. 
+    - Accessory Work: Some machines and cables for controlled stimulus. 
+    - Cardio: Low-moderate amounts to maintain heart health but not interfere with muscle gain. 
+    "
+    adjustments: "
+    - Higher intensity with lower rep ranges (4-10 reps for compounds, 8-12 for isolation). 
+    - Less rest time between sets (45-90 sec isolation, 90-120 sec compounds). 
+    "
+
+  established_adults:
+    lower_bound: 30
+    upper_bound: 39
+    label: "30-39 years old"
+    summary: "Strength Retention and Injury Prevention Focus"
+    training_recommendations: "
+    - Training Focus: Strength, Hypertrophy and Joint Longevity 
+    - Exercise Selection: Mix of barbells, dumbbells, and machines, slight increase in machine use for longevity. 
+    - Volume: Moderate to high (4-6 days per week). 
+    - Intensity: 70-85% of 1RM (One‑Rep Max), working in the 1-3 RIR (Reps In Reserve) range. 
+    - Recovery Considerations: Increased importance of sleep, mobility work, and deloads every 6-8 weeks. 
+    - Still focus on squats, deadlifts, presses, and pull-ups, but introduce controlled tempo to reduce injury risk. 
+    - Accessory Work: Machines and cables used more strategically for joint longevity. - Cardio: Moderate, includes more steady-state work for long-term health. 
+    "
+    adjustments: "
+    - Moderate increase in machine/cable work (50-70% of total exercises). 
+    - More tempo-controlled reps (4-1-1-0 or 3-1-1-0). 
+    - Slightly increased rest time (~90 sec for compounds, 60 sec for isolation). 
+    "
+
+  mid_life_adults:
+    lower_bound: 40
+    upper_bound: 49
+    label: "40-49 years old"
+    summary: "Joint Health and Hypertrophy Maintenance"
+    training_recommendations: "
+    - Training Focus: Strength Maintenance, Hypertrophy and Injury Prevention 
+    - Exercise Selection: Greater reliance on machines, cables, and dumbbells over heavy barbell work. 
+    - Volume: Moderate (3-5 days per week). 
+    - Intensity: 60-80% of 1RM (One‑Rep Max), 2-4 RIR (Reps In Reserve) focus. 
+    - Recovery Considerations: Longer warm-ups and cooldowns, more mobility work, structured deloads every 4-6 weeks. 
+    - Machine variations of squats, rows, and presses over heavy free weights.
+    - Accessory Work: More isolation and cable/machine work to reduce joint strain. 
+    "
+
+    adjustments: "
+    - Increased machine/cable reliance (60-80%) to reduce joint strain. 
+    - More unilateral work (e.g., split squats, single-arm row, single-leg RDLs). 
+    - Lighter loading with higher reps (10-15 for hypertrophy, 6-8 for strength maintenance). 
+    - Longer rest periods (~120 sec for compounds, 60-90 sec for isolation)
+    "
+
+  mature_adults:
+    lower_bound: 50
+    upper_bound: 59
+    label: "50-59 years old"
+    summary: "Sustainable Muscle Retention and Mobility"
+    training_recommendations: "
+    - Training Focus: Muscle Retention, Joint Mobility and Strength Maintenance 
+    - Exercise Selection: Primarily machines, cables, and controlled dumbbell movements. 
+    - Volume: Moderate (3-4 days per week). 
+    - Intensity: 50-75% of 1RM (One‑Rep Max), 3-4 RIR (Reps In Reserve) focus. 
+    - Recovery Considerations: Longer warm-ups and structured recovery days. 
+    - Machine-based squats, leg presses, chest presses, and lat pulldowns prioritized over free weights. 
+    - More landmine movements (e.g., landmine squats, landmine presses). 
+    - Accessory Work: Focus on controlled resistance work and stability exercises. - Cardio: Low-impact options like incline walking, cycling, and rowing
+    "
+
+    adjustments: "
+    - 70% of exercises shifted to machine and cable work for joint safety. 
+    - Reps increased (10-20 rep range) for lower joint stress. 
+    - Minimal barbell work (except for landmine exercises). 
+    - Extra mobility and prehab focus (shoulder, hips, lower back). 
+    - Longer rest periods (90-120 sec) between sets. 
+    "
+
+  seniors:
+    lower_bound: 60
+    upper_bound: 999999
+    label: "60+ years old"
+    summary: "Longevity, Functional Strength and Mobility"
+    training_recommendations: "
+    - Exercise Selection: Primarily machines, cables, bands, and bodyweight movements. 
+    - Volume: Low to moderate (2-4 days per week). 
+    - Intensity: 40-65% of 1RM (One‑Rep Max), 4-5 RIR (Reps In Reserve) focus. 
+    - Recovery Considerations: Prioritizing recovery, flexibility, and balance work. 
+    - Leg press, machine chest press, lat pulldowns, and assisted squats preferred over free weights. 
+    - Focus on stability-based movements (e.g., step-ups, banded work). 
+    - Accessory Work: Mobility drills, resistance band work, and joint-friendly variations. 
+    - Cardio: Low-impact steady-state work (walking, swimming, cycling). 
+    "
+
+    adjustments: "
+     - 80-90% reliance on machines, cables, and bands. 
+     - Elimination of barbell work to avoid excess joint stress. 
+     - High-rep range (12-20 reps) for safer muscle stimulation. 
+     - Longer warm-ups and cooldowns with dynamic stretching. 
+     - Balance and coordination work integrated into sessions. 
+    "
+
+formatter:
+  print_age_range: false
+  print_summary: true
+  print_training_recommendations: true
+  print_adjustments: true

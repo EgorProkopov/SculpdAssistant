@@ -1,0 +1,53 @@
+{
+    "day 1": {
+        "restday": false,
+        "exercises": {
+            "Push-ups": {
+                "count": 20,
+                "sets": 3
+            },
+            "Squats": {
+                "count": 15,
+                "sets": 3
+            }
+        }
+    },
+    "day 2": {
+        "restday": true
+    },
+    "day 3": {
+        "restday": false,
+        "exercises": {
+            "Deadlifts": {
+                "count": 5,
+                "sets": 1
+            },
+            "Pull-ups": {
+                "count": 10,
+                "sets": 3
+            }
+        }
+    },
+    "day 4": {
+        "restday": true
+    },
+    "day 5": {
+        "restday": false,
+        "exercises": {
+            "Bench Press": {
+                "count": 8,
+                "sets": 3
+            },
+            "Rows": {
+                "count": 12,
+                "sets": 3
+            }
+        }
+    },
+    "day 6": {
+        "restday": true
+    },
+    "day 7": {
+        "restday": true
+    }
+}
