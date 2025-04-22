@@ -103,8 +103,8 @@ class UserDataProcessor:
         equipment_list.append("none")
         return equipment_list
 
-    def get_training_days(self) -> list:
-        training_days_key = self.user_data_processing_config["keys"]["training_days_keys"]
+    def get_training_days(self) -> int:
+        training_days_key = self.user_data_processing_config["keys"]["training_days_key"]
         training_days = self.user_data
         return training_days
 

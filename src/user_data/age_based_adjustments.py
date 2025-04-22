@@ -30,7 +30,7 @@ class AgeBasedAdjustmentsFormatter:
         self.config = age_based_adjustments_config["formatter"]
         self.line = []
 
-    def format_data(self) -> str:
+    def data_format(self) -> str:
         self.lines = []
         if self.config["print_age_range"]: self._process_age_range()
         if self.config["print_summary"]: self._process_summary()
@@ -96,5 +96,5 @@ if __name__ == "__main__":
         age_based_adjustments_config=age_based_adjustments_config
     )
 
-    print(age_based_adjustments_formatter.format_data())
+    print(age_based_adjustments_formatter.data_format())
 

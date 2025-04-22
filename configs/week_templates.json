@@ -1,0 +1,217 @@
+{
+  "day_2_template": {
+      "day 1": {
+          "day_type": "FULL_BODY",
+          "exercises": {
+
+          },
+          "notes": "",
+          "explanations": ""
+      },
+      "day 2": {
+          "day_type": "REST_DAY"
+      },
+      "day 3": {
+          "day_type": "REST_DAY"
+      },
+      "day 4": {
+          "day_type": "FULL_BODY",
+          "exercises": {
+
+          },
+          "notes": "",
+          "explanations": ""
+      },
+      "day 5": {
+          "day_type": "REST_DAY"
+      },
+      "day 6": {
+          "day_type": "REST_DAY"
+      },
+      "day 7": {
+          "day_type": "REST_DAY"
+      }
+    },
+  "day_3_template": {
+      "day 1": {
+          "day_type": "FULL_BODY",
+          "exercises": {
+
+          },
+          "notes": "",
+          "explanations": ""
+      },
+      "day 2": {
+          "day_type": "REST_DAY"
+      },
+      "day 3": {
+          "day_type": "FULL_BODY",
+          "exercises": {
+
+          },
+          "notes": "",
+          "explanations": ""
+      },
+      "day 4": {
+          "day_type": "REST_DAY"
+      },
+      "day 5": {
+          "day_type": "REST_DAY"
+      },
+      "day 6": {
+          "day_type": "FULL_BODY",
+          "exercises": {
+
+          },
+          "notes": "",
+          "explanations": ""
+      },
+      "day 7": {
+          "day_type": "REST_DAY"
+      }
+    },
+  "day_4_template": {
+      "day 1": {
+          "day_type": "UPPER_BODY",
+          "exercises": {
+
+          },
+          "notes": "",
+          "explanations": ""
+      },
+      "day 2": {
+          "day_type": "LOWER_BODY",
+          "exercises": {
+
+          },
+          "notes": "",
+          "explanations": ""
+      },
+      "day 3": {
+            "day_type": "REST_DAY"
+      },
+      "day 4": {
+          "day_type": "UPPER_BODY",
+          "exercises": {
+
+          },
+          "notes": "",
+          "explanations": ""
+      },
+      "day 5": {
+          "day_type": "LOWER_BODY",
+          "exercises": {
+
+          },
+          "notes": "",
+          "explanations": ""
+      },
+      "day 6": {
+            "day_type": "REST_DAY"
+      },
+      "day 7": {
+            "day_type": "REST_DAY"
+      }
+    },
+  "day_5_template": {
+      "day 1": {
+          "day_type": "PUSH",
+          "exercises": {
+
+          },
+          "notes": "",
+          "explanations": ""
+      },
+      "day 2": {
+          "day_type": "PULL",
+          "exercises": {
+
+          },
+          "notes": "",
+          "explanations": ""
+      },
+      "day 3": {
+          "day_type": "LEGS",
+          "exercises": {
+
+          },
+          "notes": "",
+          "explanations": ""
+      },
+      "day 4": {
+            "day_type": "REST_DAY"
+      },
+      "day 5": {
+          "day_type": "PPL_DAY",
+          "exercises": {
+
+          },
+          "notes": "",
+          "explanations": ""
+      },
+      "day 6": {
+          "day_type": "PPL_DAY",
+          "exercises": {
+
+          },
+          "notes": "",
+          "explanations": ""
+      },
+      "day 7": {
+            "day_type": "REST_DAY"
+      }
+    },
+  "day_6_template": {
+      "day 1": {
+          "day_type": "PUSH",
+          "exercises": {
+
+          },
+          "notes": "",
+          "explanations": ""
+      },
+      "day 2": {
+          "day_type": "PULL",
+          "exercises": {
+
+          },
+          "notes": "",
+          "explanations": ""
+      },
+      "day 3": {
+          "day_type": "LEGS",
+          "exercises": {
+
+          },
+          "notes": "",
+          "explanations": ""
+      },
+      "day 4": {
+          "day_type": "PUSH",
+          "exercises": {
+
+          },
+          "notes": "",
+          "explanations": ""
+      },
+      "day 5": {
+          "day_type": "PULL",
+          "exercises": {
+
+          },
+          "notes": "",
+          "explanations": ""
+      },
+      "day 6": {
+          "day_type": "LEGS",
+          "exercises": {
+
+          },
+          "notes": "",
+          "explanations": ""
+      },
+      "day 7": {
+            "day_type": "REST_DAY"
+      }
+    }
+}
