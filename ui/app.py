@@ -121,6 +121,7 @@ if __name__ == "__main__":
         ],
         outputs=gr.Textbox(label="Training Plan"),
         title="SCULPD Train Assistant",
+        description="Write your user information and scanner information to receive personalized training plan."
     )
 
     interface.launch(share=True)
