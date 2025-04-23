@@ -10,8 +10,8 @@
   "weight_type": "kg",
   "fitness_level": "beginner",
   "improve_body_parts": ["abs", "chest", "arms", "back"],
-  "exercise_limitations": ["joint_pain"],
-  "nutrition_goal": "cut",
+  "exercise_limitations": ["no_hip_hinge_movements"],
+  "nutrition_goal": "lose_weight",
   "equipment_list": ["bodyweight", "resistance_bands", "machines"],
   "training_days": 3,
   "workout_time": 35

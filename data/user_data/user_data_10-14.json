@@ -10,9 +10,9 @@
   "weight_type": "kg",
   "fitness_level": "intermediate",
   "improve_body_parts": ["chest", "abs"],
-  "exercise_limitations": [],
-  "nutrition_goal": "recomp",
-  "equipment_list": ["barbell", "dumbbells", "machines"],
-  "training_days": 4,
+  "exercise_limitations": ["no_squatting"],
+  "nutrition_goal": "gain_weight",
+  "equipment_list": ["barbell", "dumbbells", "machine"],
+  "training_days": 5,
   "workout_time": 75
 }

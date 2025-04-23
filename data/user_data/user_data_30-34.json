@@ -10,9 +10,9 @@
   "weight_type": "kg",
   "fitness_level": "beginner",
   "improve_body_parts": ["abs", "chest", "back", "legs"],
-  "exercise_limitations": ["lower_back_pain", "low_endurance"],
-  "nutrition_goal": "cut",
-  "equipment_list": ["bodyweight", "resistance_bands", "light_cardio"],
+  "exercise_limitations": [],
+  "nutrition_goal": "lose_weight",
+  "equipment_list": ["dumbbells", "cable", "barbell", "machine"],
   "training_days": 2,
   "workout_time": 30
 }

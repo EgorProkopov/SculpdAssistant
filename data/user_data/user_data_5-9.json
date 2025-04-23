@@ -9,10 +9,10 @@
   "weight": 75.2,
   "weight_type": "kg",
   "fitness_level": "advanced",
-  "improve_body_parts": ["none"],
+  "improve_body_parts": ["shoulders"],
   "exercise_limitations": [],
-  "nutrition_goal": "maintain",
-  "equipment_list": ["barbell", "dumbbells", "machines", "cables"],
+  "nutrition_goal": "maintain_weight",
+  "equipment_list": ["barbell", "dumbbell", "cables", "smith machine", "bench", "shoulder press machine"],
   "training_days": 6,
-  "workout_time": 90
+  "workout_time": 120
 }

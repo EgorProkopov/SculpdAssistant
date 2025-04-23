@@ -10,9 +10,9 @@
   "weight_type": "kg",
   "fitness_level": "beginner",
   "improve_body_parts": ["abs", "chest", "arms"],
-  "exercise_limitations": [],
-  "nutrition_goal": "cut",
-  "equipment_list": ["bodyweight", "resistance_bands", "dumbbells"],
+  "exercise_limitations": ["no_overhead_pressing"],
+  "nutrition_goal": "just_exploring",
+  "equipment_list": ["bodyweight", "bench", "barbell", "dumbbells"],
   "training_days": 3,
   "workout_time": 40
 }

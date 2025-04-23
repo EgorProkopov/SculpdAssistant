@@ -8,11 +8,11 @@
   "height_type": "cm",
   "weight": 82.0,
   "weight_type": "kg",
-  "fitness_level": "beginner",
+  "fitness_level": "intermediate",
   "improve_body_parts": ["abs", "shoulders", "chest"],
   "exercise_limitations": ["no_overhead_pressing"],
   "nutrition_goal": "lose_weight",
-  "equipment_list": ["dumbbells", "machines", "bodyweight"],
-  "training_days": 3,
-  "workout_time": 45
+  "equipment_list": ["dumbbells", "machine", "platform", "barbell", "EZ Bar"],
+  "training_days": 4,
+  "workout_time": 60
 }
