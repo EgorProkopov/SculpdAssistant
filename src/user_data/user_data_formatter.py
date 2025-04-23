@@ -14,7 +14,6 @@ class UserDataFormatter:
         self.lines = []
 
     def data_format(self) -> str:
-        """Main entry point: assemble all sections into a plain-text summary."""
         self.lines = []
         if self.user_data_formatter_config["print_gender"]: self._process_gender()
         if self.user_data_formatter_config["print_age"]: self._process_age()

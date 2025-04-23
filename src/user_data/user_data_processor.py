@@ -111,7 +111,7 @@ class UserDataProcessor:
 
     def get_training_days(self) -> int:
         training_days_key = self.user_data_processing_config["keys"]["training_days_key"]
-        training_days = self.user_data
+        training_days = self.user_data[training_days_key]
         return training_days
 
     def get_workout_time(self) -> int:
