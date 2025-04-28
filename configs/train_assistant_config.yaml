@@ -20,9 +20,10 @@ train_assistant:
 
 For each training day (where day_type not REST_DAY), fill in:
   • 'exercises': a dict of exercises. 
-    Body contains 'sets' and 'counts'. 
+    Body contains 'sets', 'counts' and 'set_rest_time'. 
     Key 'sets' means number of sets on this exercise.
     Key 'counts' means number of repetitions per one set.
+    Key 'set_rest_time' means the rest time  between two sets in seconds. 
     Choose the exercises that are, firstly, most suitable for the current DAY_TYPE, and secondly, that develop the body parts, specified by the user in user_data.
     Also, try to create balanced workouts for different muscle groups,
     It is important to:
@@ -35,6 +36,9 @@ For each training day (where day_type not REST_DAY), fill in:
   • 'notes': any special instructions (e.g. tempo, rest intervals)
   • 'explanations': why each exercise was chosen. 
      Indicate if some exercises were not selected due to exercise limitations
+  • 'rest_time': rest time between two exercises in seconds. 
+     When choosing the rest time between sets, focus on the user's readiness for training and age. 
+     Give the user more time to rest. Should be integer.  
 
 Explanations for each DAY_TYPE:
   REST_DAY:
@@ -60,7 +64,7 @@ Rules:
 2. Keep the exact JSON structure.  Output **only** valid JSON.
 3. Do not reorder days or change DAY_TYPE.
 4. Make sure explanations tie back to user data and age/scanner recommendations.
-5. Body of exercise should contain only 'sets' and 'count' keys. Both should be integers
+5. Body of exercise should contain only 'sets', 'counts' and 'set_rest_time' keys. All should be integers
 
 Produce the completed 7‑day plan as JSON.
 "

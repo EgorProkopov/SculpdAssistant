@@ -118,8 +118,8 @@ if __name__ == "__main__":
     exercises_processor_config = exercises_config["exercises_processor"]
     exercises_planner_config = exercises_config["exercises_planner"]
 
-    user_data_json_path = r"F:\SCULPD\SculpdAssistant\data\user_data\user_data_30-34.json"
-    scanner_data_json_path = r"F:\SCULPD\SculpdAssistant\data\scanner_info\scanner_output_30-34.json"
+    user_data_json_path = r"F:\SCULPD\SculpdAssistant\data\user_data\user_data_15-19.json"
+    scanner_data_json_path = r"F:\SCULPD\SculpdAssistant\data\scanner_info\scanner_output_15-19.json"
 
     with open(user_data_json_path, "r", encoding="utf-8") as file:
         raw_user_data = json.load(file)

@@ -25,15 +25,18 @@ class ExercisesFilter:
         return filtered_df
 
     def get_available_exercises_by_equipment(self, df: pd.DataFrame, available_equipment: list) -> pd.DataFrame:
-        equipment_columns = self.exercises_processor.get_equipment_columns()
+        required_equipment = df.columns
 
-        matching_cols = [
-            col for col in equipment_columns
-            if any(available in col for available in available_equipment)
-        ]
+        # для каждой строки: смотрим, нет ли 1 в колонках, которых нет в available_equipment
+        mask = df.apply(
+            lambda row: all(
+                col in available_equipment or row[col] == 0
+                for col in required_equipment
+            ),
+            axis=1
+        )
 
-        filtered_df = df[df[matching_cols].any(axis=1)]
-        return filtered_df
+        return df[mask]
 
 
 

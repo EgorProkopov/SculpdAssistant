@@ -3,7 +3,7 @@
   "image": "http://example.com/image3.jpg",
   "name": "New User",
   "gender": "male",
-  "birthday": "1995-05-15T00:00:00Z",
+  "birthday": "1985-05-15T00:00:00Z",
   "height": 180.5,
   "height_type": "cm",
   "weight": 82.0,
@@ -12,7 +12,7 @@
   "improve_body_parts": ["abs", "shoulders", "chest"],
   "exercise_limitations": ["no_overhead_pressing"],
   "nutrition_goal": "lose_weight",
-  "equipment_list": ["dumbbells", "machine", "platform", "barbell", "EZ Bar"],
+  "equipment_list": ["Cable Machine", "Barbell", "Platform", "Barbell", "EZ Bar"],
   "training_days": 4,
   "workout_time": 60
 }
