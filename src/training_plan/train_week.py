@@ -18,11 +18,22 @@ class TrainWeek:
         self.train_days_num = train_days_num
         self.week_templates = week_templates
 
-        self.week = self.get_week_form()
+        self.week = self.get_week_form(week_templates, train_days_num)
+        self.day_types = self.get_day_types(train_days_num)
 
-    def get_week_form(self) -> dict:
-        key = f"day_{self.train_days_num}_template"
-        week_template = self.week_templates[key]
+    def get_day_types(self, train_days_num: int) -> list:
+        if train_days_num == 2 or train_days_num == 3:
+            return ["FULL_BODY"]
+        elif train_days_num == 4:
+            return ["UPPER_BODY", "LOWER_BODY"]
+        elif train_days_num == 5 or train_days_num == 5:
+            return ["PUSH", "PULL", "LEGS"]
+        else:
+            raise
+
+    def get_week_form(self, week_templates: dict, train_days_num: int) -> dict:
+        key = f"day_{train_days_num}_template"
+        week_template = week_templates[key]
         return week_template
 
     def get_week_formatted(self) -> str:

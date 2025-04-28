@@ -38,7 +38,8 @@ For each training day (where day_type not REST_DAY), fill in:
      Indicate if some exercises were not selected due to exercise limitations
   • 'rest_time': rest time between two exercises in seconds. 
      When choosing the rest time between sets, focus on the user's readiness for training and age. 
-     Give the user more time to rest. Should be integer.  
+     Its good for health to rest more. Try to give a user more time for rest, like 3, 4 or 5 minutes. 
+     Key 'rest_time' Should be integer.  
 
 Explanations for each DAY_TYPE:
   REST_DAY:

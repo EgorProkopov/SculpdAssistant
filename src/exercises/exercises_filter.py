@@ -25,20 +25,38 @@ class ExercisesFilter:
         return filtered_df
 
     def get_available_exercises_by_equipment(self, df: pd.DataFrame, available_equipment: list) -> pd.DataFrame:
-        required_equipment = df.columns
+        equipment_columns = self.exercises_processor.get_equipment_columns()
+        missing = set(available_equipment) - set(equipment_columns)
+        if missing:
+            raise KeyError(f"Не найдено оборудования: {missing}")
 
-        # для каждой строки: смотрим, нет ли 1 в колонках, которых нет в available_equipment
-        mask = df.apply(
-            lambda row: all(
-                col in available_equipment or row[col] == 0
-                for col in required_equipment
-            ),
-            axis=1
-        )
+        total_required = df[equipment_columns].sum(axis=1)
+        total_covered = df[available_equipment].sum(axis=1)
 
+        mask = total_required.eq(total_covered)
         return df[mask]
 
+    def get_available_exercises_by_day_type(self, df: pd.DataFrame, day_types: list) -> dict:
+        exercises_by_day_type = {}
 
+        day_type_to_body_parts = {
+            "FULL_BODY": ["Back", "Chest", "Triceps", "Biceps", "Shoulders", "Legs", "Forearms", "Core"],
+            "LOWER_BODY": ["Legs", "Core"],
+            "UPPER_BODY": ["Back", "Chest", "Triceps", "Biceps", "Shoulders", "Legs", "Forearms", "Core"],
+            "PUSH": ["Chest", "Triceps", "Shoulders", "Forearms", "Core"],
+            "PULL": ["Back", "Biceps", "Shoulders", "Forearms", "Core"],
+            "LEGS": ["Legs", "Core"]
+        }
+
+        for day_type in day_types:
+            parts = day_type_to_body_parts[day_type]
+
+            mask = df['Body Part'].isin(parts)
+            filtered = df.loc[mask].reset_index(drop=True)
+
+            exercises_by_day_type[day_type] = filtered
+
+        return exercises_by_day_type
 
 
 if __name__ == "__main__":

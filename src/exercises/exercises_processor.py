@@ -72,6 +72,8 @@ class ExercisesProcessor:
             equipment_df.columns
                 .str.strip()
                 .str.lower()
+                .str.replace(" ", "_")
+                .str.replace("-", "_")
         )
 
         return equipment_df
@@ -113,9 +115,11 @@ if __name__ == "__main__":
     exercises_config = OmegaConf.load(EXERCISES_CONFIG_PATH)
     exercises_processor_config = exercises_config["exercises_processor"]
 
-    raw_df = pd.read_csv(r"/data/exercises/sculpd_exercise_processed.csv")
+    raw_df = pd.read_csv(r"F:\SCULPD\SculpdAssistant\data\exercises\sculpd_exercise_processed.csv")
 
     exercises_processor = ExercisesProcessor(
         raw_exercises_df=raw_df, exercises_processor_config=exercises_processor_config
     )
-    print(exercises_processor.processed_df.columns.tolist())
+
+    df = exercises_processor.processed_df[exercises_processor.get_equipment_columns()]
+    print(df.columns.tolist())

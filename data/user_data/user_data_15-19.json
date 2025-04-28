@@ -12,7 +12,7 @@
   "improve_body_parts": ["abs", "shoulders", "chest"],
   "exercise_limitations": ["no_overhead_pressing"],
   "nutrition_goal": "lose_weight",
-  "equipment_list": ["Cable Machine", "Barbell", "Platform", "Barbell", "EZ Bar"],
+  "equipment_list": ["cable_machine", "barbell", "platform", "barbell", "ez_bar"],
   "training_days": 4,
   "workout_time": 60
 }

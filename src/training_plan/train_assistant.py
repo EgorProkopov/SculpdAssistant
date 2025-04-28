@@ -24,25 +24,31 @@ class TrainAssistant:
     def __init__(
             self,
             API_KEY: str,
-            train_week: TrainWeek,
-            available_exercises: pd.DataFrame,
-            exercises_formatter: ExercisesFormatter,
-            user_data_formatter: UserDataFormatter,
-            age_formatter: AgeBasedAdjustmentsFormatter,
-            scanner_formatter: ScannerDataFormatter,
-            train_assistant_config: DictConfig
+            train_assistant_config: DictConfig,
+            data_processing_config: DictConfig,
+            age_based_adjustments_config: DictConfig,
+            exercises_config: DictConfig,
+            raw_user_data: dict,
+            raw_scanner_data: dict,
+            train_weeks_templates: dict,
+            raw_exercises_df: pd.DataFrame
     ):
-
-        self.train_week = train_week
-        self.available_exercises = available_exercises
-        self.exercises_formatter = exercises_formatter
-        self.user_data_formatter = user_data_formatter
-        self.age_formatter = age_formatter
-        self.scanner_formatter = scanner_formatter
-
         self.train_assistant_config = train_assistant_config
-        prompt = self.train_assistant_config["train_assistant"]["prompt_template"]
+        self.__init_assistant(
+            data_processing_config=data_processing_config,
+            age_based_adjustments_config=age_based_adjustments_config,
+            exercises_config=exercises_config,
+            raw_user_data=raw_user_data,
+            raw_scanner_data=raw_scanner_data,
+            train_weeks_templates=train_weeks_templates,
+            raw_exercises_df=raw_exercises_df
+        )
+        self.__init_llm(API_KEY=API_KEY)
 
+        self.logger = get_logger(name=self.__class__.__name__, level=logging.DEBUG)
+
+    def __init_llm(self, API_KEY):
+        prompt = self.train_assistant_config["train_assistant"]["prompt_template"]
         model_name = self.train_assistant_config["train_assistant"]["model"]
         temperature = self.train_assistant_config["train_assistant"]["temperature"]
 
@@ -52,14 +58,64 @@ class TrainAssistant:
         ])
         self.chain = self.prompt_template | self.llm
 
-        self.logger = get_logger(name=self.__class__.__name__, level=logging.INFO)
+    def __init_assistant(
+            self,
+            data_processing_config: DictConfig,
+            age_based_adjustments_config: DictConfig,
+            exercises_config: DictConfig,
+            raw_user_data: dict,
+            raw_scanner_data: dict,
+            train_weeks_templates: dict,
+            raw_exercises_df: pd.DataFrame
+    ):
+        # user data formatter
+        user_data_processing_config = data_processing_config["user_data_processing"]
+        user_data_formatter_config = data_processing_config["user_data_formatter"]
+        user_data_processor = UserDataProcessor(raw_user_data, user_data_processing_config)
+        self.user_data_formatter = UserDataFormatter(user_data_processor, user_data_formatter_config)
+
+        # age based adjustments formatter
+        age = user_data_processor.get_age()
+        age_based_adjustments_processor = AgeBasedAdjustmentsProcessor(age_based_adjustments_config)
+        age_period = age_based_adjustments_processor.select_age_periods_adjustments(age)
+        self.age_formatter = AgeBasedAdjustmentsFormatter(age_period, age_based_adjustments_config)
+
+        # scanner data formatter
+        scanner_data_formatter_config = data_processing_config["scanner_data_formatter"]
+        self.scanner_formatter = ScannerDataFormatter(raw_scanner_data, scanner_data_formatter_config)
+
+        # train week
+        train_days_number = user_data_processor.get_training_days()
+        self.train_week = TrainWeek(week_templates=train_weeks_templates, train_days_num=train_days_number)
+
+        # exercises formatter and available_exercises
+        exercises_processor_config = exercises_config["exercises_processor"]
+        exercises_planner_config = exercises_config["exercises_planner"]
+        exercises_processor = ExercisesProcessor(raw_exercises_df, exercises_processor_config)
+        exercises_filter = ExercisesFilter(exercises_processor, exercises_planner_config)
+
+        skill_level = user_data_processor.get_fitness_level()
+        available_equipment = user_data_processor.get_equipment_list()
+        day_types = self.train_week.day_types
+
+        available_exercises = exercises_filter.get_available_exercises_by_equipment(
+            df=exercises_processor.processed_df, available_equipment=available_equipment
+        )
+        available_exercises = exercises_filter.get_available_exercises_by_skill_level(
+            df=available_exercises, skill_level=skill_level
+        )
+        available_exercises_by_day_type = exercises_filter.get_available_exercises_by_day_type(
+            df=available_exercises, day_types=day_types
+        )
+        self.available_exercises_by_day_type = available_exercises_by_day_type
+        self.exercises_formatter = ExercisesFormatter(exercises_config)
 
     def generate_train_program(self) -> str:
         week_template = str(self.train_week.week)
         user_data = self.user_data_formatter.data_format()
         scanner_recommendations = self.scanner_formatter.data_format()
         age_recommendations = self.age_formatter.data_format()
-        exercises_formatted = self.exercises_formatter.data_format(self.available_exercises)
+        exercises_formatted = self.exercises_formatter.data_format(self.available_exercises_by_day_type)
 
         self.logger.debug(f"Week Template: \n{week_template}")
         self.logger.debug(f"User Data Formatted: \n{user_data}")
@@ -85,38 +141,13 @@ class TrainAssistant:
             processed_result = "\n".join(processed_result.splitlines()[1:-1]).strip()
 
         try:
-            structured_data = json.loads(processed_result)
+            return json.loads(processed_result)
         except json.JSONDecodeError as e:
             raise ValueError("Failed to decode JSON. Output received:\n" + processed_result) from e
-
-        return structured_data
 
 
 if __name__ == "__main__":
     dotenv.load_dotenv()
-
-    API_KEY = os.getenv("API_KEY")
-    TRAIN_ASSISTANT_CONFIG_PATH = os.getenv("TRAIN_ASSISTANT_CONFIG_PATH")
-    train_assistant_config = OmegaConf.load(TRAIN_ASSISTANT_CONFIG_PATH)
-
-    DATA_PROCESSING_CONFIG_PATH = os.getenv("DATA_PROCESSING_CONFIG_PATH")
-    data_processing_config = OmegaConf.load(DATA_PROCESSING_CONFIG_PATH)
-    user_data_processing_config = data_processing_config["user_data_processing"]
-    user_data_formatter_config = data_processing_config["user_data_formatter"]
-
-    AGE_BASED_ADJUSTMENTS_CONFIG_PATH = os.getenv("AGE_BASED_ADJUSTMENTS_CONFIG_PATH")
-    age_based_adjustments_config = OmegaConf.load(AGE_BASED_ADJUSTMENTS_CONFIG_PATH)
-
-    DATA_PROCESSING_CONFIG_PATH = os.getenv("DATA_PROCESSING_CONFIG_PATH")
-    data_processing_config = OmegaConf.load(DATA_PROCESSING_CONFIG_PATH)
-    scanner_data_formatter_config = data_processing_config["scanner_data_formatter"]
-
-    TRAIN_WEEKS_TEMPLATES_PATH = os.getenv("TRAIN_WEEKS_TEMPLATES_PATH")
-
-    EXERCISES_CONFIG_PATH = os.getenv("EXERCISES_CONFIG_PATH")
-    exercises_config = OmegaConf.load(EXERCISES_CONFIG_PATH)
-    exercises_processor_config = exercises_config["exercises_processor"]
-    exercises_planner_config = exercises_config["exercises_planner"]
 
     user_data_json_path = r"F:\SCULPD\SculpdAssistant\data\user_data\user_data_15-19.json"
     scanner_data_json_path = r"F:\SCULPD\SculpdAssistant\data\scanner_info\scanner_output_15-19.json"
@@ -126,65 +157,37 @@ if __name__ == "__main__":
     with open(scanner_data_json_path, "r", encoding="utf-8") as file:
         raw_scanner_data = json.load(file)
 
-    user_data_processor = UserDataProcessor(
-        user_data=raw_user_data,
-        user_data_processing_config=user_data_processing_config
-    )
-    user_data_formatter = UserDataFormatter(
-        user_data_processor=user_data_processor, user_data_formatter_config=user_data_formatter_config
-    )
-    train_days_number = user_data_processor.get_training_days()
+    API_KEY = os.getenv("API_KEY")
+    TRAIN_ASSISTANT_CONFIG_PATH = os.getenv("TRAIN_ASSISTANT_CONFIG_PATH")
+    train_assistant_config = OmegaConf.load(TRAIN_ASSISTANT_CONFIG_PATH)
 
-    age = user_data_processor.get_age()
-    age_based_adjustments = AgeBasedAdjustmentsProcessor(
-        age_based_adjustments_config=age_based_adjustments_config
-    )
-    age_period = age_based_adjustments.select_age_periods_adjustments(age)
-    age_formatter = AgeBasedAdjustmentsFormatter(
-        age_group_data=age_period,
-        age_based_adjustments_config=age_based_adjustments_config
-    )
+    DATA_PROCESSING_CONFIG_PATH = os.getenv("DATA_PROCESSING_CONFIG_PATH")
+    data_processing_config = OmegaConf.load(DATA_PROCESSING_CONFIG_PATH)
 
-    scanner_formatter = ScannerDataFormatter(
-        scanner_data=raw_scanner_data, scanner_data_formatter_config=scanner_data_formatter_config
-    )
+    AGE_BASED_ADJUSTMENTS_CONFIG_PATH = os.getenv("AGE_BASED_ADJUSTMENTS_CONFIG_PATH")
+    age_based_adjustments_config = OmegaConf.load(AGE_BASED_ADJUSTMENTS_CONFIG_PATH)
 
+    EXERCISES_CONFIG_PATH = os.getenv("EXERCISES_CONFIG_PATH")
+    exercises_config = OmegaConf.load(EXERCISES_CONFIG_PATH)
+
+    TRAIN_WEEKS_TEMPLATES_PATH = os.getenv("TRAIN_WEEKS_TEMPLATES_PATH")
     with open(TRAIN_WEEKS_TEMPLATES_PATH, "r", encoding="utf-8") as file:
         train_weeks_templates = json.load(file)
 
-    train_week = TrainWeek(week_templates=train_weeks_templates, train_days_num=train_days_number)
-
-    raw_df = pd.read_csv(r"F:\SCULPD\SculpdAssistant\data\exercises\sculpd_exercise_processed.csv")
-    exercises_processor = ExercisesProcessor(
-        raw_exercises_df=raw_df, exercises_processor_config=exercises_processor_config
-    )
-    exercises_filter = ExercisesFilter(
-        exercises_processor=exercises_processor, exercises_planner_config=exercises_planner_config
-    )
-
-    skill_level = user_data_processor.get_fitness_level()
-    available_equipment = user_data_processor.get_equipment_list()
-
-    processed_df = exercises_processor.processed_df
-    available_exercises = exercises_filter.get_available_exercises_by_skill_level(
-        df=processed_df, skill_level=skill_level
-    )
-    available_exercises = exercises_filter.get_available_exercises_by_equipment(
-        df=available_exercises, available_equipment=available_equipment
-    )
-    exercises_formatter = ExercisesFormatter(exercises_config)
-
+    EXERCISES_RAW_DF_PATH = os.getenv("EXERCISES_RAW_DF_PATH")
+    raw_df = pd.read_csv(EXERCISES_RAW_DF_PATH, keep_default_na=False)
 
     train_assistant = TrainAssistant(
         API_KEY=API_KEY,
-        train_week=train_week,
-        available_exercises=available_exercises,
-        exercises_formatter=exercises_formatter,
-        user_data_formatter=user_data_formatter,
-        age_formatter=age_formatter,
-        scanner_formatter=scanner_formatter,
-        train_assistant_config=train_assistant_config
+        train_assistant_config=train_assistant_config,
+        data_processing_config=data_processing_config,
+        age_based_adjustments_config=age_based_adjustments_config,
+        exercises_config=exercises_config,
+        raw_user_data=raw_user_data,
+        raw_scanner_data=raw_scanner_data,
+        train_weeks_templates=train_weeks_templates,
+        raw_exercises_df=raw_df
     )
 
-    train_program = train_assistant.generate_train_program()
-    print(train_program)
+    print(train_assistant.generate_train_program())
+
