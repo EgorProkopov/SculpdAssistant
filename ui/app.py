@@ -1,127 +1,88 @@
 import os
-import dotenv
-import pandas as pd
-from omegaconf import OmegaConf
 import json
+import dotenv
+import requests
+from fastapi import FastAPI, HTTPException, Request
+from pydantic import BaseModel, Field
+from omegaconf import OmegaConf
+import pandas as pd
+from typing import Any, AsyncGenerator
+from contextlib import asynccontextmanager
 
-import gradio as gr
-
-from src.exercises.exercises_filter import ExercisesFilter
-from src.exercises.exercises_formatter import ExercisesFormatter
+# Import your modules
 from src.exercises.exercises_processor import ExercisesProcessor
 from src.training_plan.train_assistant import TrainAssistant
-from src.training_plan.train_week import TrainWeek
-from src.user_data.user_data_formatter import UserDataFormatter
-from src.user_data.age_based_adjustments import AgeBasedAdjustmentsProcessor, AgeBasedAdjustmentsFormatter
-from src.scanner_data_formatter import ScannerDataFormatter
-from src.user_data.user_data_processor import UserDataProcessor
 
+USER_PROFILE_URL = "http://89.104.65.131/user/get-profile"
 
-def get_training_plan(raw_user_data: str, raw_scanner_data: str):
-    raw_user_data = json.loads(raw_user_data)
-    raw_scanner_data = json.loads(raw_scanner_data)
-
-    API_KEY = os.getenv("API_KEY")
-    TRAIN_ASSISTANT_CONFIG_PATH = os.getenv("TRAIN_ASSISTANT_CONFIG_PATH")
-    train_assistant_config = OmegaConf.load(TRAIN_ASSISTANT_CONFIG_PATH)
-
-    DATA_PROCESSING_CONFIG_PATH = os.getenv("DATA_PROCESSING_CONFIG_PATH")
-    data_processing_config = OmegaConf.load(DATA_PROCESSING_CONFIG_PATH)
-    user_data_processing_config = data_processing_config["user_data_processing"]
-    user_data_formatter_config = data_processing_config["user_data_formatter"]
-
-    AGE_BASED_ADJUSTMENTS_CONFIG_PATH = os.getenv("AGE_BASED_ADJUSTMENTS_CONFIG_PATH")
-    age_based_adjustments_config = OmegaConf.load(AGE_BASED_ADJUSTMENTS_CONFIG_PATH)
-
-    DATA_PROCESSING_CONFIG_PATH = os.getenv("DATA_PROCESSING_CONFIG_PATH")
-    data_processing_config = OmegaConf.load(DATA_PROCESSING_CONFIG_PATH)
-    scanner_data_formatter_config = data_processing_config["scanner_data_formatter"]
-
-    TRAIN_WEEKS_TEMPLATES_PATH = os.getenv("TRAIN_WEEKS_TEMPLATES_PATH")
-
-    EXERCISES_CONFIG_PATH = os.getenv("EXERCISES_CONFIG_PATH")
-    exercises_config = OmegaConf.load(EXERCISES_CONFIG_PATH)
-    exercises_processor_config = exercises_config["exercises_processor"]
-    exercises_planner_config = exercises_config["exercises_planner"]
-
-    EXERCISES_RAW_DF_PATH = os.getenv("EXERCISES_RAW_DF_PATH")
-
-    user_data_processor = UserDataProcessor(
-        user_data=raw_user_data,
-        user_data_processing_config=user_data_processing_config
-    )
-    user_data_formatter = UserDataFormatter(
-        user_data_processor=user_data_processor, user_data_formatter_config=user_data_formatter_config
-    )
-    train_days_number = user_data_processor.get_training_days()
-
-    age = user_data_processor.get_age()
-    age_based_adjustments = AgeBasedAdjustmentsProcessor(
-        age_based_adjustments_config=age_based_adjustments_config
-    )
-    age_period = age_based_adjustments.select_age_periods_adjustments(age)
-    age_formatter = AgeBasedAdjustmentsFormatter(
-        age_group_data=age_period,
-        age_based_adjustments_config=age_based_adjustments_config
-    )
-
-    scanner_formatter = ScannerDataFormatter(
-        scanner_data=raw_scanner_data, scanner_data_formatter_config=scanner_data_formatter_config
-    )
-
-    with open(TRAIN_WEEKS_TEMPLATES_PATH, "r", encoding="utf-8") as file:
-        train_weeks_templates = json.load(file)
-
-    train_week = TrainWeek(week_templates=train_weeks_templates, train_days_num=train_days_number)
-
-    raw_df = pd.read_csv(EXERCISES_RAW_DF_PATH)
-    exercises_processor = ExercisesProcessor(
-        raw_exercises_df=raw_df, exercises_processor_config=exercises_processor_config
-    )
-    exercises_filter = ExercisesFilter(
-        exercises_processor=exercises_processor, exercises_planner_config=exercises_planner_config
-    )
-
-    skill_level = user_data_processor.get_fitness_level()
-    available_equipment = user_data_processor.get_equipment_list()
-
-    processed_df = exercises_processor.processed_df
-    available_exercises = exercises_filter.get_available_exercises_by_skill_level(
-        df=processed_df, skill_level=skill_level
-    )
-    available_exercises = exercises_filter.get_available_exercises_by_equipment(
-        df=available_exercises, available_equipment=available_equipment
-    )
-    exercises_formatter = ExercisesFormatter(exercises_config)
-
-    train_assistant = TrainAssistant(
-        API_KEY=API_KEY,
-        train_week=train_week,
-        available_exercises=available_exercises,
-        exercises_formatter=exercises_formatter,
-        user_data_formatter=user_data_formatter,
-        age_formatter=age_formatter,
-        scanner_formatter=scanner_formatter,
-        train_assistant_config=train_assistant_config
-    )
-
-    train_program = train_assistant.generate_train_program()
-    return train_program
-
-
-if __name__ == "__main__":
+# Lifespan handler to replace deprecated startup event
+@asynccontextmanager
+async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
+    # Load environment
     dotenv.load_dotenv()
-    user_info_placeholder = '{\n"email": "newuser@example.com", \n"image": "http://example.com/image.jpg", \n"name": "New User", \n"gender": "male", \n"birthday": "1995-05-15T00:00:00Z", \n"height": 180.5, \n"height_type": "cm", \n"weight": 75.2, \n"weight_type": "kg", \n"fitness_level": "advanced", \n"improve_body_parts": ["none"], \n"exercise_limitations": ["no_overhead_pressing", "no_squatting", "no_hip_hinge_movements"], \n"nutrition_goal": "maintain_weight", "equipment_list": ["barbell", "dumbbells", "machines", "cables"], \n"training_days": 6, "workout_time": 90 }'
 
-    interface = gr.Interface(
-        fn=get_training_plan,
-        inputs=[
-            gr.TextArea(label='User Information', placeholder=user_info_placeholder),
-            gr.TextArea(label='Scanner Info')
-        ],
-        outputs=gr.Textbox(label="Training Plan"),
-        title="SCULPD Train Assistant",
-        description="Write your user information and scanner information to receive personalized training plan."
+    # API key
+    api_key = os.getenv("API_KEY")
+    if not api_key:
+        raise RuntimeError("API_KEY is not set in environment variables")
+    app.state.api_key = api_key  # type: ignore
+
+    # Load configs
+    app.state.train_assistant_config = OmegaConf.load(os.getenv("TRAIN_ASSISTANT_CONFIG_PATH"))  # type: ignore
+    app.state.data_processing_config = OmegaConf.load(os.getenv("DATA_PROCESSING_CONFIG_PATH"))  # type: ignore
+    app.state.age_based_adjustments_config = OmegaConf.load(os.getenv("AGE_BASED_ADJUSTMENTS_CONFIG_PATH"))  # type: ignore
+    app.state.exercises_config = OmegaConf.load(os.getenv("EXERCISES_CONFIG_PATH"))  # type: ignore
+    app.state.feedback_config = OmegaConf.load(os.getenv("FEEDBACK_CONFIG_PATH"))  # type: ignore
+    app.state.train_weeks_templates = json.load(
+        open(os.getenv("TRAIN_WEEKS_TEMPLATES_PATH"), encoding="utf-8")  # type: ignore
     )
 
-    interface.launch(share=True)
+    # Prepare exercises processor
+    raw_df = pd.read_csv(os.getenv("EXERCISES_RAW_DF_PATH"), keep_default_na=False)
+    ex_cfg = app.state.exercises_config["exercises_processor"]  # type: ignore
+    app.state.exercises_processor = ExercisesProcessor(raw_df, ex_cfg)  # type: ignore
+
+    yield
+    # (Optional) teardown logic here
+
+# Initialize FastAPI with lifespan handler
+app = FastAPI(title="SCULPD Train Assistant API", lifespan=lifespan)
+
+# Pydantic model for request containing only scanner_info
+class TrainingPlanRequest(BaseModel):
+    scanner_info: dict = Field(default_factory=dict, description="Optional scanner data JSON")
+
+class TrainingPlanResponse(BaseModel):
+    plan: dict = Field(..., description="Generated training plan structure")
+
+@app.post("/generate_training_plan", response_model=TrainingPlanResponse)
+def generate_training_plan(request_data: TrainingPlanRequest, request: Request):
+    """
+    Generate a personalized training plan for the user.
+    Fetches user profile automatically, uses provided scanner_info.
+    """
+    # Fetch user info from external service
+    resp = requests.get(USER_PROFILE_URL)
+    if resp.status_code != 200:
+        raise HTTPException(status_code=502, detail=f"Failed to fetch user profile: {resp.status_code}")
+    user_info = resp.json()
+
+    try:
+        state: Any = request.app.state  # type: ignore
+        assistant = TrainAssistant(
+            API_KEY=state.api_key,
+            train_assistant_config=state.train_assistant_config,
+            data_processing_config=state.data_processing_config,
+            age_based_adjustments_config=state.age_based_adjustments_config,
+            exercises_config=state.exercises_config,
+            feedback_config=state.feedback_config,
+            raw_user_data=user_info,
+            raw_scanner_data=request_data.scanner_info,
+            train_weeks_templates=state.train_weeks_templates,
+            exercises_processor=state.exercises_processor
+        )
+        plan = assistant.generate_first_week()
+        return TrainingPlanResponse(plan=plan)
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
