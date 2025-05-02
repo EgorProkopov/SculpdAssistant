@@ -79,5 +79,3 @@ if __name__ == "__main__":
     print(formatted_exercises)
 
 
-
-

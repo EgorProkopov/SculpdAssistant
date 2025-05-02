@@ -11,6 +11,8 @@ from langchain.prompts.chat import ChatPromptTemplate, HumanMessagePromptTemplat
 from src.exercises.exercises_filter import ExercisesFilter
 from src.exercises.exercises_formatter import ExercisesFormatter
 from src.exercises.exercises_processor import ExercisesProcessor
+from src.feedback_formatter import FeedbackFormatter
+from src.previous_week_formatter import TrainingWeekFormatter
 from src.training_plan.train_week import TrainWeek
 from src.user_data.user_data_formatter import UserDataFormatter
 from src.user_data.age_based_adjustments import AgeBasedAdjustmentsProcessor, AgeBasedAdjustmentsFormatter
@@ -28,45 +30,49 @@ class TrainAssistant:
             data_processing_config: DictConfig,
             age_based_adjustments_config: DictConfig,
             exercises_config: DictConfig,
+            feedback_config: DictConfig,
             raw_user_data: dict,
             raw_scanner_data: dict,
             train_weeks_templates: dict,
-            raw_exercises_df: pd.DataFrame
+            exercises_processor: ExercisesProcessor
     ):
+        self.llm = ChatOpenAI(api_key=API_KEY)
+
         self.train_assistant_config = train_assistant_config
+
+        self.exercises_processor = exercises_processor
+
         self.__init_assistant(
             data_processing_config=data_processing_config,
             age_based_adjustments_config=age_based_adjustments_config,
             exercises_config=exercises_config,
+            feedback_config=feedback_config,
             raw_user_data=raw_user_data,
             raw_scanner_data=raw_scanner_data,
             train_weeks_templates=train_weeks_templates,
-            raw_exercises_df=raw_exercises_df
         )
-        self.__init_llm(API_KEY=API_KEY)
 
         self.logger = get_logger(name=self.__class__.__name__, level=logging.DEBUG)
 
-    def __init_llm(self, API_KEY):
-        prompt = self.train_assistant_config["train_assistant"]["prompt_template"]
-        model_name = self.train_assistant_config["train_assistant"]["model"]
-        temperature = self.train_assistant_config["train_assistant"]["temperature"]
+    def __init_chain(self, prompt, model_name, temperature):
+        self.llm.model_name = model_name
+        self.llm.temperature = temperature
 
-        self.llm = ChatOpenAI(api_key=API_KEY, model=model_name, temperature=temperature)
-        self.prompt_template = ChatPromptTemplate.from_messages([
+        prompt_template = ChatPromptTemplate.from_messages([
             HumanMessagePromptTemplate.from_template(prompt)
         ])
-        self.chain = self.prompt_template | self.llm
+        chain = prompt_template | self.llm
+        return chain
 
     def __init_assistant(
             self,
             data_processing_config: DictConfig,
             age_based_adjustments_config: DictConfig,
             exercises_config: DictConfig,
+            feedback_config: DictConfig,
             raw_user_data: dict,
             raw_scanner_data: dict,
-            train_weeks_templates: dict,
-            raw_exercises_df: pd.DataFrame
+            train_weeks_templates: dict
     ):
         # user data formatter
         user_data_processing_config = data_processing_config["user_data_processing"]
@@ -89,17 +95,15 @@ class TrainAssistant:
         self.train_week = TrainWeek(week_templates=train_weeks_templates, train_days_num=train_days_number)
 
         # exercises formatter and available_exercises
-        exercises_processor_config = exercises_config["exercises_processor"]
         exercises_planner_config = exercises_config["exercises_planner"]
-        exercises_processor = ExercisesProcessor(raw_exercises_df, exercises_processor_config)
-        exercises_filter = ExercisesFilter(exercises_processor, exercises_planner_config)
+        exercises_filter = ExercisesFilter(self.exercises_processor, exercises_planner_config)
 
         skill_level = user_data_processor.get_fitness_level()
         available_equipment = user_data_processor.get_equipment_list()
         day_types = self.train_week.day_types
 
         available_exercises = exercises_filter.get_available_exercises_by_equipment(
-            df=exercises_processor.processed_df, available_equipment=available_equipment
+            df=self.exercises_processor.processed_df, available_equipment=available_equipment
         )
         available_exercises = exercises_filter.get_available_exercises_by_skill_level(
             df=available_exercises, skill_level=skill_level
@@ -110,7 +114,17 @@ class TrainAssistant:
         self.available_exercises_by_day_type = available_exercises_by_day_type
         self.exercises_formatter = ExercisesFormatter(exercises_config)
 
-    def generate_train_program(self) -> str:
+        self.train_week_formatter = TrainingWeekFormatter()
+        self.feedbaack_formatter = FeedbackFormatter(feedback_config)
+
+
+    def generate_first_week(self) -> str:
+        prompt = self.train_assistant_config["train_assistant"]["first_week"]["prompt_template"]
+        model_name = self.train_assistant_config["train_assistant"]["first_week"]["model"]
+        temperature = self.train_assistant_config["train_assistant"]["first_week"]["temperature"]
+
+        chain = self.__init_chain(prompt, model_name, temperature)
+
         week_template = str(self.train_week.week)
         user_data = self.user_data_formatter.data_format()
         scanner_recommendations = self.scanner_formatter.data_format()
@@ -123,11 +137,46 @@ class TrainAssistant:
         self.logger.debug(f"Age Recommendations Formatted: \n{age_recommendations}")
         self.logger.debug(f"Exercises List Formatted: \n{exercises_formatted}")
 
-        result = self.chain.invoke(
+        result = chain.invoke(
             {
                 "week_template": week_template,
                 "user_data": user_data,
                 "scanner_recommendations": scanner_recommendations,
+                "age_recommendations": age_recommendations,
+                "available_exercises": exercises_formatted
+            }
+        )
+        processed_result = result.content.strip()
+        self.logger.info(f"Training Plan Result: \n{processed_result}")
+        return processed_result
+
+    def generate_next_week(self, feedback_key: str, previous_week: dict) -> str:
+        prompt = self.train_assistant_config["train_assistant"]["next_week"]["prompt_template"]
+        model_name = self.train_assistant_config["train_assistant"]["next_week"]["model"]
+        temperature = self.train_assistant_config["train_assistant"]["next_week"]["temperature"]
+
+        chain = self.__init_chain(prompt, model_name, temperature)
+
+        week_template = str(self.train_week.week)
+        user_data = self.user_data_formatter.data_format()
+        age_recommendations = self.age_formatter.data_format()
+        exercises_formatted = self.exercises_formatter.data_format(self.available_exercises_by_day_type)
+        feedback = self.feedbaack_formatter.data_format(feedback_key)
+        prev_week_formatted = self.train_week_formatter.data_format(previous_week)
+
+        self.logger.debug(f"Week Template: \n{week_template}")
+        self.logger.debug(f"User Data Formatted: \n{user_data}")
+        self.logger.debug(f"Previous Week Formatted: \n{prev_week_formatted}")
+        self.logger.debug(f"Feedback formatted: \n{feedback}")
+        self.logger.debug(f"Age Recommendations Formatted: \n{age_recommendations}")
+        self.logger.debug(f"Exercises List Formatted: \n{exercises_formatted}")
+
+        result = chain.invoke(
+            {
+                "week_template": week_template,
+                "user_data": user_data,
+                "previous_week": prev_week_formatted,
+                "feedback": feedback,
                 "age_recommendations": age_recommendations,
                 "available_exercises": exercises_formatted
             }
@@ -186,7 +235,6 @@ if __name__ == "__main__":
         raw_user_data=raw_user_data,
         raw_scanner_data=raw_scanner_data,
         train_weeks_templates=train_weeks_templates,
-        raw_exercises_df=raw_df
     )
 
     print(train_assistant.generate_train_program())

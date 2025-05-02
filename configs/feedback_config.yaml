@@ -1,0 +1,16 @@
+feedback_descriptions:
+  easy: "
+  User feedback of previous workout was 'easy'.
+  User indicates the workout felt too light, low‑intensity, or under‑challenging.
+  Need to increase intensity, volume, or complexity in the next training program (more sets, heavier weights, faster pace)
+  "
+  normal: "
+  User feedback of previous workout was 'normal'.
+  User indicates the workout felt appropriately challenging and well‑matched to their current fitness level.
+  Need to maintain similar intensity and structure in the next training program, with only minor tweaks for progression (e.g. small weight or rep increases).
+  "
+  hard: "
+  User feedback of previous workout was 'hard'.
+  User indicates the workout felt too difficult, high‑intensity, or overly fatiguing.
+  Need to decrease intensity, volume, or complexity in the next training program (fewer sets, lighter weights, longer rests).
+  "

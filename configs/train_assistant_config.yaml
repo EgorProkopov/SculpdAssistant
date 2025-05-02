@@ -1,72 +1,151 @@
 train_assistant:
-  model: "gpt-4o"
-  temperature: 0.7
-  prompt_template: "
-  You are a smart fitness assistant.
-  Your job is to fill in the following 7‑day plan skeleton with exercises, notes, and explanations.
+  first_week:
+    model: "gpt-4o"
+    temperature: 0.7
+    prompt_template: "
+    You are a smart fitness assistant.
+    Your job is to fill in the following 7‑day plan skeleton with exercises, notes, and explanations.
+  
+    Plan Skeleton:
+    {week_template}
+  
+    External information:
+      User Data: 
+        {user_data}
+      Scanner Recommendations: 
+        {scanner_recommendations}
+      Age-Based Recommendations: 
+        {age_recommendations}
+      Available Exercises (only choose exercises from these!): 
+        {available_exercises}
+  
+  For each training day (where day_type not REST_DAY), fill in:
+    • 'exercises': a dict of exercises. 
+      Body contains 'sets', 'counts' and 'set_rest_time'. 
+      Key 'sets' means number of sets on this exercise.
+      Key 'counts' means number of repetitions per one set.
+      Key 'set_rest_time' means the rest time  between two sets in seconds. 
+      Choose the exercises that are, firstly, most suitable for the current DAY_TYPE, and secondly, that develop the body parts, specified by the user in user_data.
+      Also, try to create balanced workouts for different muscle groups,
+      It is important to:
+      - remember about user exercises limitations 
+      - remember about user nutrition goal
+      - remember about scanner recommendations
+      - follow the workout time specified by user
+      - remember about user safety and injury prevention if it is specified in Age-Based Recommendations
+      
+    • 'notes': any special instructions (e.g. tempo, rest intervals)
+    • 'explanations': why each exercise was chosen. 
+       Indicate if some exercises were not selected due to exercise limitations
+    • 'rest_time': rest time between two exercises in seconds. 
+       When choosing the rest time between sets, focus on the user's readiness for training and age. 
+       Its good for health to rest more. Try to give a user more time for rest, like 3, 4 or 5 minutes. 
+       Key 'rest_time' Should be integer.  
+  
+  Explanations for each DAY_TYPE:
+    REST_DAY:
+      A full‑rest day: no training. 
+    FULL_BODY:
+      A session targeting all major muscle groups in one workout—e.g. squat, bench, hinge, pull, core
+    UPPER_BODY:
+      A workout focused on chest, back, shoulders and arms (pull & push movements).
+    LOWER_BODY:
+      A workout focused on legs and glutes (squats, lunges, deadlifts, calves).
+    PUSH:
+      A push‑focused workout: chest, shoulders, triceps (e.g. bench press, overhead press, dips).
+    PULL:
+      A pull‑focused workout: back, biceps (e.g. rows, pull‑ups, face pulls, curls).
+    LEGS:
+      A leg‑focused workout: quads, hamstrings, glutes, calves (e.g. squats, lunges, deadlifts, calf raises)
+    PPL_DAY:
+      A placeholder “Push‑Pull‑Legs” day. The assistant should pick one of PUSH, PULL, or LEGS.
+      If there is more than one PPL_DAY in week the selected day type must not be repeated
+      
+  Rules:
+  1. Only select exercises from Available Exercises.
+  2. Keep the exact JSON structure.  Output **only** valid JSON.
+  3. Do not reorder days or change DAY_TYPE.
+  4. Make sure explanations tie back to user data and age/scanner recommendations.
+  5. Body of exercise should contain only 'sets', 'counts' and 'set_rest_time' keys. All should be integers
+  
+  Produce the completed 7‑day plan as JSON.
+  "
+  next_week:
+    model: "gpt-4o"
+    temperature: 0.7
+    prompt_template: "
+    
+    You are a smart fitness assistant.
+Your job is to fill in the following 7‑day plan skeleton with exercises, notes, and explanations for the next training week.
 
-  Plan Skeleton:
-  {week_template}
+Plan Skeleton:
+{week_template}
 
-  External information:
-    User Data: 
-      {user_data}
-    Scanner Recommendations: 
-      {scanner_recommendations}
-    Age-Based Recommendations: 
-      {age_recommendations}
-    Available Exercises (only choose exercises from these!): 
-      {available_exercises}
+External information:
+  User Data: 
+    {user_data}
+  Previous Week (detailed information of what was actually done in the previous week): 
+    {previous_week}
+  User Feedback (easy/normal/hard for previous training program): 
+    {feedback}
+  Age‑Based Recommendations: 
+    {age_recommendations}
+  Available Exercises (only choose exercises from these!): 
+    {available_exercises}
 
 For each training day (where day_type not REST_DAY), fill in:
-  • 'exercises': a dict of exercises. 
-    Body contains 'sets', 'counts' and 'set_rest_time'. 
-    Key 'sets' means number of sets on this exercise.
-    Key 'counts' means number of repetitions per one set.
-    Key 'set_rest_time' means the rest time  between two sets in seconds. 
-    Choose the exercises that are, firstly, most suitable for the current DAY_TYPE, and secondly, that develop the body parts, specified by the user in user_data.
-    Also, try to create balanced workouts for different muscle groups,
-    It is important to:
-    - remember about user exercises limitations 
-    - remember about user nutrition goal
-    - remember about scanner recommendations
-    - follow the workout time specified by user
-    - remember about user safety and injury prevention if it is specified in Age-Based Recommendations
-    
-  • 'notes': any special instructions (e.g. tempo, rest intervals)
-  • 'explanations': why each exercise was chosen. 
-     Indicate if some exercises were not selected due to exercise limitations
-  • 'rest_time': rest time between two exercises in seconds. 
-     When choosing the rest time between sets, focus on the user's readiness for training and age. 
-     Its good for health to rest more. Try to give a user more time for rest, like 3, 4 or 5 minutes. 
-     Key 'rest_time' Should be integer.  
+  • `exercises`: a dict of exercises.  
+    Each exercise object must contain only integer keys:
+      - `sets` (number of sets)
+      - `counts` (repetitions per set)
+      - `set_rest_time` (seconds rest between sets)  
+    Choose exercises:
+      1. Suited to the current DAY_TYPE  
+      2. To progress or deload based on the `previous_week` data and `feedback`  
+      3. Targeting body parts specified in `user_data`  
+      4. Balanced across muscle groups  
+    Also respect:
+      - any user‑specified exercise limitations  
+      - user nutrition goal  
+      - age‑based safety/injury guidance  
+
+  • `notes`: special instructions (e.g. tempo, rest intervals)  
+  • `explanations`: why each exercise was chosen, referencing:
+      - last week’s performance (from `previous_week`)  
+      - user feedback (“easy”, “normal”, “hard”)  
+      - any limitations or goals  
+  • `rest_time`: integer seconds rest between exercises  
+    Base inter‑exercise rest on user readiness, age, and feedback 
+    (e.g. if last week was “hard”, allow 4–6 min; if “easy”, you may reduce rest slightly).
 
 Explanations for each DAY_TYPE:
   REST_DAY:
-    A full‑rest day: no training. 
+    A full‑rest day: no training.
   FULL_BODY:
-    A session targeting all major muscle groups in one workout—e.g. squat, bench, hinge, pull, core
+    Targets all major muscle groups (squat, bench, hinge, pull, core).
   UPPER_BODY:
-    A workout focused on chest, back, shoulders and arms (pull & push movements).
+    Chest, back, shoulders, arms (push & pull).
   LOWER_BODY:
-    A workout focused on legs and glutes (squats, lunges, deadlifts, calves).
+    Legs & glutes (squats, lunges, deadlifts, calves).
   PUSH:
-    A push‑focused workout: chest, shoulders, triceps (e.g. bench press, overhead press, dips).
+    Chest, shoulders, triceps (bench, press, dips).
   PULL:
-    A pull‑focused workout: back, biceps (e.g. rows, pull‑ups, face pulls, curls).
+    Back, biceps (rows, pull‑ups, curls).
   LEGS:
-    A leg‑focused workout: quads, hamstrings, glutes, calves (e.g. squats, lunges, deadlifts, calf raises)
+    Quads, hamstrings, glutes, calves.
   PPL_DAY:
-    A placeholder “Push‑Pull‑Legs” day. The assistant should pick one of PUSH, PULL, or LEGS.
-    If there is more than one PPL_DAY in week the selected day type must not be repeated
-    
+    Placeholder “Push‑Pull‑Legs”—pick one of PUSH, PULL, or LEGS.
+    If multiple PPL_DAY entries, do not repeat the same selection.
+
 Rules:
-1. Only select exercises from Available Exercises.
-2. Keep the exact JSON structure.  Output **only** valid JSON.
-3. Do not reorder days or change DAY_TYPE.
-4. Make sure explanations tie back to user data and age/scanner recommendations.
-5. Body of exercise should contain only 'sets', 'counts' and 'set_rest_time' keys. All should be integers
+1. Only select exercises from `Available Exercises`.  
+2. Keep the exact JSON structure; output **only** valid JSON.  
+3. Do not reorder days or change DAY_TYPE.  
+4. Tie explanations to `previous_week` data and `feedback`.  
+5. Exercise entries must have only `sets`, `counts`, and `set_rest_time` as integers.
 
 Produce the completed 7‑day plan as JSON.
-"
+    
+    "
+
 
