@@ -114,7 +114,7 @@ if __name__ == "__main__":
     data_processing_config = OmegaConf.load(DATA_PROCESSING_CONFIG_PATH)
     scanner_data_formatter_config = data_processing_config["scanner_data_formatter"]
 
-    scanner_data_json_path = r"F:\SCULPD\SculpdAssistant\data\scanner_info\scanner_output_15-19.json"
+    scanner_data_json_path = r""
     with open(scanner_data_json_path, "r", encoding="utf-8") as file:
         raw_scanner_data = json.load(file)
 

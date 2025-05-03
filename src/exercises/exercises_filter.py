@@ -67,7 +67,7 @@ if __name__ == "__main__":
     exercises_processor_config = exercises_config["exercises_processor"]
     exercises_planner_config = exercises_config["exercises_planner"]
 
-    raw_df = pd.read_csv(r"/data/exercises/sculpd_exercise_processed.csv")
+    raw_df = pd.read_csv(r"")
 
     exercises_processor = ExercisesProcessor(
         raw_exercises_df=raw_df, exercises_processor_config=exercises_processor_config

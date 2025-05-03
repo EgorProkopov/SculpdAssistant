@@ -32,7 +32,7 @@ class TrainAssistant:
             exercises_config: DictConfig,
             feedback_config: DictConfig,
             raw_user_data: dict,
-            raw_scanner_data: dict,
+            raw_scanner_data: dict | None,
             train_weeks_templates: dict,
             exercises_processor: ExercisesProcessor
     ):
@@ -87,8 +87,9 @@ class TrainAssistant:
         self.age_formatter = AgeBasedAdjustmentsFormatter(age_period, age_based_adjustments_config)
 
         # scanner data formatter
-        scanner_data_formatter_config = data_processing_config["scanner_data_formatter"]
-        self.scanner_formatter = ScannerDataFormatter(raw_scanner_data, scanner_data_formatter_config)
+        if raw_scanner_data:
+            scanner_data_formatter_config = data_processing_config["scanner_data_formatter"]
+            self.scanner_formatter = ScannerDataFormatter(raw_scanner_data, scanner_data_formatter_config)
 
         # train week
         train_days_number = user_data_processor.get_training_days()
@@ -198,8 +199,8 @@ class TrainAssistant:
 if __name__ == "__main__":
     dotenv.load_dotenv()
 
-    user_data_json_path = r"F:\SCULPD\SculpdAssistant\data\user_data\user_data_15-19.json"
-    scanner_data_json_path = r"F:\SCULPD\SculpdAssistant\data\scanner_info\scanner_output_15-19.json"
+    user_data_json_path = r""
+    scanner_data_json_path = r""
 
     with open(user_data_json_path, "r", encoding="utf-8") as file:
         raw_user_data = json.load(file)
