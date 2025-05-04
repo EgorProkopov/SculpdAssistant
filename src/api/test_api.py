@@ -1,7 +1,10 @@
 import requests
 
 
-url = "http://localhost:8000/generate_first_week"
+# url = "http://localhost:8000/generate_first_week"
+# url = "https://fe2d-185-121-233-170.ngrok-free.app/generate_first_week"
+url = "https://fe2d-185-121-233-170.ngrok-free.app/generate_next_week"
+
 user_info_json = {
   "email": "newuser@example.com",
   "image": "http://example.com/image3.jpg",

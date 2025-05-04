@@ -1,0 +1,10 @@
+fastapi
+dotenv
+langchain
+langchain-openai
+pandas
+omegaconf
+openai
+regex
+requests
+uvicorn[standard]

@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    env_file:
+      - .env.docker
+
+    volumes:
+      - ./configs:/app/configs:ro
+      - ./data:/app/data:ro
+
+    ports:
+      - "8000:8000"
+
+    restart: unless-stopped

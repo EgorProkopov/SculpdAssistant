@@ -37,4 +37,5 @@ app = FastAPI(title="SCULPD Train Assistant API", lifespan=lifespan)
 app.include_router(router)
 
 if __name__ == "__main__":
-    uvicorn.run("src.api.run:app", host="0.0.0.0", port=int(os.getenv("PORT", 8000)), reload=True)
+    api_config = OmegaConf.load(os.getenv("API_CONFIG_PATH"))
+    uvicorn.run("src.api.run:app", host="0.0.0.0", port=int(os.getenv("PORT", api_config["port"])), reload=True)

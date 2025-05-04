@@ -1,16 +1,6 @@
 import os
 import json
-import pandas as pd
 import dotenv
-from langchain.prompts import ChatPromptTemplate, HumanMessagePromptTemplate
-from langchain_openai import ChatOpenAI
-
-from omegaconf import OmegaConf, DictConfig
-
-from src.user_data.user_data_processor import UserDataProcessor
-from src.user_data.user_data_formatter import UserDataFormatter
-from src.user_data.age_based_adjustments import AgeBasedAdjustmentsProcessor, AgeBasedAdjustmentsFormatter
-from src.scanner_data_formatter import ScannerDataFormatter
 
 
 class TrainWeek:
