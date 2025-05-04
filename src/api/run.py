@@ -1,11 +1,13 @@
+import os
+import json
+import dotenv
+import pandas as pd
+from omegaconf import OmegaConf
+
 import uvicorn
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
-from omegaconf import OmegaConf
-import dotenv
-import os
-import json
-import pandas as pd
+
 from src.api.endpoints import router
 from src.exercises.exercises_processor import ExercisesProcessor
 
@@ -13,6 +15,7 @@ from src.exercises.exercises_processor import ExercisesProcessor
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     dotenv.load_dotenv()
+
     api_key = os.getenv("API_KEY")
     if not api_key:
         raise RuntimeError("API_KEY is not set in environment variables")
