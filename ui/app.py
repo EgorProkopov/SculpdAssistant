@@ -46,6 +46,8 @@ def get_training_plan(raw_user_data: str, raw_scanner_data: str):
 
     EXERCISES_RAW_DF_PATH = os.getenv("EXERCISES_RAW_DF_PATH")
 
+    feedback_config = OmegaConf.load(os.getenv("FEEDBACK_CONFIG_PATH"))
+
     user_data_processor = UserDataProcessor(
         user_data=raw_user_data,
         user_data_processing_config=user_data_processing_config
@@ -74,7 +76,7 @@ def get_training_plan(raw_user_data: str, raw_scanner_data: str):
 
     train_week = TrainWeek(week_templates=train_weeks_templates, train_days_num=train_days_number)
 
-    raw_df = pd.read_csv(EXERCISES_RAW_DF_PATH)
+    raw_df = pd.read_csv(EXERCISES_RAW_DF_PATH, keep_default_na=False)
     exercises_processor = ExercisesProcessor(
         raw_exercises_df=raw_df, exercises_processor_config=exercises_processor_config
     )
@@ -96,16 +98,18 @@ def get_training_plan(raw_user_data: str, raw_scanner_data: str):
 
     train_assistant = TrainAssistant(
         API_KEY=API_KEY,
-        train_week=train_week,
-        available_exercises=available_exercises,
-        exercises_formatter=exercises_formatter,
-        user_data_formatter=user_data_formatter,
-        age_formatter=age_formatter,
-        scanner_formatter=scanner_formatter,
-        train_assistant_config=train_assistant_config
+        train_assistant_config=train_assistant_config,
+        data_processing_config=data_processing_config,
+        age_based_adjustments_config=age_based_adjustments_config,
+        exercises_config=exercises_config,
+        feedback_config=feedback_config,
+        raw_user_data=raw_user_data,
+        raw_scanner_data=raw_scanner_data,
+        train_weeks_templates=train_weeks_templates,
+        exercises_processor=exercises_processor
     )
 
-    train_program = train_assistant.generate_train_program()
+    train_program = train_assistant.generate_first_week()
     return train_program
 
 

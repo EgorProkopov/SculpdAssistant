@@ -1,0 +1,3 @@
+"no_overhead_pressing",
+"no_squatting",
+"no_hip_hinge_movements"
