@@ -128,4 +128,4 @@ payload = {
 
 ## UI
 
-![АХАХ](resourses/ui_screenshot.png)
+![](resourses/ui_screenshot.png)
