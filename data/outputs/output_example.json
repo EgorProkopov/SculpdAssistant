@@ -1,53 +1,113 @@
 {
     "day 1": {
-        "restday": false,
+        "day_type": "UPPER_BODY",
         "exercises": {
-            "Push-ups": {
-                "count": 20,
-                "sets": 3
+            "Lat Pulldown": {
+                "sets": 3,
+                "counts": 12,
+                "set_rest_time": 90
             },
-            "Squats": {
-                "count": 15,
-                "sets": 3
+            "Mid Chest Staggered Stance Cable Fly": {
+                "sets": 3,
+                "counts": 12,
+                "set_rest_time": 90
+            },
+            "Unilateral Cable Lateral Raises": {
+                "sets": 3,
+                "counts": 15,
+                "set_rest_time": 90
+            },
+            "Single Arm Cross Body Extension": {
+                "sets": 3,
+                "counts": 12,
+                "set_rest_time": 90
+            },
+            "Preacher Curls": {
+                "sets": 3,
+                "counts": 12,
+                "set_rest_time": 90
             }
-        }
+        },
+        "notes": "Focus on controlled movements and proper form. Maintain a steady tempo, especially during the eccentric phase.",
+        "explanations": "Selected exercises target the chest, shoulders, and arms, aligning with the user's focus on abs, shoulders, and chest. Exercises were chosen to avoid overhead pressing and to balance muscle development while respecting the user's exercise limitations.",
+        "rest_time": 240
     },
     "day 2": {
-        "restday": true
+        "day_type": "LOWER_BODY",
+        "exercises": {
+            "Glute Kickback": {
+                "sets": 3,
+                "counts": 15,
+                "set_rest_time": 90
+            },
+            "Cable Woodchopper": {
+                "sets": 3,
+                "counts": 12,
+                "set_rest_time": 90
+            }
+        },
+        "notes": "Emphasize mind-muscle connection during glute exercises.",
+        "explanations": "Exercises chosen for focusing on glutes and core, addressing the user's weaker muscle areas (legs) while supporting core strength for improved overall balance.",
+        "rest_time": 300
     },
     "day 3": {
-        "restday": false,
-        "exercises": {
-            "Deadlifts": {
-                "count": 5,
-                "sets": 1
-            },
-            "Pull-ups": {
-                "count": 10,
-                "sets": 3
-            }
-        }
+        "day_type": "REST_DAY"
     },
     "day 4": {
-        "restday": true
+        "day_type": "UPPER_BODY",
+        "exercises": {
+            "V-Grip Pulldown": {
+                "sets": 3,
+                "counts": 12,
+                "set_rest_time": 90
+            },
+            "Downward Cable Fly": {
+                "sets": 3,
+                "counts": 12,
+                "set_rest_time": 90
+            },
+            "Unilateral Cable Lateral Raises": {
+                "sets": 3,
+                "counts": 15,
+                "set_rest_time": 90
+            },
+            "Cable Kickback": {
+                "sets": 3,
+                "counts": 12,
+                "set_rest_time": 90
+            },
+            "Spider Curl": {
+                "sets": 3,
+                "counts": 12,
+                "set_rest_time": 90
+            }
+        },
+        "notes": "Control the tempo and utilize full range of motion. Focus on breathing.",
+        "explanations": "Selected exercises focus on back, chest, shoulders, and arms, addressing the user’s target areas while adhering to exercise limitations. The focus is on maintaining muscle mass with a high number of repetitions.",
+        "rest_time": 240
     },
     "day 5": {
-        "restday": false,
+        "day_type": "LOWER_BODY",
         "exercises": {
-            "Bench Press": {
-                "count": 8,
-                "sets": 3
+            "Glute Kickback": {
+                "sets": 3,
+                "counts": 15,
+                "set_rest_time": 90
             },
-            "Rows": {
-                "count": 12,
-                "sets": 3
+            "Cable Woodchopper": {
+                "sets": 3,
+                "counts": 12,
+                "set_rest_time": 90
             }
-        }
+        },
+        "notes": "Focus on engaging the core and glutes throughout each exercise.",
+        "explanations": "Exercises emphasize glute and core strengthening, which supports the user's goal of improving weaker muscle groups and overall body balance.",
+        "rest_time": 300
     },
     "day 6": {
-        "restday": true
+        "day_type": "REST_DAY"
     },
     "day 7": {
-        "restday": true
+        "day_type": "REST_DAY"
     }
 }
