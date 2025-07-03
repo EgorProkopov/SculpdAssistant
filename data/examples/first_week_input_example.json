@@ -1,0 +1,77 @@
+{
+    "user_info": {
+    "email": "newuser@example.com",           // str
+    "image": "http://example.com/image3.jpg", // str
+    "name": "New User",                       // str
+    "gender": "male",                         // str
+    "birthday": "1985-05-15T00:00:00Z",       // str
+    "height": 180.5,                          // float
+    "height_type": "cm",                      // str
+    "weight": 82.0,                           // float
+    "weight_type": "kg",                      // str
+    "fitness_level": "intermediate",          // str
+    "improve_body_parts": ["abs", "shoulders", "chest"], // array of str
+    "exercise_limitations": ["no_overhead_pressing"],    // array of str
+    "nutrition_goal": "lose_weight",                     // str
+    "equipment_list": ["cable_machine", "barbell", "platform", "barbell", "ez_bar"],  // array of str
+    "training_days": 4,                                                               // int
+    "workout_time": 60                                                                // int
+  },
+    "scanner_info": {
+    "disclaimer": "This analysis is based solely on the provided summary and is for simulation purposes only. It is not a substitute for professional medical or fitness advice. For personalized guidance, consulting with a fitness professional is recommended.",
+    "physical_attributes": {
+      "body_shape": "mesomorphic",                                                                  // str
+      "muscle_tone": "balanced with potential for improved definition",                             // str
+      "muscle_symmetry": "balanced",                                                                // str
+      "major_muscle_groups": ["chest", "shoulders"],                                                // array of str
+      "major_muscle_groups_indicators": ["well-developed"],                                         // array of str
+      "weak_muscle_groups": ["arms", "legs"],                                                       // array of str
+      "weak_muscle_groups_indicators": ["potential focus needed on enhancing muscle hypertrophy"]   // array of str
+    },
+    "estimated_body_fat": {
+      "percentage_range": "15-20",                                                                  // str
+      "indicators": ["muscle definition cues"]                                                      // array of str
+    },
+    "training_readiness": {
+      "score": 8,                                                                                   // int
+      "indicators": ["upright posture", "high energy levels"]                                       // array of str
+    },
+    "training_recommendations": {
+      "body_development": {
+        "upper_body": {
+          "chest": ["bench presses", "push-ups"],                                                   // array of str
+          "back": ["pull-ups", "rows"],                                                             // array of str
+          "shoulders": ["shoulder presses", "lateral raises"],                                      // array of str
+          "arms": ["bicep curls", "triceps dips"]                                                   // array of str
+        },
+        "lower_body": {
+          "legs": ["squats", "lunges"],                                                             // array of str
+          "calves": ["calf raises"]                                                                 // array of str
+        },
+        "core": ["planks", "back extensions"],                                                      // array of str
+        "postural_balance": ["face pulls", "seated rows"]                                           // array of str
+      },
+      "body_maintenance": {
+        "upper_body": {
+          "chest": ["bench presses", "push-ups"],                                                   // array of str
+          "back": ["pull-ups", "rows"],                                                             // array of str
+          "shoulders": ["shoulder presses", "lateral raises"],                                      // array of str
+          "arms": ["bicep curls", "triceps dips"]                                                   // array of str
+        },
+        "lower_body": {
+          "legs": ["squats", "lunges"],                                                             // array of str
+          "calves": ["calf raises"]                                                                 // array of str
+        },
+        "core": {
+          "exercises": ["planks", "back extensions"]                                                // array of str
+        },
+        "postural_balance": {
+          "exercises": ["face pulls", "seated rows"]                                                // array of str
+        }
+      },
+      "fat_loosing": {
+        "cardiovascular": []                                                                        // array of str
+      }
+    }
+  }
+}
