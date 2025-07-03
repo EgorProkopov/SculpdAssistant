@@ -16,7 +16,7 @@ class TrainWeek:
             return ["FULL_BODY"]
         elif train_days_num == 4:
             return ["UPPER_BODY", "LOWER_BODY"]
-        elif train_days_num == 5 or train_days_num == 5:
+        elif train_days_num == 5 or train_days_num == 6:
             return ["PUSH", "PULL", "LEGS"]
         else:
             raise
