@@ -26,14 +26,17 @@ class ExercisesFilter:
 
     def get_available_exercises_by_equipment(self, df: pd.DataFrame, available_equipment: list) -> pd.DataFrame:
         equipment_columns = self.exercises_processor.get_equipment_columns()
-        missing = set(available_equipment) - set(equipment_columns)
-        if missing:
-            raise KeyError(f"Не найдено оборудования: {missing}")
+        available = [
+            eq for eq in available_equipment
+            if eq in equipment_columns
+        ]
+        missing = [
+            eq for eq in equipment_columns
+            if eq not in available
+        ]
 
-        total_required = df[equipment_columns].sum(axis=1)
-        total_covered = df[available_equipment].sum(axis=1)
+        mask = (df[missing].sum(axis=1) == 0)
 
-        mask = total_required.eq(total_covered)
         return df[mask]
 
     def get_available_exercises_by_day_type(self, df: pd.DataFrame, day_types: list) -> dict:
@@ -77,19 +80,20 @@ if __name__ == "__main__":
         exercises_processor=exercises_processor, exercises_planner_config=exercises_planner_config
     )
 
-    skill_level="Beginner"
-    available_equipment = ['Barbell']
+    skill_level="intermediate"
+    available_equipment = ['barbell']
 
     processed_df = exercises_processor.processed_df
     available_exercises = exercises_filter.get_available_exercises_by_skill_level(
         df=processed_df, skill_level=skill_level
     )
     print(len(available_exercises))
-    print(available_exercises.columns.tolist())
+    # print(available_exercises.columns.tolist())
+    # print(available_exercises)
 
     available_exercises = exercises_filter.get_available_exercises_by_equipment(
         df=available_exercises, available_equipment=available_equipment
     )
     print(len(available_exercises))
-    print(available_exercises.columns.tolist())
+    print(available_exercises)
 
