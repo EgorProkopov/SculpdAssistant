@@ -1,12 +1,12 @@
 user_data_processing:
   expected_keys: [
-    "gender", "birthday", "height", "height_type", "weight", "weight_type",
+    "gender", "age", "height", "height_type", "weight", "weight_type",
     "fitness_level", "improve_body_parts", "exercise_limitations", "nutrition_goal",
     "equipment_list", "training_days", "workout_time"
   ]
   keys:
     gender_key: "gender"
-    birthday_key: "birthday"
+    age_key: "age"
     height_key: "height"
     height_type_key: "height_type"
     weight_key: "weight"

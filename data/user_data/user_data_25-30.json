@@ -3,7 +3,7 @@
   "image": "http://example.com/image5.jpg",
   "name": "New User",
   "gender": "male",
-  "birthday": "1990-03-10T00:00:00Z",
+  "age": 35,
   "height": 180.5,
   "height_type": "cm",
   "weight": 96.0,

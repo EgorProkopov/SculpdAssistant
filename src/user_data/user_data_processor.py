@@ -14,14 +14,18 @@ class UserDataProcessor:
         return self.user_data[gender_key]
 
     def get_age(self) -> int:
-        birthday_key = self.user_data_processing_config["keys"]["birthday_key"]
-        birthday_str = self.user_data[birthday_key]
-        birthday_date =  datetime.strptime(birthday_str, "%Y-%m-%dT%H:%M:%SZ").date()
-        today = date.today()
+        # birthday_key = self.user_data_processing_config["keys"]["birthday_key"]
+        # birthday_str = self.user_data[birthday_key]
+        # birthday_date =  datetime.strptime(birthday_str, "%Y-%m-%dT%H:%M:%SZ").date()
+        # today = date.today()
+        #
+        # age = int(today.year - birthday_date.year - (
+        #     (today.month, today.day) < (birthday_date.month, birthday_date.day)
+        # ))
 
-        age = int(today.year - birthday_date.year - (
-            (today.month, today.day) < (birthday_date.month, birthday_date.day)
-        ))
+        age_key = self.user_data_processing_config["keys"]["age_key"]
+        age = self.user_data[age_key]
+
         return age
 
     def get_height_cm(self) -> float:
