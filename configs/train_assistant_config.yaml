@@ -18,7 +18,18 @@ train_assistant:
         {age_recommendations}
       Available Exercises (only choose exercises from these!): 
         {available_exercises}
-  
+        
+    Avatar examples:
+      {avatar_examples}
+    
+    While generating program Ask yourself: 
+      1. What is their session time limit? (dictates # of sets) 
+      2. What are their priority muscle groups? (lead each day with those) 
+      3. What’s their frequency? (split strategy: FB vs PPL vs UL etc.) 
+      4. What’s their level? (impacts load, movement complexity, RIR targets) 
+      5. What equipment do they have? (machine-based vs free weights vs cables) 
+      6. How adaptable are they to variety? (some need more novelty; others less) 
+      
   For each training day (where day_type not REST_DAY), fill in:
     • 'exercises': a dict of exercises. 
       Body contains 'sets', 'counts' and 'set_rest_time'. 
@@ -67,8 +78,10 @@ train_assistant:
   3. Do not reorder days or change DAY_TYPE.
   4. Make sure explanations tie back to user data and age/scanner recommendations.
   5. Body of exercise should contain only 'sets', 'counts' and 'set_rest_time' keys. All should be integers
+  6. Focus on generating a diverse program on different muscles in current group. Training one muscle can be dangerous.
   
   Produce the completed 7‑day plan as JSON.
+  
   "
   next_week:
     model: "gpt-4o"
@@ -145,7 +158,6 @@ Rules:
 5. Exercise entries must have only `sets`, `counts`, and `set_rest_time` as integers.
 
 Produce the completed 7‑day plan as JSON.
-    
-    "
+"
 
 
