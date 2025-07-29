@@ -71,7 +71,8 @@ class TrainAssistant:
 
     def __init_chain(self, prompt, model_name, temperature):
         self.llm.model_name = model_name
-        self.llm.temperature = temperature
+        if model_name == "gpt4o":
+            self.llm.temperature = temperature
 
         prompt_template = ChatPromptTemplate.from_messages([
             HumanMessagePromptTemplate.from_template(prompt)
