@@ -20,7 +20,7 @@ train_assistant:
         {available_exercises}
         
     Avatar examples:
-      {avatar_examples}
+      {avatars_examples}
     
     While generating program Ask yourself: 
       1. What is their session time limit? (dictates # of sets) 

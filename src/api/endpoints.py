@@ -40,7 +40,8 @@ def generate_first_week(request_data: FirstWeekRequest, request: Request):
             raw_user_data=user_info,
             raw_scanner_data=scanner_info,
             train_weeks_templates=state.train_weeks_templates,
-            exercises_processor=state.exercises_processor
+            exercises_processor=state.exercises_processor,
+            training_program_examples_dir=state.training_program_examples_dir
         )
         plan = assistant.generate_first_week()
         json_plan = assistant.convert_result_to_json(plan)
@@ -67,7 +68,8 @@ def generate_next_week(request_data: NextWeekRequest, request: Request):
             raw_user_data=user_info,
             raw_scanner_data=None,
             train_weeks_templates=state.train_weeks_templates,
-            exercises_processor=state.exercises_processor
+            exercises_processor=state.exercises_processor,
+            training_program_examples_dir=state.training_program_examples_dir
         )
         plan = assistant.generate_next_week(feedback_key=feedback_key, previous_week=prev_week)
         json_plan = assistant.convert_result_to_json(plan)

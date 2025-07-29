@@ -106,7 +106,8 @@ def get_training_plan(raw_user_data: str, raw_scanner_data: str):
         raw_user_data=raw_user_data,
         raw_scanner_data=raw_scanner_data,
         train_weeks_templates=train_weeks_templates,
-        exercises_processor=exercises_processor
+        exercises_processor=exercises_processor,
+        training_program_examples_dir=os.getenv("TRAINING_PROGRAM_EXAMPLES_DIR")
     )
 
     train_program = train_assistant.generate_first_week()

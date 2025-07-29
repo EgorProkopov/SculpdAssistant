@@ -27,6 +27,7 @@ AGE_BASED_ADJUSTMENTS_CONFIG_PATH=/app/configs/age_based_adjustments_config.yaml
 TRAIN_ASSISTANT_CONFIG_PATH=/app/configs/train_assistant_config.yaml
 TRAIN_WEEKS_TEMPLATES_PATH=/app/configs/week_templates.json
 FEEDBACK_CONFIG_PATH=/app/configs/feedback_config.yaml
+TRAINING_PROGRAM_EXAMPLES_DIR=/app/configs/training_program_examples
 ```
 
 ## Build and run

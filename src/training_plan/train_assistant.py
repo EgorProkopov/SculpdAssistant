@@ -34,7 +34,8 @@ class TrainAssistant:
             raw_user_data: dict,
             raw_scanner_data: dict | None,
             train_weeks_templates: dict,
-            exercises_processor: ExercisesProcessor
+            exercises_processor: ExercisesProcessor,
+            training_program_examples_dir: str | None = None
     ):
         self.llm = ChatOpenAI(api_key=API_KEY)
 
@@ -52,7 +53,21 @@ class TrainAssistant:
             train_weeks_templates=train_weeks_templates,
         )
 
+        self.avatar_examples = ""
+        if training_program_examples_dir and os.path.isdir(training_program_examples_dir):
+            self.avatar_examples = self.__load_avatar_examples(training_program_examples_dir)
+
         self.logger = get_logger(name=self.__class__.__name__, level=logging.DEBUG)
+
+    @staticmethod
+    def __load_avatar_examples(examples_dir: str) -> str:
+        examples = []
+        for file_name in sorted(os.listdir(examples_dir)):
+            if file_name.endswith(".txt"):
+                file_path = os.path.join(examples_dir, file_name)
+                with open(file_path, "r", encoding="utf-8") as file:
+                    examples.append(file.read().strip())
+        return "\n\n".join(examples)
 
     def __init_chain(self, prompt, model_name, temperature):
         self.llm.model_name = model_name
@@ -118,7 +133,6 @@ class TrainAssistant:
         self.train_week_formatter = TrainingWeekFormatter()
         self.feedbaack_formatter = FeedbackFormatter(feedback_config)
 
-
     def generate_first_week(self) -> str:
         prompt = self.train_assistant_config["train_assistant"]["first_week"]["prompt_template"]
         model_name = self.train_assistant_config["train_assistant"]["first_week"]["model"]
@@ -131,6 +145,7 @@ class TrainAssistant:
         scanner_recommendations = self.scanner_formatter.data_format()
         age_recommendations = self.age_formatter.data_format()
         exercises_formatted = self.exercises_formatter.data_format(self.available_exercises_by_day_type)
+        avatar_examples = self.avatar_examples
 
         self.logger.debug(f"Week Template: \n{week_template}")
         self.logger.debug(f"User Data Formatted: \n{user_data}")
@@ -144,7 +159,8 @@ class TrainAssistant:
                 "user_data": user_data,
                 "scanner_recommendations": scanner_recommendations,
                 "age_recommendations": age_recommendations,
-                "available_exercises": exercises_formatted
+                "available_exercises": exercises_formatted,
+                "avatars_examples": avatar_examples
             }
         )
         processed_result = result.content.strip()
@@ -227,6 +243,8 @@ if __name__ == "__main__":
     EXERCISES_RAW_DF_PATH = os.getenv("EXERCISES_RAW_DF_PATH")
     raw_df = pd.read_csv(EXERCISES_RAW_DF_PATH, keep_default_na=False)
 
+    TRAINING_PROGRAM_EXAMPLES_DIR = os.getenv("TRAINING_PROGRAM_EXAMPLES_DIR")
+
     train_assistant = TrainAssistant(
         API_KEY=API_KEY,
         train_assistant_config=train_assistant_config,
@@ -236,7 +254,8 @@ if __name__ == "__main__":
         raw_user_data=raw_user_data,
         raw_scanner_data=raw_scanner_data,
         train_weeks_templates=train_weeks_templates,
+        training_program_examples_dir=TRAINING_PROGRAM_EXAMPLES_DIR
     )
 
-    print(train_assistant.generate_train_program())
+    print(train_assistant.generate_first_week())
 
