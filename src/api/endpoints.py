@@ -1,11 +1,12 @@
 from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel, Field
 
-
+from src.logger import get_logger
 from src.training_plan.train_assistant import TrainAssistant
 
 
 router = APIRouter()
+logger = get_logger(__name__)
 
 
 class FirstWeekRequest(BaseModel):
@@ -47,6 +48,7 @@ def generate_first_week(request_data: FirstWeekRequest, request: Request):
         json_plan = assistant.convert_result_to_json(plan)
         return TrainWeekResponse(plan=json_plan)
     except Exception as e:
+        logger.exception("Error generating first week")
         raise HTTPException(status_code=500, detail=str(e))
 
 
@@ -75,4 +77,5 @@ def generate_next_week(request_data: NextWeekRequest, request: Request):
         json_plan = assistant.convert_result_to_json(plan)
         return TrainWeekResponse(plan=json_plan)
     except Exception as e:
+        logger.exception("Error generating next week")
         raise HTTPException(status_code=500, detail=str(e))
