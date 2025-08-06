@@ -24,6 +24,10 @@ class TrainWeekResponse(BaseModel):
     plan: dict = Field(..., description="Generated week training plan")
 
 
+@router.get("/ping")
+def ping():
+    return {"message": "Successful ping"}
+
 @router.post("/generate_first_week", response_model=TrainWeekResponse)
 def generate_first_week(request_data: FirstWeekRequest, request: Request):
     user_info = request_data.user_info
