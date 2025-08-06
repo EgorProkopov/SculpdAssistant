@@ -133,9 +133,9 @@ payload = {
 
 ## Testing
 
-To execute base tests:
+To execute unit tests:
 ```bash
-pytest -q
+pytest
 ```
 
 To execute special tests:
@@ -143,4 +143,7 @@ To execute special tests:
 pytest -m special
 ```
 
-    
+To execute integration tests:
+```bash
+pytest -m integration
+```
