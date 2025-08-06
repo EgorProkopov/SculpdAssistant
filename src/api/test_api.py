@@ -5,7 +5,7 @@ user_info_json = {
   "image": "http://example.com/image3.jpg",
   "name": "New User",
   "gender": "male",
-  "birthday": "1985-05-15T00:00:00Z",
+  "age": 40,
   "height": 180.5,
   "height_type": "cm",
   "weight": 82.0,
@@ -216,8 +216,162 @@ feedback_key = "normal"
 payload = {
     "user_info": user_info_json,
     "scanner_info": scanner_info_json,
-    "prev_week": prev_week,
-    "feedback_key": feedback_key
+    # "prev_week": prev_week,
+    # "feedback_key": feedback_key
 }
-resp = requests.post(url, json=payload)
+
+
+payload = {
+  "scanner_info": {
+    "disclaimer": "This analysis is based solely on provided data and is for simulation purposes only. It should not replace professional medical or fitness advice.",
+    "physical_attributes": {
+      "body_shape": "mesomorph",
+      "muscle_tone": "muscular and well-defined",
+      "muscle_symmetry": "balanced",
+      "major_muscle_groups": [
+        "chest",
+        "arms"
+      ],
+      "major_muscle_groups_indicators": [
+        "good definition"
+      ],
+      "weak_muscle_groups": [
+        "legs"
+      ],
+      "weak_muscle_groups_indicators": [
+        "lack of definition"
+      ]
+    },
+    "estimated_body_fat": {
+      "percentage_range": "15-20",
+      "indicators": [
+        "visible muscle lines",
+        "some abdominal definition"
+      ]
+    },
+    "training_readiness": {
+      "score": 8,
+      "indicators": [
+        "high energy levels",
+        "strong physical condition"
+      ]
+    },
+    "training_recommendations": {
+      "body_development": {
+        "upper_body": {
+          "chest": [
+            "bench press",
+            "incline dumbbell press"
+          ],
+          "back": [
+            "pull-ups",
+            "bent-over rows"
+          ],
+          "shoulders": [
+            "overhead press",
+            "lateral raises"
+          ],
+          "arms": [
+            "bicep curls",
+            "tricep dips"
+          ]
+        },
+        "lower_body": {
+          "legs": [
+            "squats",
+            "deadlifts"
+          ],
+          "calves": [
+            "calf raises"
+          ]
+        },
+        "core": [
+          "planks",
+          "Russian twists"
+        ],
+        "postural_balance": [
+          "yoga",
+          "Pilates"
+        ]
+      },
+      "body_maintenance": {
+        "upper_body": {
+          "chest": [
+            "push-ups",
+            "chest fly"
+          ],
+          "back": [
+            "lat pull-downs",
+            "seated rows"
+          ],
+          "shoulders": [
+            "front raises",
+            "shrugs"
+          ],
+          "arms": [
+            "hammer curls",
+            "tricep extensions"
+          ]
+        },
+        "lower_body": {
+          "legs": [
+            "lunges",
+            "leg press"
+          ],
+          "calves": [
+            "seated calf raises"
+          ]
+        },
+        "core": {
+          "exercises": [
+            "sit-ups",
+            "leg raises"
+          ]
+        },
+        "postural_balance": {
+          "exercises": [
+            "balance exercises",
+            "core stability exercises"
+          ]
+        }
+      },
+      "fat_loosing": {
+        "cardiovascular": [
+          "running",
+          "cycling",
+          "HIIT",
+          "brisk walking"
+        ]
+      }
+    }
+  },
+  "user_info": {
+    "email": "kireev@gmail.com",
+    "image": "https://test-fitness.s3.regru.cloud/6186d19e-e875-47f1-a8b5-cf2fb29580d7-1751370544655732742_2025-07-01 01.24.32.jpg",
+    "name": "Khanil",
+    "gender": "male",
+    "age": 22,
+    "height": 197,
+    "height_type": "cm",
+    "weight": 100,
+    "weight_type": "kg",
+    "fitness_level": "intermediate",
+    "improve_body_parts": [
+      "abs",
+      "shoulders",
+      "chest"
+    ],
+    "exercise_limitations": [
+      "no_overhead_pressing"
+    ],
+    "nutrition_goal": "lose_weight",
+    "equipment_list": [
+      "barbell"
+    ],
+    "training_days": 6,
+    "workout_time": 60
+  }
+}
+
+resp = requests.post("https://a9008069abc1.ngrok-free.app//generate_first_week", json=payload)
 print(resp.json())
