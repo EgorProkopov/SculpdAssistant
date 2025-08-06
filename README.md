@@ -130,3 +130,17 @@ payload = {
 ## UI
 
 ![](resourses/ui_screenshot.png)
+
+## Testing
+
+To execute base tests:
+```bash
+pytest -q
+```
+
+To execute special tests:
+```bash
+pytest -m special
+```
+
+    
