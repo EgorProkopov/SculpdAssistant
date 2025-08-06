@@ -181,6 +181,7 @@ class TrainAssistant:
         exercises_formatted = self.exercises_formatter.data_format(self.available_exercises_by_day_type)
         feedback = self.feedbaack_formatter.data_format(feedback_key)
         prev_week_formatted = self.train_week_formatter.data_format(previous_week)
+        avatar_examples = self.avatar_examples
 
         self.logger.debug(f"Week Template: \n{week_template}")
         self.logger.debug(f"User Data Formatted: \n{user_data}")
@@ -196,7 +197,8 @@ class TrainAssistant:
                 "previous_week": prev_week_formatted,
                 "feedback": feedback,
                 "age_recommendations": age_recommendations,
-                "available_exercises": exercises_formatted
+                "available_exercises": exercises_formatted,
+                "avatars_examples": avatar_examples
             }
         )
         processed_result = result.content.strip()

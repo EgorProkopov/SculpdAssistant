@@ -23,12 +23,11 @@ train_assistant:
       {avatars_examples}
     
     While generating program Ask yourself: 
-      1. What is their session time limit? (dictates # of sets) 
-      2. What are their priority muscle groups? (lead each day with those) 
-      3. What’s their frequency? (split strategy: FB vs PPL vs UL etc.) 
-      4. What’s their level? (impacts load, movement complexity, RIR targets) 
-      5. What equipment do they have? (machine-based vs free weights vs cables) 
-      6. How adaptable are they to variety? (some need more novelty; others less) 
+      1. What is user's estimated workout time? (dictates # of sets) 
+      2. What are user's priority muscle groups? (lead each day with those) 
+      3. What’s user's frequency? (split strategy: FB vs PPL vs UL etc.) 
+      4. What’s user's level? (impacts load, movement complexity, RIR targets) 
+      5. How adaptable is user to variety? (some need more novelty; others less) 
       
   For each training day where day_type not REST_DAY, fill in:
     • 'exercises': a dict of exercises. 
@@ -88,7 +87,6 @@ train_assistant:
     model: "o1-mini"
     temperature: 0.7
     prompt_template: "
-    
     You are a smart fitness assistant.
 Your job is to fill in the following 7‑day plan skeleton with exercises, notes, and explanations for the next training week.
 
@@ -106,6 +104,16 @@ External information:
     {age_recommendations}
   Available Exercises (only choose exercises from these!): 
     {available_exercises}
+
+Avatar examples:
+  {avatars_examples}
+
+    While generating program Ask yourself: 
+      1. What is user's estimated workout time? (dictates # of sets) 
+      2. What are user's priority muscle groups? (lead each day with those) 
+      3. What’s user's frequency? (split strategy: FB vs PPL vs UL etc.) 
+      4. What’s user's level? (impacts load, movement complexity, RIR targets) 
+      5. How adaptable is user to variety? (some need more novelty; others less) 
 
 For each training day (where day_type not REST_DAY), fill in:
     • 'exercises': a dict of exercises. 
@@ -151,7 +159,6 @@ Explanations for each DAY_TYPE:
     If multiple PPL_DAY entries, do not repeat the same selection.
 
 Rules:
-
  1. Only select exercises from Available Exercises.
   2. Keep the exact JSON structure.  Output **only** valid JSON.
   3. Do not reorder days or change DAY_TYPE.
