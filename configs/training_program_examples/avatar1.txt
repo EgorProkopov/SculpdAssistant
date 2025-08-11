@@ -1,24 +1,53 @@
-Full‑Body3×/week, 50min
+### Profile
+Age 45, 6'0", 240 lb.
+Fitness level: Intermediate.
+Focus: Chest & Back.
+Frequency: 3 days/week.
+Split: Full body (machine-/stable-exercise bias due to age).
+0–3 RIR where comfortable; slightly higher reps (8–20).
+Priority body parts first;
++2–4 weekly sets to chest/back.
 
-Profile: 45 years old , 1.83m/108.86kg, intermediate, chest&back priority.
+### Workout duration
+50 minutes per session.
 
-Macro‑rules: machine‑heavy choices (joint‑friendly), 8‑20rep range, 0‑3RIR.
+### Training program
+Full Body — Day 1
+Lat-focused pull — 2×8–15 (4-1-1-0)
+Upper-chest push — 2×8–15 (4-1-1-0)
+Upper-back pull — 2×8–15 (4-1-1-0)
+Quad squat/leg press/hack — 2×7–12 (4-1-1-0)
+Hamstring movement — 2×7–12 (4-1-1-0)
+Biceps curl — 2×8–12 (4-1-1-1)
+Triceps overhead — 2×8–12 (4-1-1-0)
 
-Weekly layout (all tempos 4‑1‑1‑0 unless noted):
+Full Body — Day 2
+Mid-chest push — 2×8–15 (4-1-1-0)
+Lat-focused pull — 2×8–15 (4-1-1-0)
+Lateral raise — 2×8–12 (4-1-1-0)
+Triceps pushdown — 2×8–12 (4-1-1-1)
+Upright row — 2×8–15 (4-1-1-0)
+Quad extension — 2×7–12 (4-1-1-1)
+Calf raise — 2×8–12 (3-1-1-1)
 
-Day1 – lat‑pull 2×8‑15 → incline chest press 2×8‑15 → upper‑back row 2×8‑15 → quad‑dominant squat/press 2×7‑12 → ham curl 2×7‑12 → curl 2×8‑12 (4‑1‑1‑1) → OH‑triceps 2×8‑12.
+Full Body — Day 3
+Upper-back pull — 2×8–15 (4-1-1-0)
+Mid-chest fly — 2×8–12 (4-1-1-0)
+Machine press — 2×7–10 (4-1-1-0)
+Shoulder press — 2×8–12 (4-1-1-0)
+Squat pattern — 2×7–10 (6-1-1-0)
+Hamstring isolation — 2×8–12 (4-1-1-0)
+Cable biceps curl — 2×8–12 (4-1-1-1)
 
-Day2 – mid‑chest press 2×8‑15 → lat‑pull 2×8‑15 → lateral raise 2×8‑12 → push‑down 2×8‑12 (4‑1‑1‑1) → upright row 2×8‑15 → leg‑extension 2×7‑12 (4‑1‑1‑1) → calf raise 2×8‑12 (3‑1‑1‑1).
+### Estimated time
+Assumptions in plan:
+~1 min set + 60–90 s rest ⇒ ~2.5 min per working set;
++1 warm-up set and +1 min setup per exercise (7 each = 14 min).
+14 working sets × 2.5 ≈ 35 min;
+35 + 14 ≈ ~49–50 min per session.
 
-Day3 – upper‑back row 2×8‑15 → chest fly 2×8‑12 → machine press 2×7‑10 → shoulder press 2×8‑12 → squat pattern 2×7‑10 (6‑1‑1‑0) → ham isolate 2×8‑12 → cable curl 2×8‑12 (4‑1‑1‑1).
-
-
-This session duration is about 30 minutes.
-Total Sets per Session: ~9–10 (based on 2.5 min per working set with rest)
-
-Goal: Bias training toward glutes & hamstrings, while still hitting all major muscle
-groups with balanced volume over the week
-
-
-Notes: Alternating focus across days (lat-driven vs trap/rhomboid-driven), Alternating incline/mid/fly/press focus, Hamstrings get more love, quads are supported via squats/extensions, Shorter isolation sets to round out physique and stabilize joints
-
+### Notes
+Full-body split for ≤3 days/week;
+age >40 ⇒ favor machines/stable patterns;
+chest/back get extra weekly sets;
+maintain strict tempo (4-1-1-0/-1) and lead with priorities when freshest.

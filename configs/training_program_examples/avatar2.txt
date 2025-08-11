@@ -1,18 +1,40 @@
-Full‑Body3×/week, 30min
+### Profile
+Age 18, 6'2", 120 kg (~265 lb).
+Fitness level: Intermediate.
+Focus: Glutes & Hamstrings.
+Frequency: 3 days/week (full body).
+Time-efficient sessions with posterior-chain bias.
 
-Profile: 18 years old, 1.88m/120kg, intermediate, glute and ham priority.
+### Workout duration
+30 minutes per session.
 
-Session cap: ~9‑10 working sets after warm‑up.
+### Training program
+Day 1 — Posterior Chain Bias
+RDL — 2×8–12 (4-1-1-0)
+Glute-biased leg press or step-up — 2×10–12 (4-1-1-0)
+Assisted pull-up/pulldown — 2×8–12 (4-1-1-0)
+Incline DB/machine press — 2×8–12 (4-1-1-0)
+Overhead cable triceps — 1×10–12 (4-1-1-0)
 
-Days:
+Day 2 — Stability + Glute Isolation
+Leg press or squat pattern — 2×8–12 (3-1-1-0)
+Lying/seated leg curl — 2×8–12 (4-1-1-0)
+Lat pullover — 2×10–15 (4-1-1-0)
+Lateral raise — 2×10–12 (4-1-1-0)
+Incline DB/cable curl — 1×10–12 (4-1-1-1)
 
-Posterior bias – RDL 2×8‑12 → glute‑leg‑press 2×10‑12 → pull‑down 2×8‑12 → incline press 2×8‑12 → OH‑triceps 1×10‑12.
+Day 3 — Glute & Hamstring Reload
+Hip thrust — 2×8–12 (4-1-1-0)
+Bulgarian split squat — 2×8–12 (3-1-1-0)
+Machine/cable row — 2×8–12 (4-1-1-0)
+Flat DB/machine chest press — 2×8–12 (4-1-1-0)
+Abduction (machine/cable) — 1×12–15 (3-1-1-1)
 
-Stability/iso – split‑squat or leg‑press 2×8‑12 ea. → leg‑curl 2×8‑12 → pullover 2×10‑15 → lateral raise 2×10‑12 → incline curl 1×10‑12 (4‑1‑1‑1).
+### Estimated time
+Plan assumes ~6 min warm-up/transitions + ~2.5 min per working set.
+Each day ≈ 9 sets ⇒ 9×2.5 ≈ 22.5 min working + 6 ≈ ~28–30 min, within the 30-min cap.
 
-Reload – hip thrust 2×8‑12 → Bulgarian split 2×8‑12 → machine row 2×8‑12 → flat press 2×8‑12 → abduction 1×12‑15 (3‑1‑1‑1).
-
-
-Notes:
-
-This format gives maximum ROI per minute, prioritizing glutes/hamstrings while maintaining balance and managing systemic fatigue.
+### Notes
+Young/resilient;
+sessions maximize ROI/min and bias lengthened-range posterior-chain work while preserving balanced upper-body volume;
+strict tempo and minimal setup selections.
