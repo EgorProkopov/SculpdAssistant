@@ -373,5 +373,7 @@ payload = {
   }
 }
 
-resp = requests.post("https://a9008069abc1.ngrok-free.app//generate_first_week", json=payload)
-print(resp.json())
+
+if __name__ == "__main__":
+  resp = requests.post("https://a9008069abc1.ngrok-free.app//generate_first_week", json=payload)
+  print(resp.json())
