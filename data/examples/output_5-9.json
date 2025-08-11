@@ -1,0 +1,233 @@
+{
+  "day 1": {
+    "day_type": "PUSH",
+    "exercises": {
+      "Bench Press": {
+        "sets": 4,
+        "counts": 8,
+        "set_rest_time": 180
+      },
+      "Incline DB Press": {
+        "sets": 3,
+        "counts": 10,
+        "set_rest_time": 180
+      },
+      "DB Shoulder Presses": {
+        "sets": 4,
+        "counts": 8,
+        "set_rest_time": 180
+      },
+      "Machine Press": {
+        "sets": 3,
+        "counts": 10,
+        "set_rest_time": 120
+      },
+      "DB Overhead Extension": {
+        "sets": 3,
+        "counts": 12,
+        "set_rest_time": 120
+      },
+      "Cable Rope Pushdowns": {
+        "sets": 3,
+        "counts": 12,
+        "set_rest_time": 120
+      }
+    },
+    "notes": "Maintain a controlled tempo of 3-1-1-0 for all exercises. Focus on full range of motion.",
+    "explanations": "Bench Press and Incline DB Press target the chest effectively, aligning with strength and hypertrophy goals. DB Shoulder Presses and Machine Press ensure balanced shoulder development. Tricep extensions and pushdowns complement the push movements, promoting joint longevity with machine-assisted exercises.",
+    "rest_time": 180
+  },
+  "day 2": {
+    "day_type": "PULL",
+    "exercises": {
+      "Lat Pulldown": {
+        "sets": 4,
+        "counts": 10,
+        "set_rest_time": 180
+      },
+      "Seated Lat Bar Row": {
+        "sets": 3,
+        "counts": 10,
+        "set_rest_time": 180
+      },
+      "Single Arm DB Row": {
+        "sets": 3,
+        "counts": 10,
+        "set_rest_time": 180
+      },
+      "Machine Tricep Pushdowns": {
+        "sets": 3,
+        "counts": 12,
+        "set_rest_time": 120
+      },
+      "BB Bicep Curl": {
+        "sets": 3,
+        "counts": 10,
+        "set_rest_time": 120
+      },
+      "Hammer Curls": {
+        "sets": 3,
+        "counts": 12,
+        "set_rest_time": 120
+      }
+    },
+    "notes": "Use a controlled tempo of 4-1-1-0. Ensure proper contraction at the peak of each movement.",
+    "explanations": "Lat Pulldowns and Seated Rows effectively target the back, supporting muscle symmetry and strength. Single Arm DB Rows provide unilateral training to address any imbalances. Bicep curls and hammer curls complement the pulling movements, ensuring balanced arm development with a focus on hypertrophy.",
+    "rest_time": 180
+  },
+  "day 3": {
+    "day_type": "LEGS",
+    "exercises": {
+      "Squat": {
+        "sets": 4,
+        "counts": 8,
+        "set_rest_time": 180
+      },
+      "Leg Press": {
+        "sets": 3,
+        "counts": 10,
+        "set_rest_time": 180
+      },
+      "Deficit RDL": {
+        "sets": 3,
+        "counts": 10,
+        "set_rest_time": 180
+      },
+      "Glute Bridge Machine": {
+        "sets": 3,
+        "counts": 12,
+        "set_rest_time": 120
+      },
+      "Standing Calf Raise Machine": {
+        "sets": 4,
+        "counts": 15,
+        "set_rest_time": 120
+      },
+      "Plank": {
+        "sets": 3,
+        "counts": 60,
+        "set_rest_time": 120
+      }
+    },
+    "notes": "Perform squats and RDLs with a tempo of 3-1-1-0. Maintain core engagement during all movements.",
+    "explanations": "Squats and Leg Presses focus on the quads and glutes, essential for leg development and strength. Deficit RDLs target the hamstrings and glutes, promoting muscle balance. Glute Bridge Machine and Calf Raises ensure comprehensive lower body training. Planks strengthen the core, supporting overall stability and injury prevention.",
+    "rest_time": 180
+  },
+  "day 4": {
+    "day_type": "PUSH",
+    "exercises": {
+      "Incline Bench Press": {
+        "sets": 4,
+        "counts": 8,
+        "set_rest_time": 180
+      },
+      "Flat DB Press": {
+        "sets": 3,
+        "counts": 10,
+        "set_rest_time": 180
+      },
+      "BB Shoulder Presses": {
+        "sets": 4,
+        "counts": 8,
+        "set_rest_time": 180
+      },
+      "DB Lateral Raises": {
+        "sets": 3,
+        "counts": 12,
+        "set_rest_time": 120
+      },
+      "DB Overhead Extension": {
+        "sets": 3,
+        "counts": 12,
+        "set_rest_time": 120
+      },
+      "Machine Tricep Overhead Extensions": {
+        "sets": 3,
+        "counts": 12,
+        "set_rest_time": 120
+      }
+    },
+    "notes": "Maintain a controlled tempo of 3-1-1-0. Focus on muscle contraction and joint stability.",
+    "explanations": "Incline Bench Press and Flat DB Press target different regions of the chest, promoting balanced hypertrophy. BB Shoulder Presses ensure comprehensive shoulder development. Lateral Raises isolate the lateral delts for width. Tricep extensions and overhead extensions support pushing movements, enhancing arm strength and joint health.",
+    "rest_time": 180
+  },
+  "day 5": {
+    "day_type": "PULL",
+    "exercises": {
+      "Supinated Pulldown": {
+        "sets": 4,
+        "counts": 10,
+        "set_rest_time": 180
+      },
+      "Deficit Single Arm DB Row": {
+        "sets": 3,
+        "counts": 10,
+        "set_rest_time": 180
+      },
+      "Seated V-Grip Row": {
+        "sets": 3,
+        "counts": 10,
+        "set_rest_time": 180
+      },
+      "BB Bicep Curl": {
+        "sets": 3,
+        "counts": 10,
+        "set_rest_time": 120
+      },
+      "Hammer Curls": {
+        "sets": 3,
+        "counts": 12,
+        "set_rest_time": 120
+      },
+      "Cable Rope Bicep Curl": {
+        "sets": 3,
+        "counts": 12,
+        "set_rest_time": 120
+      }
+    },
+    "notes": "Use a controlled tempo of 4-1-1-0. Focus on squeezing the back muscles at the peak of each rep.",
+    "explanations": "Supinated Pulldowns and Seated V-Grip Rows effectively target the lats and upper back, enhancing strength and muscle definition. Deficit Single Arm DB Rows ensure unilateral strength and address muscular imbalances. Bicep curls and cable curls complement the pulling movements, promoting arm hypertrophy with a focus on joint longevity.",
+    "rest_time": 180
+  },
+  "day 6": {
+    "day_type": "LEGS",
+    "exercises": {
+      "Leg Press": {
+        "sets": 4,
+        "counts": 10,
+        "set_rest_time": 180
+      },
+      "Deficit Bulgarian DB Split Squats": {
+        "sets": 3,
+        "counts": 10,
+        "set_rest_time": 180
+      },
+      "Goblet Squat": {
+        "sets": 3,
+        "counts": 12,
+        "set_rest_time": 180
+      },
+      "Stretch Biased Lying Hamstring Curls": {
+        "sets": 3,
+        "counts": 12,
+        "set_rest_time": 120
+      },
+      "Standing Calf Raise Machine": {
+        "sets": 4,
+        "counts": 15,
+        "set_rest_time": 120
+      },
+      "Hanging Leg Raise": {
+        "sets": 3,
+        "counts": 15,
+        "set_rest_time": 120
+      }
+    },
+    "notes": "Maintain a steady tempo of 3-1-1-0. Focus on deep muscle engagement and controlled movements.",
+    "explanations": "Leg Press and Bulgarian Split Squats emphasize the quads and glutes, supporting leg hypertrophy and strength. Goblet Squats provide additional quad and core engagement. Stretch Biased Hamstring Curls target the hamstrings, ensuring muscle balance and reducing injury risk. Calf Raises and Hanging Leg Raises incorporate comprehensive lower body and core training.",
+    "rest_time": 180
+  },
+  "day 7": {
+    "day_type": "REST_DAY"
+  }
+}

@@ -1,0 +1,173 @@
+{
+  "day 1": {
+    "day_type": "PUSH",
+    "exercises": {
+      "Bench Press": {
+        "sets": 4,
+        "counts": 6,
+        "set_rest_time": 240
+      },
+      "Incline DB Press": {
+        "sets": 3,
+        "counts": 8,
+        "set_rest_time": 180
+      },
+      "DB Shoulder Presses": {
+        "sets": 3,
+        "counts": 8,
+        "set_rest_time": 180
+      },
+      "Cable Rope Pushdowns": {
+        "sets": 3,
+        "counts": 10,
+        "set_rest_time": 120
+      },
+      "DB Seated Lateral Raises": {
+        "sets": 3,
+        "counts": 12,
+        "set_rest_time": 120
+      }
+    },
+    "notes": "Maintain a controlled tempo of 3-1-1-0 for all exercises. Focus on full range of motion and proper form to maximize muscle engagement and prevent injury.",
+    "explanations": "Selected Bench Press and Incline DB Press to prioritize chest development, especially the upper and mid sections. DB Shoulder Presses and Seated Lateral Raises target the shoulders, ensuring balanced upper body strength. Cable Rope Pushdowns effectively isolate the triceps. Exercises avoiding squatting motions adhere to the user's limitations.",
+    "rest_time": 180
+  },
+  "day 2": {
+    "day_type": "PULL",
+    "exercises": {
+      "Lat Pulldown": {
+        "sets": 4,
+        "counts": 6,
+        "set_rest_time": 240
+      },
+      "Seated Lat Bar Row": {
+        "sets": 3,
+        "counts": 8,
+        "set_rest_time": 180
+      },
+      "Single Arm DB Row": {
+        "sets": 3,
+        "counts": 8,
+        "set_rest_time": 180
+      },
+      "Machine Tricep Overhead Extensions": {
+        "sets": 3,
+        "counts": 10,
+        "set_rest_time": 120
+      },
+      "Cable Woodchopper": {
+        "sets": 3,
+        "counts": 12,
+        "set_rest_time": 120
+      }
+    },
+    "notes": "Use a controlled tempo of 3-1-1-0 for pulling movements. Engage the core during Cable Woodchoppers to target the abs effectively.",
+    "explanations": "Lat Pulldowns and Seated Lat Bar Rows focus on developing the lats and upper back, essential for a balanced physique. Single Arm DB Rows ensure unilateral strength and muscle symmetry. Machine Tricep Overhead Extensions provide additional tricep work without overexertion. Cable Woodchoppers target the abs, aligning with the user's priority body parts.",
+    "rest_time": 180
+  },
+  "day 3": {
+    "day_type": "LEGS",
+    "exercises": {
+      "Leg Press": {
+        "sets": 4,
+        "counts": 10,
+        "set_rest_time": 180
+      },
+      "Stretch Biased Seated Hamstring Curls": {
+        "sets": 3,
+        "counts": 12,
+        "set_rest_time": 180
+      },
+      "Glute Bridge Machine": {
+        "sets": 3,
+        "counts": 10,
+        "set_rest_time": 180
+      },
+      "Standing Calf Raise Machine": {
+        "sets": 4,
+        "counts": 15,
+        "set_rest_time": 120
+      },
+      "Plank": {
+        "sets": 3,
+        "counts": 60,
+        "set_rest_time": 120
+      }
+    },
+    "notes": "Focus on a steady and controlled tempo to engage the leg muscles effectively. Ensure proper form to protect the knees and hips.",
+    "explanations": "Leg Press is chosen to target the quads and glutes without involving squatting motions, adhering to the user's limitations. Stretch Biased Seated Hamstring Curls focus on hamstring development. Glute Bridge Machine emphasizes the glutes, ensuring balanced lower body strength. Standing Calf Raises target the calves, and Planks engage the core, aligning with the user's abdominal focus.",
+    "rest_time": 180
+  },
+  "day 4": {
+    "day_type": "REST_DAY"
+  },
+  "day 5": {
+    "day_type": "PPL_DAY",
+    "exercises": {
+      "Incline Bench Press": {
+        "sets": 4,
+        "counts": 6,
+        "set_rest_time": 240
+      },
+      "Supinated Pulldown": {
+        "sets": 3,
+        "counts": 8,
+        "set_rest_time": 180
+      },
+      "DB Overhead Extension": {
+        "sets": 3,
+        "counts": 10,
+        "set_rest_time": 120
+      },
+      "DB Rear Delt Fly (Chest Supported)": {
+        "sets": 3,
+        "counts": 12,
+        "set_rest_time": 120
+      },
+      "Bicycle Crunch": {
+        "sets": 3,
+        "counts": 15,
+        "set_rest_time": 120
+      }
+    },
+    "notes": "Maintain a controlled tempo of 4-1-1-0 for all exercises. Focus on contraction during each rep to maximize muscle engagement.",
+    "explanations": "Incline Bench Press targets the upper chest, aligning with the user's chest focus. Supinated Pulldowns engage the lats and biceps for a balanced pull movement. DB Overhead Extensions isolate the triceps without excessive strain. Rear Delt Flys ensure shoulder balance and posture. Bicycle Crunches effectively target the abs, meeting the user's abdominal focus.",
+    "rest_time": 180
+  },
+  "day 6": {
+    "day_type": "PPL_DAY",
+    "exercises": {
+      "Lat Pulldown": {
+        "sets": 4,
+        "counts": 6,
+        "set_rest_time": 240
+      },
+      "Flat DB Fly": {
+        "sets": 3,
+        "counts": 8,
+        "set_rest_time": 180
+      },
+      "Smith Machine Shoulder Presses": {
+        "sets": 3,
+        "counts": 8,
+        "set_rest_time": 180
+      },
+      "Cable Rope Pushdowns": {
+        "sets": 3,
+        "counts": 10,
+        "set_rest_time": 120
+      },
+      "Russian Twist": {
+        "sets": 3,
+        "counts": 15,
+        "set_rest_time": 120
+      }
+    },
+    "notes": "Use a steady tempo of 3-1-1-0. Engage the core during Russian Twists to maximize abdominal activation.",
+    "explanations": "Lat Pulldowns focus on the back and biceps for a comprehensive pull workout. Flat DB Flys target the mid-chest, enhancing chest development. Smith Machine Shoulder Presses work the shoulders safely with controlled movement. Cable Rope Pushdowns provide additional tricep work. Russian Twists effectively engage the obliques and overall abdominal area, aligning with the user's target body parts.",
+    "rest_time": 180
+  },
+  "day 7": {
+    "day_type": "REST_DAY"
+  }
+}

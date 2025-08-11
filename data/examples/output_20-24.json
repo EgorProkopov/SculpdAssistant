@@ -1,0 +1,128 @@
+{
+  "day 1": {
+    "day_type": "FULL_BODY",
+    "exercises": {
+      "Flat DB Press": {
+        "sets": 3,
+        "counts": 10,
+        "set_rest_time": 180
+      },
+      "Seated Lat Bar Row": {
+        "sets": 3,
+        "counts": 10,
+        "set_rest_time": 180
+      },
+      "Goblet Squat": {
+        "sets": 3,
+        "counts": 12,
+        "set_rest_time": 180
+      },
+      "BB Bicep Curl": {
+        "sets": 3,
+        "counts": 12,
+        "set_rest_time": 180
+      },
+      "Cable Rope Pushdowns": {
+        "sets": 3,
+        "counts": 15,
+        "set_rest_time": 180
+      },
+      "Plank": {
+        "sets": 3,
+        "counts": 60,
+        "set_rest_time": 180
+      }
+    },
+    "notes": "Perform each rep with a controlled tempo of 3-1-1-0. Rest 120 seconds between exercises.",
+    "explanations": "Selected exercises target the user's priority muscle groups: chest, arms, and abs while ensuring a balanced full-body workout. Overhead pressing movements are avoided due to exercise limitations. Tempo control enhances joint longevity and injury prevention.",
+    "rest_time": 120
+  },
+  "day 2": {
+    "day_type": "REST_DAY"
+  },
+  "day 3": {
+    "day_type": "FULL_BODY",
+    "exercises": {
+      "Incline DB Press": {
+        "sets": 3,
+        "counts": 10,
+        "set_rest_time": 180
+      },
+      "V-Grip Pulldown": {
+        "sets": 3,
+        "counts": 10,
+        "set_rest_time": 180
+      },
+      "Leg Press": {
+        "sets": 3,
+        "counts": 12,
+        "set_rest_time": 180
+      },
+      "Hammer Curls": {
+        "sets": 3,
+        "counts": 12,
+        "set_rest_time": 180
+      },
+      "Cable Rope Pushdowns": {
+        "sets": 3,
+        "counts": 15,
+        "set_rest_time": 180
+      },
+      "Crunches": {
+        "sets": 3,
+        "counts": 20,
+        "set_rest_time": 180
+      }
+    },
+    "notes": "Maintain a controlled tempo of 4-1-1-0 for all exercises. Rest 120 seconds between exercises.",
+    "explanations": "Exercises focus on chest and arm development while incorporating back and legs for a comprehensive full-body session. Avoided overhead movements and included core work to align with user's target areas and training recommendations.",
+    "rest_time": 120
+  },
+  "day 4": {
+    "day_type": "REST_DAY"
+  },
+  "day 5": {
+    "day_type": "REST_DAY"
+  },
+  "day 6": {
+    "day_type": "FULL_BODY",
+    "exercises": {
+      "Flat Smith Machine Press": {
+        "sets": 3,
+        "counts": 10,
+        "set_rest_time": 180
+      },
+      "Plate Loaded Low Row": {
+        "sets": 3,
+        "counts": 10,
+        "set_rest_time": 180
+      },
+      "Goblet Squat": {
+        "sets": 3,
+        "counts": 12,
+        "set_rest_time": 180
+      },
+      "Machine Curls": {
+        "sets": 3,
+        "counts": 12,
+        "set_rest_time": 180
+      },
+      "Machine Tricep Pushdowns": {
+        "sets": 3,
+        "counts": 15,
+        "set_rest_time": 180
+      },
+      "Plank": {
+        "sets": 3,
+        "counts": 60,
+        "set_rest_time": 180
+      }
+    },
+    "notes": "Use a tempo of 3-1-1-0 for all movements. Rest 120 seconds between exercises.",
+    "explanations": "This session emphasizes chest and arm strength while engaging the back and lower body for overall balance. Overhead presses are excluded to adhere to exercise limitations. Core exercises are included to target abs as per user’s goals.",
+    "rest_time": 120
+  },
+  "day 7": {
+    "day_type": "REST_DAY"
+  }
+}
