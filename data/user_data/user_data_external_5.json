@@ -1,17 +1,17 @@
 {
   "email": "newuser@example.com",
-  "image": "http://example.com/image2.jpg",
+  "image": "http://example.com/image8.jpg",
   "name": "New User",
   "gender": "male",
-  "age": 30,
-  "height": 180.5,
+  "age": 29,
+  "height": 175.0,
   "height_type": "cm",
-  "weight": 78.0,
+  "weight": 82.5,
   "weight_type": "kg",
   "fitness_level": "intermediate",
-  "improve_body_parts": ["chest", "abs"],
-  "exercise_limitations": ["no_squatting"],
-  "nutrition_goal": "gain_weight",
+  "improve_body_parts": ["back", "arms"],
+  "exercise_limitations": ["no_hip_hinge_movements"],
+  "nutrition_goal": "maintain_weight",
   "equipment_list": [
     "bar_attachment", "barbell", "barbell_with_rope", "barbell_with_v_handle", "bench", "blocks", "bodyweight",
     "cable", "cable_machine", "chest_fly_machine", "chest_fly_machine", "chest_fly_machine", "chest_fly_machine",
@@ -22,6 +22,6 @@
     "rope_attachment", "row_machine", "shoulder_press_machine", "smith", "smith_machine", "standing", "t_bar_machine",
     "towel", "tricep_pushdown_machine", "v_grip_attachment", "weight_plate"
   ],
-  "training_days": 5,
-  "workout_time": 75
+  "training_days": 4,
+  "workout_time": 70
 }

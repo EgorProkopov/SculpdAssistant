@@ -1,16 +1,16 @@
 {
   "email": "newuser@example.com",
-  "image": "http://example.com/image2.jpg",
+  "image": "http://example.com/image9.jpg",
   "name": "New User",
   "gender": "male",
-  "age": 30,
-  "height": 180.5,
+  "age": 33,
+  "height": 180.0,
   "height_type": "cm",
-  "weight": 78.0,
+  "weight": 92.5,
   "weight_type": "kg",
-  "fitness_level": "intermediate",
-  "improve_body_parts": ["chest", "abs"],
-  "exercise_limitations": ["no_squatting"],
+  "fitness_level": "advanced",
+  "improve_body_parts": ["chest", "shoulders", "legs"],
+  "exercise_limitations": [],
   "nutrition_goal": "gain_weight",
   "equipment_list": [
     "bar_attachment", "barbell", "barbell_with_rope", "barbell_with_v_handle", "bench", "blocks", "bodyweight",
@@ -23,5 +23,5 @@
     "towel", "tricep_pushdown_machine", "v_grip_attachment", "weight_plate"
   ],
   "training_days": 5,
-  "workout_time": 75
+  "workout_time": 80
 }
