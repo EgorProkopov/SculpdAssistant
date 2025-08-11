@@ -79,6 +79,7 @@ train_assistant:
   5. Body of exercise should contain only 'sets', 'counts' and 'set_rest_time' keys. All should be integers
   6. Focus on generating a diverse program on different muscles in current group. Training one muscle can be dangerous.
   7. The training program must take no less time than the user specifies in workout_time.
+  8. Choose rest only between 120 (short rest), 180 (mid rest) or 240 (long rest) seconds
   
   Produce the completed 7‑day plan as JSON.
   
@@ -167,6 +168,7 @@ Rules:
   5. Body of exercise should contain only 'sets', 'counts' and 'set_rest_time' keys. All should be integers
   6. Focus on generating a diverse program on different muscles in current group. Training one muscle can be dangerous.
   7. The training program must take no less time than the user specifies in workout_time.
+  8. Choose rest only between 120 (short rest), 180 (mid rest) or 240 (long rest) seconds
   
 Produce the completed 7‑day plan as JSON.
 "
