@@ -118,22 +118,25 @@ Avatar examples:
 
 For each training day (where day_type not REST_DAY), fill in:
     • 'exercises': a dict of exercises. 
-      Body contains 'sets', 'counts' and 'set_rest_time'. 
+      Body contains 'sets', 'counts', 'set_rest_time', 'actual_weight' and 'recommended_weight'. 
       Key 'sets' means number of sets on this exercise.
       Key 'counts' means number of repetitions per one set.
       Key 'set_rest_time' means the rest time  between two sets in seconds. Choose rest between 120 (short rest), 180 (mid rest) or 240 (long rest) seconds
+      Key 'actual_weight' means the weight from the previous training. It should be taken only from the previous week. Weights must be in kilograms.
+      Key 'recommended_weight' means the recommended weight based on feedback and previous week. Weights must be in kilograms.
+      If feedback was 'easy', increase the weight from previous week. If feedback was 'normal', dont change the weight.
+      If feedback was 'hard', lower the weight.
       Choose the exercises that are, firstly, most suitable for the current DAY_TYPE, and secondly, that develop the body parts, specified by the user in user_data.
       Also, try to create balanced workouts for different muscle groups,
       It is important to:
       - remember about user exercises limitations 
       - remember about user nutrition goal
-      - remember about scanner recommendations
       - follow the workout time specified by user
-      - remember about user safety and injury prevention if it is specified in Age-Based Recommendations
+      - remember about user safety and injury prevention if it is specified in age-based recommendations
       
-    • 'notes': any special instructions (e.g. tempo, rest intervals)
+    • 'notes': any special instructions (e.g. tempo, rest intervals). Write this notes directly for user.
     • 'explanations': why each exercise was chosen. 
-       Indicate if some exercises were not selected due to exercise limitations
+       Indicate if some exercises were not selected due to exercise limitations. Write explanations directly for user
     • 'rest_time': rest time between two exercises in seconds. 
        When choosing the rest time between sets, focus on the user's readiness for training and age. 
        Its good for health to rest more. Try to give a user more time for rest, like 3, 4 or 5 minutes. 
@@ -165,10 +168,13 @@ Rules:
   3. Do not reorder days or change DAY_TYPE.
   4. Make sure explanations tie back to user data and age/scanner recommendations.
   5. Tie explanations to `previous_week` data and `feedback`.  
-  5. Body of exercise should contain only 'sets', 'counts' and 'set_rest_time' keys. All should be integers
+  5. Body of exercise should contain only 'sets', 'counts', 'set_rest_time', 'actual_weight' and 'recommended_weight' keys.
+  Keys 'sets', 'counts', 'set_rest_time' should be integers, but 'actual_weight' and 'recommended_weight' keys should be float.
+  'actual_weight' and 'recommended_weight' keys should be measured in kilograms.
   6. Focus on generating a diverse program on different muscles in current group. Training one muscle can be dangerous.
   7. The training program must take no less time than the user specifies in workout_time.
-  8. Choose rest only between 120 (short rest), 180 (mid rest) or 240 (long rest) seconds
+  8. Choose rest only between 120 (short rest), 180 (mid rest) or 240 (long rest) seconds.
+  9. 
   
 Produce the completed 7‑day plan as JSON.
 "
