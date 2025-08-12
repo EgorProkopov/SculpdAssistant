@@ -61,8 +61,8 @@ if __name__ == "__main__":
         description="Upload user information, feedback, and previous week plan to receive next week training plan",
     )
 
-    demo = gr.TabbedInterface(
+    interface = gr.TabbedInterface(
         [first_week_interface, next_week_interface], ["First Week", "Next Week"]
     )
 
-    demo.launch(share=True)
+    interface.launch(share=True)
