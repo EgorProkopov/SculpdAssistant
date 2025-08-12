@@ -156,7 +156,7 @@ Explanations for each DAY_TYPE:
   LEGS:
     Quads, hamstrings, glutes, calves.
   PPL_DAY:
-    Placeholder “Push‑Pull‑Legs”—pick one of PUSH, PULL, or LEGS.
+    Placeholder “Push‑Pull‑Legs” --- pick one of PUSH, PULL, or LEGS. Focus on user preferences
     If multiple PPL_DAY entries, do not repeat the same selection.
 
 Rules:

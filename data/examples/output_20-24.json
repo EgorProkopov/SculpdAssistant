@@ -5,37 +5,32 @@
       "Flat DB Press": {
         "sets": 3,
         "counts": 10,
-        "set_rest_time": 180
+        "set_rest_time": 120
       },
       "Seated Lat Bar Row": {
         "sets": 3,
         "counts": 10,
-        "set_rest_time": 180
-      },
-      "Goblet Squat": {
-        "sets": 3,
-        "counts": 12,
-        "set_rest_time": 180
+        "set_rest_time": 120
       },
       "BB Bicep Curl": {
         "sets": 3,
         "counts": 12,
-        "set_rest_time": 180
+        "set_rest_time": 120
       },
       "Cable Rope Pushdowns": {
         "sets": 3,
-        "counts": 15,
-        "set_rest_time": 180
+        "counts": 12,
+        "set_rest_time": 120
       },
       "Plank": {
         "sets": 3,
         "counts": 60,
-        "set_rest_time": 180
+        "set_rest_time": 120
       }
     },
-    "notes": "Perform each rep with a controlled tempo of 3-1-1-0. Rest 120 seconds between exercises.",
-    "explanations": "Selected exercises target the user's priority muscle groups: chest, arms, and abs while ensuring a balanced full-body workout. Overhead pressing movements are avoided due to exercise limitations. Tempo control enhances joint longevity and injury prevention.",
-    "rest_time": 120
+    "notes": "Maintain a controlled tempo of 3-1-1-0 for all exercises. Ensure proper form to prevent injury.",
+    "explanations": "Selected Flat DB Press to target the chest without overhead pressing, Seated Lat Bar Row for balanced back development, BB Bicep Curl and Cable Rope Pushdowns to focus on arm muscles, and Plank to engage the core. Exercises avoid overhead movements to comply with user limitations.",
+    "rest_time": 180
   },
   "day 2": {
     "day_type": "REST_DAY"
@@ -46,37 +41,32 @@
       "Incline DB Press": {
         "sets": 3,
         "counts": 10,
-        "set_rest_time": 180
+        "set_rest_time": 120
       },
-      "V-Grip Pulldown": {
+      "Plate Loaded Low Row": {
         "sets": 3,
         "counts": 10,
-        "set_rest_time": 180
-      },
-      "Leg Press": {
-        "sets": 3,
-        "counts": 12,
-        "set_rest_time": 180
+        "set_rest_time": 120
       },
       "Hammer Curls": {
         "sets": 3,
         "counts": 12,
-        "set_rest_time": 180
+        "set_rest_time": 120
       },
-      "Cable Rope Pushdowns": {
+      "Cable V-Grip Pushdowns": {
         "sets": 3,
-        "counts": 15,
-        "set_rest_time": 180
+        "counts": 12,
+        "set_rest_time": 120
       },
-      "Crunches": {
+      "Plank": {
         "sets": 3,
-        "counts": 20,
-        "set_rest_time": 180
+        "counts": 60,
+        "set_rest_time": 120
       }
     },
-    "notes": "Maintain a controlled tempo of 4-1-1-0 for all exercises. Rest 120 seconds between exercises.",
-    "explanations": "Exercises focus on chest and arm development while incorporating back and legs for a comprehensive full-body session. Avoided overhead movements and included core work to align with user's target areas and training recommendations.",
-    "rest_time": 120
+    "notes": "Focus on controlled movements with a tempo of 3-1-1-0. Engage core throughout the workout.",
+    "explanations": "Incline DB Press emphasizes the upper chest, Plate Loaded Low Row ensures comprehensive back engagement, Hammer Curls target the brachialis for arm thickness, Cable V-Grip Pushdowns focus on the triceps, and Plank strengthens the core. All exercises are selected to avoid overhead pressing.",
+    "rest_time": 180
   },
   "day 4": {
     "day_type": "REST_DAY"
@@ -90,37 +80,32 @@
       "Flat Smith Machine Press": {
         "sets": 3,
         "counts": 10,
-        "set_rest_time": 180
+        "set_rest_time": 120
       },
-      "Plate Loaded Low Row": {
+      "Single Arm DB Row": {
         "sets": 3,
         "counts": 10,
-        "set_rest_time": 180
+        "set_rest_time": 120
       },
-      "Goblet Squat": {
+      "Standing Bar Cable Curls": {
         "sets": 3,
         "counts": 12,
-        "set_rest_time": 180
-      },
-      "Machine Curls": {
-        "sets": 3,
-        "counts": 12,
-        "set_rest_time": 180
+        "set_rest_time": 120
       },
       "Machine Tricep Pushdowns": {
         "sets": 3,
-        "counts": 15,
-        "set_rest_time": 180
+        "counts": 12,
+        "set_rest_time": 120
       },
       "Plank": {
         "sets": 3,
         "counts": 60,
-        "set_rest_time": 180
+        "set_rest_time": 120
       }
     },
-    "notes": "Use a tempo of 3-1-1-0 for all movements. Rest 120 seconds between exercises.",
-    "explanations": "This session emphasizes chest and arm strength while engaging the back and lower body for overall balance. Overhead presses are excluded to adhere to exercise limitations. Core exercises are included to target abs as per user’s goals.",
-    "rest_time": 120
+    "notes": "Use a controlled tempo of 3-1-1-0 for all exercises. Focus on breathing and form.",
+    "explanations": "Flat Smith Machine Press targets the mid chest without requiring overhead movement, Single Arm DB Row ensures balanced back development, Standing Bar Cable Curls engage all bicep heads, Machine Tricep Pushdowns effectively isolate the triceps, and Plank maintains core strength. All exercises adhere to the user's limitation against overhead pressing.",
+    "rest_time": 180
   },
   "day 7": {
     "day_type": "REST_DAY"
