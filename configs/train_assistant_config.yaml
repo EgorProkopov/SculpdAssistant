@@ -34,7 +34,7 @@ train_assistant:
       Body contains 'sets', 'counts' and 'set_rest_time'. 
       Key 'sets' means number of sets on this exercise.
       Key 'counts' means number of repetitions per one set.
-      Key 'set_rest_time' means the rest time  between two sets in seconds. Choose rest between 120 (short rest), 180 (mid rest) or 240 (long rest) seconds
+      Key 'set_rest_time' means the rest time  between two sets in seconds. Choose rest between 90 seconds, short rest for for smaller muscle groups (delts, triceps, biceps), 120 seconds for larger (chest, back, quads, hamstrings, glutes)
       Choose the exercises that are, firstly, most suitable for the current DAY_TYPE, and secondly, that develop the body parts, specified by the user in user_data.
       Also, try to create balanced workouts for different muscle groups,
       It is important to:
@@ -79,7 +79,7 @@ train_assistant:
   5. Body of exercise should contain only 'sets', 'counts' and 'set_rest_time' keys. All should be integers
   6. Focus on generating a diverse program on different muscles in current group. Training one muscle can be dangerous.
   7. The training program must take no less time than the user specifies in workout_time.
-  8. Choose rest only between 120 (short rest), 180 (mid rest) or 240 (long rest) seconds
+  8. Choose rest only between 90 seconds, short rest for for smaller muscle groups (delts, triceps, biceps), 120 seconds for larger (chest, back, quads, hamstrings, glutes).
   
   Produce the completed 7‑day plan as JSON.
   
@@ -121,7 +121,7 @@ For each training day (where day_type not REST_DAY), fill in:
       Body contains 'sets', 'counts', 'set_rest_time', 'actual_weight' and 'recommended_weight'. 
       Key 'sets' means number of sets on this exercise.
       Key 'counts' means number of repetitions per one set.
-      Key 'set_rest_time' means the rest time  between two sets in seconds. Choose rest between 120 (short rest), 180 (mid rest) or 240 (long rest) seconds
+      Key 'set_rest_time' means the rest time  between two sets in seconds. Choose rest between 90 seconds, short rest for for smaller muscle groups (delts, triceps, biceps), 120 seconds for larger (chest, back, quads, hamstrings, glutes)
       Key 'actual_weight' means the weight from the previous training. It should be taken only from the previous week. Weights must be in kilograms.
       Key 'recommended_weight' means the recommended weight based on feedback and previous week. Weights must be in kilograms.
       If feedback was 'easy', increase the weight from previous week. If feedback was 'normal', dont change the weight.
@@ -173,7 +173,7 @@ Rules:
   'actual_weight' and 'recommended_weight' keys should be measured in kilograms.
   6. Focus on generating a diverse program on different muscles in current group. Training one muscle can be dangerous.
   7. The training program must take no less time than the user specifies in workout_time.
-  8. Choose rest only between 120 (short rest), 180 (mid rest) or 240 (long rest) seconds.
+  8. Choose rest only between 90 seconds, short rest for for smaller muscle groups (delts, triceps, biceps), 120 seconds for larger (chest, back, quads, hamstrings, glutes).
   9. 
   
 Produce the completed 7‑day plan as JSON.
