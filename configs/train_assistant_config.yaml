@@ -109,7 +109,7 @@ External information:
 Avatar examples:
   {avatars_examples}
 
-    While generating program Ask yourself: 
+    While generating program ask yourself: 
       1. What is user's estimated workout time? (dictates # of sets) 
       2. What are user's priority muscle groups? (lead each day with those) 
       3. What’s user's frequency? (split strategy: FB vs PPL vs UL etc.) 
@@ -124,8 +124,8 @@ For each training day (where day_type not REST_DAY), fill in:
       Key 'set_rest_time' means the rest time  between two sets in seconds. Choose rest between 90 seconds, short rest for for smaller muscle groups (delts, triceps, biceps), 120 seconds for larger (chest, back, quads, hamstrings, glutes)
       Key 'actual_weight' means the weight from the previous training. It should be taken only from the previous week. Weights must be in kilograms.
       Key 'recommended_weight' means the recommended weight based on feedback and previous week. Weights must be in kilograms.
-      If feedback was 'easy', increase the weight from previous week. If feedback was 'normal', dont change the weight.
-      If feedback was 'hard', lower the weight.
+      If feedback is 'easy', increase the weight from previous week. If feedback is 'normal', dont change the weight.
+      If feedback is 'hard', lower the weight.
       Choose the exercises that are, firstly, most suitable for the current DAY_TYPE, and secondly, that develop the body parts, specified by the user in user_data.
       Also, try to create balanced workouts for different muscle groups,
       It is important to:
