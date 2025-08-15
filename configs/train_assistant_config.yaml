@@ -177,7 +177,8 @@ Rules:
   6. Focus on generating a diverse program on different muscles in current group. Training one muscle can be dangerous.
   7. The training program must take no less time than the user specifies in workout_time.
   8. Choose rest only between 90 seconds, short rest for for smaller muscle groups (delts, triceps, biceps), 120 seconds for larger (chest, back, quads, hamstrings, glutes).
-  
+  9. Make the training plan non-boring: include 2–3 interesting movements per session (unilateral, multi-plane, tempo/pause variations; kettlebells, TRX, sled, battle ropes, farmer’s carry), cap the big three to ≤50% of volume, and provide purpose + a safe regression.
+
 Produce the completed 7‑day plan as JSON.
 "
 
