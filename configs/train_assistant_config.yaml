@@ -51,7 +51,6 @@ train_assistant:
        Indicate if some exercises were not selected due to exercise limitations
     • 'rest_time': rest time between two exercises in seconds. 
        When choosing the rest time between sets, focus on the user's readiness for training and age. 
-       Its good for health to rest more. Try to give a user more time for rest, like 3, 4 or 5 minutes. 
        Key 'rest_time' Should be integer.  
   
   Explanations for each DAY_TYPE:
@@ -121,6 +120,8 @@ Avatar examples:
 
 For each training day (where day_type not REST_DAY), fill in:
     • 'exercises': a dict of exercises. 
+      Every exercise takes around 10 minutes. 
+      So, if workout_time is 30 minutes there will be 2-3 exercises. If workout time is 60 minutes there will be 5-6 exercises. If workout is 80 minutes there will be 7-8 exercises. 
       Body contains 'sets', 'counts', 'set_rest_time', 'actual_weight' and 'recommended_weight'. 
       Key 'sets' means number of sets on this exercise.
       Key 'counts' means number of repetitions per one set.
@@ -142,7 +143,6 @@ For each training day (where day_type not REST_DAY), fill in:
        Indicate if some exercises were not selected due to exercise limitations. Write explanations directly for user
     • 'rest_time': rest time between two exercises in seconds. 
        When choosing the rest time between sets, focus on the user's readiness for training and age. 
-       Its good for health to rest more. Try to give a user more time for rest, like 3, 4 or 5 minutes. 
        Key 'rest_time' Should be integer.  
 
 
@@ -171,16 +171,18 @@ Rules:
   3. Do not reorder days or change DAY_TYPE.
   4. Make sure explanations tie back to user data and age/scanner recommendations.
   5. Tie explanations to `previous_week` data and `feedback`.  
-  5. Body of exercise should contain only 'sets', 'counts', 'set_rest_time', 'actual_weight' and 'recommended_weight' keys.
+  6. Body of exercise should contain only 'sets', 'counts', 'set_rest_time', 'actual_weight' and 'recommended_weight' keys.
   Keys 'sets', 'counts', 'set_rest_time' should be integers, 'recommended_weight' keys should be float.
   'recommended_weight' keys should be measured in kilograms. 'actual_weight' should be null.
-  6. Focus on generating a diverse program on different muscles in current group. Training one muscle can be dangerous.
-  7. The training program must take no less time than the user specifies in workout_time.
-  8. Choose rest only between 90 seconds, short rest for for smaller muscle groups (delts, triceps, biceps), 120 seconds for larger (chest, back, quads, hamstrings, glutes).
-  9. Make the training plan non-boring: include 2–3 interesting movements per session 
+  7. There could be only 2 to 3 sets of any given exercise.
+  8. Focus on generating a diverse program on different muscles in current group. Training one muscle can be dangerous.
+  9. The training program must take no less time than the user specifies in workout_time.
+  10. Choose set_rest_time only between 90 seconds, short rest for for smaller muscle groups (delts, triceps, biceps), 120 seconds for larger (chest, back, quads, hamstrings, glutes). Only 90 or 120 seconds.
+  11. Make the training plan non-boring: include 2–3 interesting movements per session 
   (unilateral, multi-plane, tempo/pause variations; kettlebells, TRX, sled, battle ropes, farmer’s carry), 
   cap the big three to ≤50% of volume, and provide purpose + a safe regression. 
-  10. Prevent overuse of any single muscle (no more than 2 consecutive exercises per group; alternate sagittal/frontal/transverse planes).
+  12. Prevent overuse of any single muscle (no more than 2 consecutive exercises per group; alternate sagittal/frontal/transverse planes).
+  13. Mix order of involved muscles.
 
 Produce the completed 7‑day plan as JSON.
 "
