@@ -1,0 +1,103 @@
+Notable Training Style Differences (AI vs. Eric)
+
+1. Sets & Volume Distribution
+
+AI style: Mostly 3×8–10 per lift; ~9 working sets/day but concentrated into 3 exercises, creating overlong blocks per movement and risking time overrun with 120s rests. No weekly set budgeting.
+
+Eric style: 2 sets per exercise (occasional 1–2 “finishers”); ~9–10 total sets/session to hit a strict 30-min cap. Clear allocation: 3–4 sets glute/ham, 3–4 compound push/pull, 1–2 arms/shoulders.
+
+2. Exercise Selection / Novelty
+
+AI style: Barbell-heavy (RDL, bench, squat) plus generic accessories (rear delt fly, plank, twists). Sparse use of machines/cables; no pullovers, abductions, or leg curls.
+
+Eric style: Pattern- and bias-driven choices (RDL/hip thrust, ham curl, lat pullover, abduction). Uses machine/cable options for efficiency, setup speed, ROM control; compounds included but balanced with stable variations.
+
+3. Muscle Group Structuring / Order
+
+AI style: Lists movements without priority ordering; glute/ham priority stated but not enforced (e.g., Day 3 opens with squat + incline press, no ham isolation).
+
+Eric style: Lead with posterior chain on most days (RDL/hip thrust/split squat early), then alternate push ↔ pull to manage fatigue; isolations late. Weekly plan repeats glute/ham priority across all three sessions.
+
+4. Rest Times
+
+AI style: Per-exercise set_rest_time = 120–90 s regardless of movement size; tempo fixed at 3-1-1-0; no time budget logic.
+
+Eric style: Rest matched to 30-min budget: large patterns ~90–120 s, isolations 60–90 s; tempos mainly 4-1-1-0 (some 3-1-1-0 on unilateral/leg patterns) to drive TUT without inflating total time.
+
+5. Back & Pull Days
+
+AI style: Minimal variety—only one vertical pull day (lat pulldown) and no pullover or distinct upper-back row emphasis; no angle rotation.
+
+Eric style: Alternates lat-bias vs upper-back-bias; explicitly programs lat pullover and machine/cable rows for angle diversity; keeps sets to 2 for quality, not fatigue.
+
+6. Leg Days
+
+AI style: Uses RDL, squat, and glute bridge machine, but omits hamstring curls and split-squat/hinge variations; core replaces lower-body isolation on two days.
+
+Eric style: Guarantees 3–4 sets glute/ham per session via RDL/hip thrust + ham curl + split-squat/leg press variants; includes abduction block; avoids redundant heavy pairings that blow the clock.
+
+Training Style Prompt for AI
+
+“Generate a 3-day full-body program in Eric’s style for an 18-year-old, 6'2", 120 kg intermediate with a glute/hamstring priority and a strict 30-minute session cap. Output valid JSON only.
+
+1. Session & Volume Rules
+
+Days/week: 3 ("day 1", "day 2", "day 3"), each with "day_type": "FULL_BODY" and "session_duration_min": 30.
+
+Working sets/session: 9–10 total.
+
+Sets per exercise: 2 by default; allow a single 1-set finisher (e.g., triceps or abduction). Do not assign 3+ sets to most lifts.
+
+2. Exercise Selection (pattern-first)
+
+Posterior chain priority each day: choose from RDL (DB/BB), hip thrust (Smith/BB), split squat (DB/Smith), hamstring curl (seated/lying), glute-biased leg press/step-up.
+
+Pull diversity: alternate lat-bias (pulldown/pullover) and upper-back bias (machine/cable row).
+
+Push diversity: rotate incline press → flat/mid press → fly using machine/DB/cable.
+
+Accessories: lateral raise, triceps overhead extension or pushdown, abduction.
+
+Prefer machines/cables for speed and ROM control; include barbell only where it adds ROI (RDL, hip thrust).
+
+3. Reps, Tempo, Rest
+
+Rep ranges: upper body 8–12, lower body 8–12 (ham curls/abduction 10–15 allowed).
+
+Tempo: default "4-1-1-0"; unilateral/split-squat may use "3-1-1-0"; optionally use "6-1-1-0" on one squat/hinge in Day 3.
+
+Rest (rest_sec): compounds 90–120, isolations 60–90. Keep the 30-min cap in mind.
+
+4. Output Schema
+For each day:
+
+{
+  "day X": {
+    "day_type": "FULL_BODY",
+    "session_duration_min": 30,
+    "notes": "Lead with posterior chain; alternate push/pull; isolate at end.",
+    "exercises": {
+      "Exercise Name": {
+        "movement_pattern": "e.g., hip hinge (RDL), lat-biased pull, upper-back row, incline press, ham curl, abduction",
+        "equipment_preference": "machine|cable|db|barbell|smith",
+        "sets": 2,
+        "rep_range": "8-12",
+        "tempo": "4-1-1-0",
+        "rest_sec": 90,
+        "actual_weight": null
+      }
+      // 4–5 exercises total; ensure 9–10 working sets per day
+    }
+  }
+}
+
+
+Ensure across the week: glute/ham = 3–4 sets/day, compound push/pull = 3–4 sets/day, 1–2 sets arms/delts/abduction.
+
+Do not invent 1RMs or recommended weights; leave "actual_weight": null.
+
+Keep total time within 30 minutes by adhering to set counts, rests, and exercise count (usually 5 exercises/day).
+
+Provide angle/plane rotation across days (pulldown vs pullover; incline vs flat press; split-squat vs hip thrust).
+
+Return only the JSON object.

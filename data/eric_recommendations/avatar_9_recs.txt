@@ -1,0 +1,124 @@
+Notable Training Style Differences (AI vs. Eric)
+
+1. Sets & Volume Distribution
+
+AI style: Blanket 3 sets for nearly every movement; 6 exercises on most days (18+ working sets), which will overshoot a 60-min cap with 120 s rests; no weekly budgeting by body part.
+
+Eric style: 2–3 sets/exercise, targeted ~12–18 effective sets/week for chest/shoulders, with moderate back/arms and one legs day; volume spread across 5 themed days to manage fatigue.
+
+2. Exercise Selection / Novelty
+
+AI style: Redundant chest isolation (two machine fly variants in the same session), generic rows/pulldowns; mixes triceps into a Pull day; little rear-delt or angle diversity; few stretch-biased movements.
+
+Eric style: Cable/machine dominant with angle control and stretch bias (incline cable fly, decline/upper chest fly, staggered-stance fly); Smith pressing for joint safety; deliberate delt work (machine lateral, crossover lateral, Y-raise, rear-delt fly, face pulls); back thickness via plate-loaded chest-supported row; glutes/hams with lying curl, walking lunges.
+
+3. Muscle Group Structuring / Order
+
+AI style: PPL + extra PPL days; no clear weekly chest/shoulder prioritization; legs get large volume on one day and then more push/pull volume dilutes focus.
+
+Eric style: 5-day rotation:
+
+Chest focus, 2) Shoulders focus, 3) Back+Arms, 4) Chest+Shoulders pump/isolation, 5) Legs (functional/recovery). Chest/shoulders prioritized 3×/week with purposeful sequencing.
+
+4. Rest Times
+
+AI style: Mostly 120 s across the board; no tempo standard; no time-efficiency logic.
+
+Eric style: Rests aligned to ~60 min sessions; strict 3-1-1-0 / 4-1-1-0(-1) tempos to raise TUT so fewer sets still stimulate hypertrophy; sequencing/supersets used to stay on schedule.
+
+5. Back & Pull Days
+
+AI style: Pulldown + seated row loops; adds triceps pushdowns to Pull day (mismatch); lacks rope pullover and chest-supported thickness emphasis; minimal rear-delt/face-pull work.
+
+Eric style: Balanced lat vs upper-back: lat pulldown + kneeling low cable row and plate-loaded chest-supported row; arms via rope curls/drag curls; triceps on push-oriented days; face pulls/rear-delt flys for scapular health.
+
+6. Leg Days
+
+AI style: Very high machine volume (press, ham curl, calves, abduction, glute bridge, cable RDL) with long rests—poor time efficiency; lacks walking lunges/hack squat/lying curl emphasis.
+
+Eric style: One dedicated legs day: hack squat, lying ham curl, calves, walking lunges, optional adduction/abduction—joint-friendly, high stimulus-to-fatigue, fits 60-min window.
+
+Training Style Prompt for AI
+
+“Generate a 5-day program in Eric’s style for an advanced 55-year-old prioritizing chest & shoulders, with ~60-minute sessions. Use machine/cable-dominant, joint-friendly selections, emphasize stretch-biased work, and manage fatigue. Output valid JSON only.
+
+Weekly Split & Session Rules
+
+Days: 5 ("day 1"…"day 5").
+
+day_type values and themes:
+
+CHEST_FOCUS — Upper + mid chest (press + multiple fly angles)
+
+SHOULDERS_FOCUS — Medial & rear delts + safe pressing
+
+BACK_ARMS — Lat + upper-back thickness + biceps + triceps (cable)
+
+CHEST_SHOULDERS_PUMP — Isolation/pump angles, higher reps
+
+LEGS_FUNCTIONAL_RECOVERY — Quad-biased hack, lying ham curl, calves, lunges
+
+session_duration_min: 60.
+
+Sets per exercise: 2–3; target 13–14 total sets/session.
+
+Prioritize chest & shoulders 3×/week (two direct days + one hybrid).
+
+Exercise Selection (angle diversity, stretch bias, joint-friendly)
+
+Chest: Incline Smith press; incline bench-supported cable fly (upper); mid-chest cable fly (staggered stance); machine chest press; decline/upper cable fly for pump days.
+
+Shoulders: Machine lateral raise, cable crossover lateral, cable Y-raise, Smith shoulder press, rope face pull, reverse fly (stretch-biased).
+
+Back/Arms: Lat pulldown, kneeling single-arm low cable row, plate-loaded chest-supported row; rope bicep curl, drag curl, V-grip pushdown.
+
+Legs: Quad-biased hack squat, lying ham curl (stretch-biased), seated calf raise, walking DB lunges; optional adduction/abduction finisher.
+
+Prefer cable/machine/Smith; use DBs selectively (e.g., flat DB press, lunges).
+
+Reps, Tempo, Rest
+
+Rep ranges: presses/rows 6–12; flys/laterals/rear-delts 10–15(20); curls/pushdowns 10–15; legs: hack 8–12, lunges 10–12/leg, ham curl 10–12, calves 12–15.
+
+Tempo (tempo): default "3-1-1-0"; use "4-1-1-0" or "4-1-1-1" on stretch-biased flys, reverse flys, and lengthened lat work.
+
+Rest (rest_sec): compounds 90–120, isolations 60–90; allow time-efficient sequencing/supersets on small isolations.
+
+JSON Output Schema (per day)
+
+{
+  "day X": {
+    "day_type": "CHEST_FOCUS|SHOULDERS_FOCUS|BACK_ARMS|CHEST_SHOULDERS_PUMP|LEGS_FUNCTIONAL_RECOVERY",
+    "session_duration_min": 60,
+    "notes": "Chest/shoulders prioritized this week; use controlled eccentrics and machine/cable emphasis; avoid junk sets.",
+    "exercises": {
+      "Exercise Name": {
+        "movement_pattern": "e.g., incline Smith press; incline cable fly (upper); mid-chest cable fly; machine chest press; machine lateral raise; cable Y-raise; Smith shoulder press; rope face pull; lat pulldown; kneeling low cable row; plate-loaded chest-supported row; rope curl; drag curl; V-grip pushdown; hack squat (quad-biased); lying ham curl (stretch-biased); seated calf raise; walking DB lunges",
+        "equipment_preference": "cable|machine|smith|db",
+        "sets": 2,
+        "rep_range": "e.g., 6-10, 8-12, 10-15, or 12-15",
+        "tempo": "3-1-1-0",
+        "rest_sec": 90,
+        "actual_weight": null
+      }
+      /* Use sets=3 on primary presses/rows of the day; others sets=2. Keep total sets ~13–14. */
+    }
+  }
+}
+
+
+Constraints & Safeguards
+
+Do not invent 1RMs or prescribed weights; keep "actual_weight": null.
+
+Keep triceps on push days and biceps on pull day (avoid mixing triceps into Pull sessions).
+
+Ensure rear-delt + face pull appear at least 2×/week.
+
+Legs: one dedicated day; no heavy axial loading (no barbell back squats/deadlifts).
+
+Maintain multi-angle chest work each chest-involved day (stretch fly + press).
+
+Stay inside ~60 minutes via set counts, rests, and optional small-isolation supersets.
+
+Return only the JSON object.

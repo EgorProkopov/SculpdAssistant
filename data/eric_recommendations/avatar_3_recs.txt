@@ -1,0 +1,119 @@
+Notable Training Style Differences (AI vs. Eric)
+
+1. Sets & Volume Distribution
+
+AI style: Mostly 3 sets per movement; ~12 sets/session on many days; no weekly set budgeting; no week-to-week RIR progression.
+
+Eric style: 2–3 sets/exercise, ≤14 total sets/session under a 40-min cap; explicit RIR progression by week (2 → 1–2 → 0–1 → deload/taper).
+
+2. Exercise Selection / Novelty
+
+AI style: Standard PPL staples (DB presses, rows, curls, goblet squat/leg press); limited stretch-biased work; few guided-path options; no dedicated pullovers, ham curls, or quad extensions.
+
+Eric style: Stretch-biased, isolateral, guided-path emphasis (Smith deficit RDL, ham curl, hack squat, foam-roller quad extensions, pullovers, abduction). Movements chosen for ROM quality and fast setups.
+
+3. Muscle Group Structuring / Order
+
+AI style: Classic PUSH/PULL/LEGS with duplicated push/pull later in the week; priority (glute/ham) not consistently led first; accessories not clearly sequenced.
+
+Eric style: 5-day themed split: Legs (glute/ham) → Push → Pull → Legs (quad-dominant) → Upper-volume/mix. Lead with priority compounds, alternate push↔pull patterns intra-session, finish with isolations.
+
+4. Rest Times
+
+AI style: Mixed set_rest_time (90–120 s) plus a conflicting day-level rest_time of 60 s; tempo mostly 2–3-1-1-0 without rationale.
+
+Eric style: Rests sized to the 40-min budget (compounds ~120 s, isolations 60–90 s). 3–4 s eccentrics with 1-s stretch pause are standard to drive TUT.
+
+5. Back & Pull Days
+
+AI style: Lat pulldown + DB/cable rows; curls in two variants; no pullover or angle rotation; no upper-back vs lat bias separation; no chest-supported rows.
+
+Eric style: Clear lat-bias vs upper-back bias; uses standing rope/V-grip pullovers, incline cable rows (low origin), chest-supported DB rows; finishes with stretch-biased curls (incline cable, Zottman).
+
+6. Leg Days
+
+AI style: Goblet squat, leg press, abduction, calves; no hamstring curl, no RDL/hip thrust/split squat; little lengthened-range emphasis.
+
+Eric style: Two distinct lower days: glute/ham-dominant (Smith deficit RDL, seated ham curl, long-stride lunges, kickbacks) and quad-dominant (hack squat, stretch-biased extensions, deficit Bulgarian split squat) with a glute finisher.
+
+Training Style Prompt for AI
+
+“Generate a 5-day split in Eric’s style for an advanced lifter with glute/hamstring priority and a strict 40-minute session cap. Output valid JSON only.
+
+Session & Volume Rules
+
+Days: 5 ("day 1"…"day 5").
+
+Session cap: 40 minutes; ≤14 working sets/session.
+
+Sets per exercise: 2–3; cap total work to fit time.
+
+Include day theme:
+
+Day 1: Glute & Ham Dominant (Legs 1)
+
+Day 2: Push
+
+Day 3: Pull
+
+Day 4: Quad Dominant (Legs 2)
+
+Day 5: Upper Volume/Mixed
+
+Exercise Selection (pattern-first, stretch-biased)
+
+Favor guided-path / machine / cable for setup speed and ROM control; use Smith/barbell only where ROI is high.
+
+Mandatory coverage by day:
+
+Day 1: hip hinge (deficit RDL), ham curl (seated/lying), glute-biased press or long-stride lunge, glute kickback finisher.
+
+Day 2 (Push): incline press (Smith/machine), stretch-biased chest fly, lateral/front raise, overhead triceps.
+
+Day 3 (Pull): incline bench unilateral cable row (low origin), rope/V-grip pullover, chest-supported row, stretch-biased curls (incline cable), Zottman finisher.
+
+Day 4: hack squat (low/close stance), stretch-biased quad extension (foam roller), deficit Bulgarian split squat, hip thrust finisher.
+
+Day 5: machine lateral raise, incline DB press (slightly higher incline), V-grip cable pullover, triceps pushdown (V-grip), incline DB curl.
+
+Reps, Tempo, Rest, RIR
+
+Rep ranges: compounds 8–12, isolations 10–15 (lunges may be 20 steps total).
+
+Tempo: use "4-1-1-0" (or "3-1-1-0" for unilateral), allow "3-1-1-1" on lateral raise/isolations.
+
+Rest (rest_sec): compounds ~120, isolations 60–90; ensure total time ≤ 40 min.
+
+Add "rir_target" per exercise. Weekly guidance: W1: 2 RIR, W2: 1–2, W3: 0–1 (priority only), W4: deload/taper.
+
+JSON Output Schema (per day)
+
+{
+  "day X": {
+    "day_type": "LEGS_GLUTE_HAM|PUSH|PULL|LEGS_QUAD|UPPER_MIXED",
+    "session_duration_min": 40,
+    "notes": "Lead with priority compounds; alternate push/pull patterns; isolations at end.",
+    "exercises": {
+      "Exercise Name": {
+        "movement_pattern": "e.g., deficit RDL (hip hinge), seated ham curl, hack squat, incline press, unilateral cable row (low origin), rope pullover, lateral raise, hip thrust, abduction",
+        "equipment_preference": "machine|cable|smith|db|barbell",
+        "sets": 2,
+        "rep_range": "8-12",
+        "tempo": "4-1-1-0",
+        "rest_sec": 90,
+        "rir_target": 1,
+        "actual_weight": null
+      }
+      /* 4–6 exercises; keep total sets ≤14 */
+    }
+  }
+}
+
+
+Do not include 1RM or recommended weights; keep "actual_weight": null.
+
+Ensure lat-bias vs upper-back bias rotation on Pull day(s), and glute/ham vs quad separation across Legs days.
+
+Use stretch-biased variations where specified and keep setups fast.
+
+Return only the JSON object.

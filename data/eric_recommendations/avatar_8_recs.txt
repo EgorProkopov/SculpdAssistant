@@ -1,0 +1,130 @@
+Notable Training Style Differences (AI vs. Eric)
+
+1. Sets & Volume Distribution
+
+AI style: Flat 3× per lift for all movements; ~15 sets/session; no weekly budgeting; no bias to chest/back per session.
+
+Eric style: Chest + back get priority volume each day (typically 3× on primaries), legs kept to supporting 2×; ~13–14 total sets/session inside 60 min, with time-efficient sequencing (supersets when needed).
+
+2. Exercise Selection / Novelty
+
+AI style: Bench/DB presses, basic rows, leg press/goblet; minimal stretch-biased chest work; no bench-supported cable press, unilateral incline cable row, or rope pullover.
+
+Eric style: Pattern-led, cable/machine dominant with lengthened-range bias: incline cable fly, downward/decline fly; bench-supported cable press; supinated pulldown; incline unilateral cable row; rope pullover; deficit Bulgarian split squat; lying leg curl; quad-biased leg press.
+
+3. Muscle Group Structuring / Order
+
+AI style: Three generic FULL_BODY days with similar chest/back/leg mix; no push/pull bias per day; core sprinkled.
+
+Eric style: Rotating full-body with push/pull bias each day:
+
+Day 1: Chest (stretch → press), Lat focus, quad accessory.
+
+Day 2: Back thickness first, chest fly/press after, glute accessory.
+
+Day 3: Balanced push/pull + posterior chain (pullover + ham curl).
+Legs never dominate; they support chest/back priority.
+
+4. Rest Times
+
+AI style: Mostly 120 s (90 s on some); generic tempos (2-1-1-0 / 3-1-1-0); no time-cap logic.
+
+Eric style: Rests align to 60-min cap (~2.5 min/set incl. rest); strict 3-1-1-0 / 4-1-1-1 tempos to drive TUT; supersets used to stay on schedule.
+
+5. Back & Pull Days
+
+AI style: Lat row/pulldown repeats; no explicit lat vs upper-back split; no pullover; few bench-supported angles.
+
+Eric style: Daily lat + upper-back pairing (supinated pulldown + unilateral/bench-supported row); rope pullover appears on Day 3 for lat isolation without biceps.
+
+6. Leg Days
+
+AI style: Leg press/goblet volume (3×15) multiple days; no lying leg curl or deficit Bulgarian; leg work can dilute chest/back focus.
+
+Eric style: Low-fatigue support volume only: quad-biased leg press (2×), deficit Bulgarian (2×/leg), lying leg curl (2×)—placed last to preserve upper-body quality.
+
+Training Style Prompt for AI
+
+“Generate a 3-day full-body plan in Eric’s style for an intermediate lifter with chest & back emphasis, 60-minute sessions, and machine/cable preference. Output valid JSON only.
+
+Session Format & Weekly Structure
+
+Days: 3 — rotating full body with a push/pull bias each day.
+
+Day types (use exactly these):
+
+FULL_BODY_CHEST_LAT (Day 1)
+
+FULL_BODY_BACK_THICKNESS_CHEST_FLY_GLUTES (Day 2)
+
+FULL_BODY_BALANCED_PUSH_PULL_POSTERIOR (Day 3)
+
+session_duration_min: 60 each day.
+
+Sets per exercise: primaries 3, accessories 2.
+
+Target total sets/session: 13–14. Chest/back receive two movements each day (chest: stretch + press; back: lat + upper-back). Legs: 1 accessory (quad or ham/glute).
+
+Exercise Selection (pattern-first, stretch-biased)
+
+Chest: incline cable fly (stretch-biased), downward/decline fly, flat bench cable press (bench-supported), incline press (DB/Smith/BB).
+
+Back – Lat bias: supinated pulldown, rope pullover.
+
+Back – Upper-back thickness: plate-loaded chest-supported row, incline bench unilateral cable row (mid cable origin), upper-back rope row.
+
+Legs (support only): quad-biased leg press (low/narrow), deficit Bulgarian split squat (glute-biased), lying leg curl (stretch-biased).
+
+Prefer cables/machines; DB/BB only where specified.
+
+Reps, Tempo, Rest
+
+Rep ranges:
+
+Chest press: 6–10; chest fly: 10–12.
+
+Lat pulldown/rows: 10–12 (pullover 12–15).
+
+Legs: leg press 10–15; split squat 8–10/leg; lying curl 10–12.
+
+Tempo (tempo): use "3-1-1-0" for presses/rows; "4-1-1-0" for stretch-biased fly/lat work; "4-1-1-1" allowed on fly/pullover for peak squeeze.
+
+Rest (rest_sec): compounds 90–120, isolations 60–90. Use time-efficient sequencing; supersets optional but keep quality high.
+
+JSON Output Schema (per day)
+
+{
+  "day X": {
+    "day_type": "FULL_BODY_CHEST_LAT|FULL_BODY_BACK_THICKNESS_CHEST_FLY_GLUTES|FULL_BODY_BALANCED_PUSH_PULL_POSTERIOR",
+    "session_duration_min": 60,
+    "notes": "2 chest (stretch + press), 2 back (lat + upper back), 1 leg accessory; tempos control TUT; keep to 60 min.",
+    "exercises": {
+      "Exercise Name": {
+        "movement_pattern": "e.g., incline cable fly, incline bench press, flat bench cable press, supinated pulldown, incline unilateral cable row, plate-loaded chest-supported row, rope pullover, quad-biased leg press, deficit Bulgarian split squat, lying leg curl",
+        "equipment_preference": "cable|machine|smith|db|barbell",
+        "sets": 2,
+        "rep_range": "10-12",
+        "tempo": "4-1-1-0",
+        "rest_sec": 90,
+        "actual_weight": null
+      }
+      /* Use sets=3 on primary chest press and primary back move for the day; others sets=2.
+         Include exactly: 2 chest moves, 2 back moves, and 1 leg accessory (optionally +1 delt/arm if time allows, staying ≤14 sets). */
+    }
+  }
+}
+
+
+Constraints
+
+Do not include 1RM or suggested weights; keep "actual_weight": null.
+
+Ensure every day has: Chest (stretch + press) and Back (lat + upper-back).
+
+Legs are supporting volume, never more than 2× in a session.
+
+Use bench support on cable presses/rows where noted; prioritize lengthened-range selections.
+
+Keep total work inside 60 minutes (≈2.5 min/set including rest and transitions).
+
+Return only the JSON object.
