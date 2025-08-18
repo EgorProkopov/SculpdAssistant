@@ -36,6 +36,7 @@ def client(monkeypatch):
     app.state.train_weeks_templates = {}
     app.state.exercises_processor = object()
     app.state.training_program_examples_dir = None
+    app.state.eric_recommendations_path = None
 
     return TestClient(app)
 

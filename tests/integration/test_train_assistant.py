@@ -56,6 +56,7 @@ def assistant(monkeypatch):
         raw_scanner_data=scanner_data,
         train_weeks_templates=train_weeks_templates,
         exercises_processor=ex_proc,
+        eric_recommendations_path=str(base / "data" / "eric_recommendations" / "merged_recs.txt")
     )
 
 

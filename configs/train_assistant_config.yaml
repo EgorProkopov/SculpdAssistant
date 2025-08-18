@@ -21,6 +21,9 @@ train_assistant:
         
     Avatar examples:
       {avatars_examples}
+      
+    Eric recommendations:
+      {merged_recs}
     
     While generating program Ask yourself: 
       1. What is user's estimated workout time? (dictates # of sets) 
@@ -116,15 +119,18 @@ External information:
   Available Exercises (only choose exercises from these!): 
     {available_exercises}
 
-Avatar examples:
-  {avatars_examples}
+  Avatar examples:
+    {avatars_examples}
+  
+  Eric recommendations:
+    {merged_recs}
 
-    While generating program ask yourself: 
-      1. What is user's estimated workout time? (dictates # of sets) 
-      2. What are user's priority muscle groups? (lead each day with those) 
-      3. What’s user's frequency? (split strategy: FB vs PPL vs UL etc.) 
-      4. What’s user's level? (impacts load, movement complexity, RIR targets) 
-      5. How adaptable is user to variety? (some need more novelty; others less) 
+While generating program ask yourself: 
+    1. What is user's estimated workout time? (dictates # of sets) 
+    2. What are user's priority muscle groups? (lead each day with those) 
+    3. What’s user's frequency? (split strategy: FB vs PPL vs UL etc.) 
+    4. What’s user's level? (impacts load, movement complexity, RIR targets) 
+    5. How adaptable is user to variety? (some need more novelty; others less) 
 
 For each training day (where day_type not REST_DAY), fill in:
     • 'exercises': a dict of exercises. 

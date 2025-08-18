@@ -38,4 +38,5 @@ def create_train_assistant(raw_user_data: dict, raw_scanner_data: Optional[dict]
         train_weeks_templates=train_weeks_templates,
         exercises_processor=exercises_processor,
         training_program_examples_dir=os.getenv("TRAINING_PROGRAM_EXAMPLES_DIR"),
+        eric_recommendations_path=os.getenv("ERIC_RECOMMENDATIONS_PATH")
     )
