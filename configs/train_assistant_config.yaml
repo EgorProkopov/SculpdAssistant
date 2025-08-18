@@ -31,12 +31,15 @@ train_assistant:
       
   For each training day where day_type not REST_DAY, fill in:
     • 'exercises': a dict of exercises. 
+      Every exercise takes around 10 minutes. 
+      So, if workout_time is 30 minutes there will be 2-3 exercises. If workout time is 60 minutes there will be 5-6 exercises. If workout is 80 minutes there will be 7-8 exercises. 
       Body contains 'sets', 'counts', 'set_rest_time', 'actual_weight' and 'recommended_weight'. 
       Key 'sets' means number of sets on this exercise.
       Key 'counts' means number of repetitions per one set.
       Key 'set_rest_time' means the rest time  between two sets in seconds. Choose rest between 90 seconds, short rest for for smaller muscle groups (delts, triceps, biceps), 120 seconds for larger (chest, back, quads, hamstrings, glutes)
       Key 'actual_weight' should be null.
       Key 'recommended_weight' means the recommended weight based on scanner recommendations and user data. Weights must be in kilograms.
+      If exercise is bodyweight, set recommended_weight as 0.
       Choose the exercises that are, firstly, most suitable for the current DAY_TYPE, and secondly, that develop the body parts, specified by the user in user_data.
       Also, try to create balanced workouts for different muscle groups,
       It is important to:
@@ -80,10 +83,15 @@ train_assistant:
   5. Body of exercise should contain only 'sets', 'counts', 'set_rest_time', 'actual_weight' and 'recommended_weight' keys.
   Keys 'sets', 'counts', 'set_rest_time' should be integers, 'recommended_weight' keys should be float.
   'recommended_weight' keys should be measured in kilograms. 'actual_weight' should be null.
-  6. Focus on generating a diverse program on different muscles in current group. Training one muscle can be dangerous.
-  7. The training program must take no less time than the user specifies in workout_time.
-  8. Choose rest only between 90 seconds, short rest for for smaller muscle groups (delts, triceps, biceps), 120 seconds for larger (chest, back, quads, hamstrings, glutes).
-  
+  6. There could be only 2 to 3 sets of any given exercise.
+  7. Focus on generating a diverse program on different muscles in current group. Training one muscle can be dangerous.
+    Prevent overuse of any single muscle (no more than 2 consecutive exercises per group; alternate sagittal/frontal/transverse planes).
+  8. The training program must take no less time than the user specifies in workout_time.
+  9. Choose set_rest_time only between 90 seconds, short rest for for smaller muscle groups (delts, triceps, biceps), 120 seconds for larger (chest, back, quads, hamstrings, glutes).
+  10. Make the training plan non-boring: include 2–3 interesting movements per session 
+  (unilateral, multi-plane, tempo/pause variations; kettlebells, TRX, sled, battle ropes, farmer’s carry), 
+  cap the big three to ≤50% of volume, and provide purpose + a safe regression. 
+  11. Mix order of involved muscles.
   Produce the completed 7‑day plan as JSON.
   "
   next_week:
@@ -128,6 +136,7 @@ For each training day (where day_type not REST_DAY), fill in:
       Key 'set_rest_time' means the rest time  between two sets in seconds. Choose rest between 90 seconds, short rest for for smaller muscle groups (delts, triceps, biceps), 120 seconds for larger (chest, back, quads, hamstrings, glutes)
       Key 'actual_weight' means the weight from the previous training. In new program it should be null.
       Key 'recommended_weight' means the recommended weight based on feedback and previous week. Weights must be in kilograms.
+      If exercise is bodyweight, set recommended_weight as 0.
       If feedback is 'easy', increase the weight from previous week. If feedback is 'normal', dont change the weight.
       If feedback is 'hard', lower the weight.
       Choose the exercises that are, firstly, most suitable for the current DAY_TYPE, and secondly, that develop the body parts, specified by the user in user_data.
@@ -166,7 +175,7 @@ Explanations for each DAY_TYPE:
     If multiple PPL_DAY entries, do not repeat the same selection.
 
 Rules:
- 1. Only select exercises from Available Exercises.
+  1. Only select exercises from Available Exercises.
   2. Keep the exact JSON structure.  Output **only** valid JSON.
   3. Do not reorder days or change DAY_TYPE.
   4. Make sure explanations tie back to user data and age/scanner recommendations.
@@ -176,13 +185,13 @@ Rules:
   'recommended_weight' keys should be measured in kilograms. 'actual_weight' should be null.
   7. There could be only 2 to 3 sets of any given exercise.
   8. Focus on generating a diverse program on different muscles in current group. Training one muscle can be dangerous.
+     Prevent overuse of any single muscle (no more than 2 consecutive exercises per group; alternate sagittal/frontal/transverse planes).
   9. The training program must take no less time than the user specifies in workout_time.
   10. Choose set_rest_time only between 90 seconds, short rest for for smaller muscle groups (delts, triceps, biceps), 120 seconds for larger (chest, back, quads, hamstrings, glutes). Only 90 or 120 seconds.
   11. Make the training plan non-boring: include 2–3 interesting movements per session 
   (unilateral, multi-plane, tempo/pause variations; kettlebells, TRX, sled, battle ropes, farmer’s carry), 
   cap the big three to ≤50% of volume, and provide purpose + a safe regression. 
-  12. Prevent overuse of any single muscle (no more than 2 consecutive exercises per group; alternate sagittal/frontal/transverse planes).
-  13. Mix order of involved muscles.
+  12. Mix order of involved muscles.
 
 Produce the completed 7‑day plan as JSON.
 "
