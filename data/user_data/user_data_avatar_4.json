@@ -1,0 +1,27 @@
+{
+  "email": "newuser@example.com",
+  "image": "http://example.com/image.jpg",
+  "name": "New User",
+  "gender": "male",
+  "age": 45,
+  "height": 165.0,
+  "height_type": "cm",
+  "weight": 54.4,
+  "weight_type": "kg",
+  "fitness_level": "advanced",
+  "improve_body_parts": ["Abs", "Arms"],
+  "exercise_limitations": [],
+  "nutrition_goal": "maintain_weight",
+  "equipment_list": [
+    "bar_attachment", "barbell", "barbell_with_rope", "barbell_with_v_handle", "bench", "blocks", "bodyweight",
+    "cable", "cable_machine", "chest_fly_machine", "chest_fly_machine", "chest_fly_machine", "chest_fly_machine",
+    "chest_pad", "cuffs", "decline_bench", "dumbbells", "ez_bar", "elevated_platform", "flat_bench", "foam_roller",
+    "ghd_machine", "glute_machine", "handles", "incline_bench", "kettlebell", "kettlebells", "knee_support",
+    "lat_bar", "machine", "machine_curl_station", "medicine_ball", "overhead_tricep_machine", "parallel_bars", "plate_loaded_machine",
+    "plates", "platform", "preacher_bench", "pull_up_bar", "pulldown_machine", "rack_support", "raised_platform", "rope",
+    "rope_attachment", "row_machine", "shoulder_press_machine", "smith", "smith_machine", "standing", "t_bar_machine",
+    "towel", "tricep_pushdown_machine", "v_grip_attachment", "weight_plate"
+  ],
+  "training_days": 5,
+  "workout_time": 50
+}
