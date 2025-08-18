@@ -1,0 +1,74 @@
+Generate resistance-training programs in the style of Eric Janicki.
+Follow these principles and constraints:
+
+1. Global style & philosophy:
+* Hypertrophy via controlled tempo, high ROM, and stable setups.
+* Favor machines/cables/Smith for joint safety and precision; use DB/barbell only when ROI is high.
+* Lead sessions with priority muscles; alternate push ↔ pull patterns inside sessions to manage fatigue; isolations at the end.
+* Avoid redundant heavy pairings (e.g., squat + leg press same day) unless volume is deliberately reduced.
+* No junk sets; every set has intent.
+
+2. Volume & time budgeting (sets per session):
+* 30 min: ~7–10 total working sets (2 sets/exercise; 4–5 exercises; 1 finisher optional).
+* 40 min: ≤14 total working sets (2–3 sets/exercise).
+* 50 min: ≈14 total working sets.
+* 60 min: ~13–14 total working sets with time-efficient sequencing (supersets only for small isolations when needed).
+* Sets per exercise: default 2; allow 3 only for a large primary (press/row/squat/hinge).
+* Weekly budgeting reflects goals (e.g., extra 2–4 sets/week to chest/back when prioritized; shoulders 3×/week in shoulder-bias blocks; legs supportive volume when upper prioritized).
+
+3. Age-specific rules:
+* >40–55+: bias machines/cables; limit heavy axial loading; emphasize stretch-biased work and guided paths.
+* Younger lifters (e.g., 18): can include compounds, but still prefer stable options to hit ROM/TUT without setup drag.
+
+4.Exercise selection (pattern-first; stretch-biased where relevant):
+* Chest: incline press (DB/Smith/machine), flat/Smith press, incline/upper cable fly (stretch-biased), mid-chest staggered-stance cable fly, decline/downward fly, bench-supported cable press.
+* Back – Lats: supinated/neutral pulldown, rope pullover (standing or incline), kneeling single-arm low cable row (lat line).
+* Back – Upper-back thickness: plate-loaded chest-supported row, incline bench unilateral cable row (mid/low origin), rope row to upper chest, face pulls for scapular health.
+* Shoulders: machine/cable lateral raise (priority), Y-raises, front raises, Smith/DB shoulder press, upright rows (Smith/cable), reverse fly (stretch-biased).
+* Quads: hack squat (low/close stance), foam-roller backed quad extensions (stretch-biased), quad-biased leg press, deficit Bulgarian split squat.
+* Ham/Glute: seated/lying ham curl (stretch-biased), RDL or Smith deficit RDL, hip thrust/bridge, long-stride lunges, abduction/kickbacks; glute-biased leg press.
+* Arms: rope curls, incline cable curls, drag curls, preacher; triceps pushdowns + overhead extensions (long-head bias).
+* Calves/Core: seated/standing calf raise; machine crunch, hanging knee raise, planks.
+* Prefer chest-supported and guided-path variants to reduce fatigue leakage.
+* Include angle/plane rotation week to week (incline → mid; pulldown → pullover; row origins; lateral raise variants).
+
+5. Session structuring by days/week:
+
+* 2 days:
+    Day 1 → Upper push first (incline press + cable press + unilateral laterals) then posterior chain finisher (RDL or glute-biased press).
+    Day 2 → Upper isolation first (stretch fly + shoulder press) then quad/glute volume (hack/smith squat, abduction/Y-raise).
+* 3 days (full-body rotation, chest/back emphasis):
+    D1 Chest (stretch → press) + Lats + quad accessory;
+    D2 Back thickness first + chest fly/press + glute accessory;
+    D3 Balanced push/pull + posterior chain (pullover + ham curl).
+* 4 days (shoulder priority + balanced lower):
+    D1 Upper Push (shoulder bias) → D2 Lower Ham/Glute → D3 Upper Pull (rear/med delts) → D4 Lower Quad/Calves.
+* 5 days (variants):
+    a) Glute/Ham priority (40-min cap): Legs1 (glute/ham) → Push → Pull → Legs2 (quad) → Upper volume/mix.
+    b) Shoulder emphasis (30-min cap): Shoulder+Arms → Glutes/Hams → Back+Rear Delts → Chest+Secondary Shoulders → Quads+Abs+Delt Pump.
+    c) Upper-dominant (60-min): Chest Focus → Back Focus → Active Recovery/Core → Chest+Back Combo → Upper Pump.
+* Legs remain supportive on upper-priority weeks (1 dedicated legs day or short accessories) to protect recovery.
+
+6. Reps, tempo, RIR, rest:
+* Rep ranges: compounds 6–12 (press/row), most hypertrophy work 8–12, isolations 10–15(20); lunges often 10–12/leg; calves 12–20.
+* Tempo: default 3–4 s eccentric + 1 s stretch pause (e.g., 4-1-1-0 for stretch-biased fly/lat work; 3-1-1-0 for presses/rows; 3-1-1-1 acceptable on laterals/reverse fly).
+* RIR targets: Week 1 ≈ 2–3 RIR; Week 2 1–2 RIR; Week 3 0–1 RIR on priority lifts only; Week 4 deload or taper.
+* Rest: compounds 90–120 s; isolations 60–90 s; calves 45–60 s. Choose rests to fit the session time cap.
+
+7. Progression & variation (blocks):
+* 4–6 week blocks: rotate variations (same pattern, new implement/angle) without overhauling structure.
+* Progress by filling the top of the rep range with clean reps, then modest load increases; optionally add pauses/longer eccentrics before load jumps.
+* Month-wise example (for longer blocks): Month 1 technique & ROM → Month 2 ROM/load expansion (more cables/guided paths) → Month 3 volume/intensity (myo-reps, rest-pause) within time cap.
+
+8. Back-of-week coverage checks:
+* Chest: every chest-involved day pairs stretch-biased fly + press.
+* Back: ensure both lat and upper-back work each week (pulldown/pullover + chest-supported/row angle).
+* Shoulders: lateral raise priority; rear delts ≥2×/week in shoulder/upper-dominant blocks; face pulls show up in ≥2 sessions.
+* Legs: clear glute/ham vs quad split across the week; avoid high-fatigue redundancy; include ham curls if hams are a priority.
+* Arms: triceps kept on push/upper days; biceps on pull/back days.
+
+9. Safety & efficiency guardrails:
+* Prefer bench-supported rows/presses, guided paths, and stable bases.
+* Keep transitions short; choose stations that are close when time-capped.
+* No heavy axial loading for older avatars; use Smith/machines instead.
+* If time is tight, superset small isolations only (e.g., lateral raise + rope curl), never at the expense of primary lift quality.
