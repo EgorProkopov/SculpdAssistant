@@ -1,45 +1,56 @@
-5‑Day Advanced Split, 40min
+### Profile
+Age 22, 6'2", 180 lb.
+Fitness level: Advanced.
+Focus: Glutes & Hamstrings (with balanced upper-body).
+Frequency: 5 days/week.
+Philosophy: mechanical tension, lengthened-range bias, high execution quality;
+session cap 40 min.
+Weekly RIR progression (2 → 0–1 on priority lifts; deload/taper in Week 4).
 
-Profile: 22 years old, 1.88m /81.65kg, advanced, glute and ham priority.
+### Workout duration
+40 minutes per session (cap).
 
-Weekly focus:
+### Training program (5-day split)
+Day 1 — Glute/Ham Dominant (Legs 1)
+Smith deficit RDL 3×8–10;
+Leg press 3×10–12;
+Seated ham curl 2×10–12;
+DB walking lunge 2×20 steps;
+Glute kickbacks 1×12–15/leg.
 
-Glute/Ham legs2. Push3. Pull4. Quad legs5. Upper‑volume.
+Day 2 — Push
+Incline Smith press 3×8–10;
+Stretch-biased chest fly 2×10–12;
+Cable Y-/front raise 2×10–12;
+Rope OH triceps 2×10–12;
+Machine lateral raise 2×12–15.
 
-Set‑up: 2–3sets/ex; 14working sets max per session; eccentrics 3‑4s.
+Day 3 — Pull
+Incline bench unilateral cable row 3×8–10;
+Standing rope pullover 2×12–15;
+Chest-supported dual DB row 2×10–12;
+Incline bench stretch-biased cable curl 2×10–12;
+Seated Zottman 1×10–12.
 
-Day1 (Glute/Ham): deficit SmithRDL 3×8‑10 → leg‑press 3×10‑12 → seated curl 2×10‑12 → DB lunge 2×20steps → kickback 1×12‑15/leg.
+Day 4 — Quad-Dominant (Legs 2) + Glute Finisher
+Hack squat 3×8–10; Stretch-biased quad extension 2×10–15;
+Deficit Bulgarian split squat 2×10–12/leg;
+Hip thrust 2×10–12;
+Optional glute bridge iso 1×30–45s.
 
-Day2 (Push): incline Smith 3×8‑10 → stretch fly 2×10‑12 → Y‑raise 2×10‑12 → rope OH‑triceps 2×10‑12 → machine lat‑raise 2×12‑15.
+Day 5 — Upper Volume
+Machine lateral raise 3×12–15;
+Incline DB press 2×10–12;
+Standing V-grip cable pullover 2×12–15;
+Cable crossover triceps pushdown 2×12–15;
+Incline bench DB curl (alt.) 2×10–12.
 
-Day3 (Pull): unilateral cable row 3×8‑10 → rope pullover 2×12‑15 → chest‑supported DB row 2×10‑12 → stretch curl 2×10‑12 → seated Zottman 1×10‑12.
+### Estimated time
+Plan guidance: ~2.5 min per working set;
+~14 sets/session max under 40-min cap.
+Listed days count ~10–11 sets ⇒ ~25–28 min working time, comfortably within the 40-min cap (extra time covers transitions and machine setup).
 
-Day4 (Quad+Glute finish): hack squat 3×8‑10 → stretch quad‑ext 2×10‑15 → deficit split squat 2×10‑12/leg → hip thrust 2×10‑12 → glute‑bridge iso 1×30‑45s.
-
-Day5 (Upper volume): machine lat‑raise 3×12‑15 → incline DB press 2×10‑12 → cable pullover 2×12‑15 → V‑grip push‑down 2×12‑15 → incline DB curl 2×10‑12.
-
-Progression: Week12RIR→Week30–1RIR; deload Week4.
-
-
-Training Philosophy:
-This 5-day split is optimized for advanced-level training with a clear priority on glutes and hamstrings, while still delivering balanced upper-body development. The structure prioritizes:
-    1.Mechanical tension over fatigue chasing
-    2.Biasing lengthened ranges of motion (especially for glutes/hams)
-    3.High execution quality using advanced movement selection
-    4.Session cap of 40 minutes → maximizing stimulus-to-time ratio
-
-
-Time Constraint Strategy (40-Minute Cap)
-    1. Assume ~2.5 mins per working set (including rest)
-    2. ~14 total working sets/session (max)
-    3. Each session will include:
-        3.1 1–2 priority compound movements
-        3.2 2–3 secondary hypertrophy lifts
-        3.3 Optional short finisher for volume or pump
-
-
-Movement Selection Criteria
-1. Prioritize stretch-biased and isolateral movements
-2. Use variations that eliminate unnecessary setup or fatigue (machines, cables, chest-supported, or guided path)
-3. Pull from the provided exercise library — all movements will come from what you’ve confirmed access to
-
+### Notes
+Strict tempo (3–4 s ecc, 1-s stretch pause),
+stretch-biased/isolateral movements, machine/cable preference to reduce unnecessary fatigue;
+progressive effort model across weeks.

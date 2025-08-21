@@ -1,0 +1,128 @@
+Notable Training Style Differences (AI vs. Eric)
+
+1. Sets & Volume Distribution
+
+AI style: Defaults to 3 sets on nearly every lift; most sessions run 9–12+ working sets, with no explicit per-day cap or weekly budgeting.
+
+Eric style: 2 sets per movement with occasional 1-set finishers; tight 30-min cap with ~5–6 total working sets/day; every set has intent (no junk volume).
+
+2. Exercise Selection / Novelty
+
+AI style: DB/Smitḥ staples (presses, rows, curls) and generic leg machines; minimal rear-delt, abduction, kickback, Y-raise, or rope variants; little angle/plane diversity.
+
+Eric style: Shoulder-centric library and joint-friendly machines/cables: Smith OHP, crossover cable laterals, Y-raises, front raises, rope curls/pushdowns; lower body uses deficit Smith RDL, GHD, hip abduction, kickbacks; quads get pendulum squat, foam-roller quad extensions.
+
+3. Muscle Group Structuring / Order
+
+AI style: 6-day PPL with a single legs emphasis and duplicated upper days; no systemic bias to shoulders across the week.
+
+Eric style: 5-day themed split with primary shoulder emphasis (Days 1, 4, 5), a posterior-chain day (Day 2), and quad focus (Day 5); arms integrated 2–3×/week; rear delts embedded on Pull day.
+
+4. Rest Times
+
+AI style: Per-exercise rests (90–120 s) plus a conflicting day-level rest_time: 60; no pacing logic tied to a time cap; inconsistent tempo cues.
+
+Eric style: Rests sized to a 30-min session (≈2.5 min per set including rest) with controlled eccentrics (3–4 s) + 1-s stretch pause to raise TUT without inflating volume; optional supersets for efficiency.
+
+5. Back & Pull Days
+
+AI style: Pulldown + seated row + curls; no rope pulldown/pullover, limited chest-supported work; rear delts underemphasized.
+
+Eric style: Angle and tissue biasing: incline chest-supported upper-back rope row, kneeling rope pulldown, reverse fly (stretch-biased); single-arm cable rows; optional forearm/biceps isolation finisher.
+
+6. Leg Days
+
+AI style: Leg press + seated ham curl + glute bridge; lacks hinge deficits, GHD, abduction/kickbacks, or quad-specific stretch work; calves sporadic.
+
+Eric style: Two lower emphases:
+
+Glutes/Hams: deficit Smith RDL, GHD, abduction, kickbacks, standing calf.
+
+Quads/Delts pump: pendulum squat, foam-roller quad extensions, cable upright/front raise accessories.
+
+Training Style Prompt for AI
+
+“Generate a 5-day program in Eric’s style for Avatar 5 with primary shoulder emphasis and 30-minute sessions. Use machine/cable-dominant, joint-friendly movements, slightly higher reps (10–15), and strict time control. Output valid JSON only.
+
+Weekly Split & Session Rules
+
+Days: 5 — use these day_type values and themes:
+
+SHOULDER_ARMS — Day 1 (primary shoulder bias + arms)
+
+GLUTES_HAMS — Day 2 (posterior chain)
+
+BACK_REAR_DELTS — Day 3
+
+CHEST_SHOULDERS_SECONDARY — Day 4 (secondary shoulder bias)
+
+QUADS_ABS_DELTS_PUMP — Day 5 (quad focus + delt pump + abs)
+
+session_duration_min: 30 for every day.
+
+Working sets/day: 5–6 total (strict).
+
+Sets per exercise: default 2; allow 1-set finisher on some days.
+
+Prioritize fast setups (machines/cables) to protect the time cap.
+
+Exercise Selection (shoulder-centric, stretch-biased)
+
+Shoulders across the week: Smith OHP, crossover cable laterals, Y-raises, front raises, upright rows (Smith/cable).
+
+Posterior chain: deficit Smith RDL, GHD (ham focus), hip abduction, glute kickbacks, standing calves.
+
+Back/Rear delts: incline chest-supported upper-back rope row, single-arm cable row, kneeling rope pulldown, reverse fly (stretch-biased); optional wrist curl finisher.
+
+Chest/secondary shoulders: incline Smith press, upper-chest bench-supported cable fly, flat-bench cable laterals, incline DB OH triceps.
+
+Quads/abs/pump: pendulum squat, foam-roller quad extensions, front-facing front cable raise, abduction machine, rope incline upright row, core (crunches/KR).
+
+Reps, Tempo, Rest
+
+Rep ranges: compounds 8–12; isolations 12–15; calves 10–12; abs 15–20 or timed.
+
+Tempo (tempo): default "4-1-1-0" (or "3-1-1-1" on lateral/iso work).
+
+Rest (rest_sec): compounds 90–120, isolations 60–90.
+
+Keep total working sets ≤6 and choose 4–5 exercises/day accordingly.
+
+JSON Output Schema (per day)
+
+{
+  "day X": {
+    "day_type": "SHOULDER_ARMS|GLUTES_HAMS|BACK_REAR_DELTS|CHEST_SHOULDERS_SECONDARY|QUADS_ABS_DELTS_PUMP",
+    "session_duration_min": 30,
+    "notes": "Time-capped, machine/cable bias; controlled eccentrics; no junk sets.",
+    "exercises": {
+      "Exercise Name": {
+        "movement_pattern": "e.g., Smith OHP, crossover cable lateral raise, Y-raise, rope curl, cable pushdown, deficit Smith RDL, GHD, hip abduction, kickback, chest-supported rope row, kneeling rope pulldown, reverse fly, pendulum squat, foam-roller quad extension, front cable raise, abs",
+        "equipment_preference": "machine|cable|smith|db",
+        "sets": 2,
+        "rep_range": "10-15",
+        "tempo": "4-1-1-0",
+        "rest_sec": 90,
+        "actual_weight": null
+      }
+      /* Include 4–5 exercises; cap total working sets at 5–6/day using 2-set blocks + optional 1-set finisher */
+    }
+  }
+}
+
+
+Constraints & Coverage
+
+Shoulders appear on Days 1, 4, and 5 (primary, secondary, pump).
+
+Arms included on ≥2 days (prefer rope curls/pushdowns; add incline DB OH triceps on Day 4).
+
+Posterior chain covered on Day 2 (RDL/GHD/abduction/kickback/calf).
+
+Quads + abs featured Day 5 (pendulum + quad extension + core).
+
+Avoid redundant heavy pairings that slow setup; supersets permitted for small isolations if needed.
+
+Do not include 1RM or recommended weights; keep "actual_weight": null.
+
+Return only the JSON object.

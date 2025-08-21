@@ -1,0 +1,127 @@
+Notable Training Style Differences (AI vs. Eric)
+
+1. Sets & Volume Distribution
+
+AI style: Uniform 3 sets on nearly every movement; many days hit 15+ sets, risking time creep. No weekly set budgeting or circuit constraints.
+
+Eric style: 2–3 sets/exercise, ≤14 sets/session under a 40-min cap; sessions built from 1–2 priority compounds + 2–3 secondaries + optional short finisher.
+
+2. Exercise Selection / Novelty
+
+AI style: Standard PPL staples with lots of DB/smith presses, rows, curls; minimal stretch-biased choices; little core work despite “arm focus”.
+
+Eric style: Safe, stable, stretch-biased and isolateral picks (machine chest press/fly, seated ham curl, step-ups, quad extensions, rope pullovers). Frequent machine/cable usage to control ROM and setup time.
+
+3. Muscle Group Structuring / Order
+
+AI style: 6-day PPL with duplicated Pull/Legs and only one Push day; priority areas (arms, core) not consistently led or sprinkled across days.
+
+Eric style: 5-day themed split:
+
+Full Body (Arm+Core) → 2) Lower (Glute/Stability) → 3) Upper Push+Arms → 4) Full-Body Circuit+Core → 5) Upper Pull+Arms.
+Arms/core are intentionally sprinkled across most sessions.
+
+4. Rest Times
+
+AI style: Per-exercise set_rest_time 90–120 s but conflicting day rest_time: 60; no time-budget logic; no consistent tempo standard.
+
+Eric style: Rests implicitly sized to ≤40 min total (≈2.5 min/set incl. rest). 3–4 s eccentrics + 1-s stretch pause as default tempo to drive TUT without inflating set count.
+
+5. Back & Pull Days
+
+AI style: Pulldowns/rows + many curl variants; no pullover emphasis; limited angle rotation; few chest-supported options.
+
+Eric style: Angle diversity & biasing (rope/V-grip pullovers, plate-loaded/seated rows, incline cable rows) plus stretch-biased curls; mixes arms into pull days deliberately.
+
+6. Leg Days
+
+AI style: Heavy lower-body volume (leg press, hack squat, RDLs, goblet squat) but no clear glute/quad day separation; calves tacked on; core absent.
+
+Eric style: Two distinct lower focuses:
+
+Glute/Stability (glute bridge, step-ups, ham curl, light-mod leg press, plank)
+
+Quad-dominant + glute finisher (hack squat, stretch-biased extensions, deficit Bulgarians, hip thrust, optional iso-hold).
+
+Training Style Prompt for AI
+
+“Generate a 5-day program in Eric’s style for an avatar prioritizing arms & core with glute/leg stability, using safe machine/cable movements, slightly higher reps (10–15), and a strict 40-minute session cap. Output valid JSON only.
+
+Weekly Split & Session Rules
+
+Days: 5 ("day 1"…"day 5").
+
+Themes:
+
+Day 1: Full Body (Arm + Core Focus)
+
+Day 2: Lower Body (Glute/Leg Stability)
+
+Day 3: Upper Body (Push + Arms)
+
+Day 4: Full Body Circuit + Core
+
+Day 5: Upper Body (Pull + Arms)
+
+session_duration_min: 40 each day.
+
+Working sets/session: ≤14.
+
+Sets per exercise: 2–3; allow a single short finisher when needed.
+
+Exercise Selection (stable, stretch-biased, fast setup)
+
+Favor machines/cables; use DB/smith only if they don’t slow setup.
+
+Include these patterns across the week (examples in parentheses):
+
+Pull: seated/plate-loaded row, rope/V-grip pullover, pulldown/assisted pull-up.
+
+Push: incline machine/smith press, stretch-biased cable fly, lateral/front raises.
+
+Lower (stability): glute bridge machine, assisted step-ups, seated ham curl, light-moderate leg press.
+
+Quad day: hack squat, stretch-biased quad extension (foam-roller backed), deficit Bulgarian split squat, hip thrust finisher.
+
+Arms/Core sprinkled most days: rope curls, preacher/bench-supported curls, triceps pushdowns/overhead, machine crunches, planks, hanging knee raises.
+
+Reps, Tempo, Rest
+
+Rep ranges: compounds 8–12, isolations 12–15 (core 15–20 or timed).
+
+Tempo: default "3-1-1-0" or "4-1-1-0" (eccentric 3–4 s + 1-s stretch pause).
+
+rest_sec: compounds 90–120, isolations 60–90 (keep total time ≤40 min).
+
+JSON Output Schema (per day)
+
+{
+  "day X": {
+    "day_type": "FULL_BODY_ARMS_CORE|LOWER_STABILITY|UPPER_PUSH_ARMS|FULL_BODY_CIRCUIT_CORE|UPPER_PULL_ARMS",
+    "session_duration_min": 40,
+    "notes": "Safe machine/cable bias; stretch-focused tempo; arms/core sprinkled.",
+    "exercises": {
+      "Exercise Name": {
+        "movement_pattern": "e.g., machine chest press, seated row, rope pullover, glute bridge machine, hack squat, quad extension (stretch-biased), step-up, lateral raise, rope curl, triceps pushdown, machine crunch, plank",
+        "equipment_preference": "machine|cable|smith|db",
+        "sets": 2,
+        "rep_range": "10-15",
+        "tempo": "3-1-1-0",
+        "rest_sec": 90,
+        "actual_weight": null
+      }
+      /* 5–7 exercises; keep total working sets ≤14 */
+    }
+  }
+}
+
+
+Constraints
+
+Do not include 1RM or recommended weights; keep "actual_weight": null.
+
+Ensure arms & core appear in ≥3 sessions, and lower stability work uses safe, guided paths.
+
+Use stretch-biased variations where specified and avoid redundant heavy pairings that inflate setup time.
+
+Return only the JSON object.

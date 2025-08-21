@@ -214,14 +214,6 @@ prev_week = {
 feedback_key = "normal"
 
 payload = {
-    "user_info": user_info_json,
-    "scanner_info": scanner_info_json,
-    # "prev_week": prev_week,
-    # "feedback_key": feedback_key
-}
-
-
-payload = {
   "scanner_info": {
     "disclaimer": "This analysis is based solely on provided data and is for simulation purposes only. It should not replace professional medical or fitness advice.",
     "physical_attributes": {
@@ -373,5 +365,15 @@ payload = {
   }
 }
 
-resp = requests.post("https://a9008069abc1.ngrok-free.app//generate_first_week", json=payload)
-print(resp.json())
+payload = {
+    "user_info": user_info_json,
+    "scanner_info": scanner_info_json,
+    "prev_week": prev_week,
+    "feedback_key": feedback_key
+}
+
+
+
+if __name__ == "__main__":
+  resp = requests.post("https://5c398f0bce76.ngrok-free.app//generate_next_week", json=payload)
+  print(resp.json())

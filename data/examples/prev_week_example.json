@@ -1,0 +1,249 @@
+{
+  "day 1": {
+    "day_type": "PUSH",
+    "exercises": {
+      "Incline DB Press": {
+        "sets": 3,
+        "counts": 10,
+        "set_rest_time": 180,
+        "actual_weight": 40.0,
+        "recommended_weight": 35.0
+      },
+      "Flat DB Press": {
+        "sets": 3,
+        "counts": 10,
+        "set_rest_time": 180,
+        "actual_weight": 35.0,
+        "recommended_weight": 31.5
+      },
+      "Machine Fly": {
+        "sets": 3,
+        "counts": 12,
+        "set_rest_time": 180,
+        "actual_weight": 45.0,
+        "recommended_weight": 40.5
+      },
+      "DB Shoulder Presses": {
+        "sets": 2,
+        "counts": 10,
+        "set_rest_time": 180,
+        "actual_weight": 20.0,
+        "recommended_weight": 18.0
+      },
+      "Cable Rope Pushdowns": {
+        "sets": 2,
+        "counts": 12,
+        "set_rest_time": 120,
+        "actual_weight": 25.0,
+        "recommended_weight": 22.5
+      }
+    },
+    "notes": "Perform all reps with a controlled tempo (3-1-1-0). Ensure full range of motion and maintain proper form throughout each exercise.",
+    "explanations": "Selected exercises focus on chest, shoulders, and triceps to align with PUSH day. Incorporated machine flys to prioritize joint longevity and reduce complexity, addressing previous week's high intensity feedback.",
+    "rest_time": 240
+  },
+  "day 2": {
+    "day_type": "PULL",
+    "exercises": {
+      "Lat Pulldown": {
+        "sets": 3,
+        "counts": 10,
+        "set_rest_time": 180,
+        "actual_weight": 60.0,
+        "recommended_weight": 54.0
+      },
+      "Seated Lat Bar Row": {
+        "sets": 3,
+        "counts": 10,
+        "set_rest_time": 180,
+        "actual_weight": 50.0,
+        "recommended_weight": 45.0
+      },
+      "Machine Tricep Pushdowns": {
+        "sets": 2,
+        "counts": 12,
+        "set_rest_time": 120,
+        "actual_weight": 30.0,
+        "recommended_weight": 27.0
+      },
+      "Hammer Curls": {
+        "sets": 2,
+        "counts": 12,
+        "set_rest_time": 120,
+        "actual_weight": 15.0,
+        "recommended_weight": 13.5
+      }
+    },
+    "notes": "Maintain a controlled tempo (3-1-1-0) on all lifts. Focus on squeezing the back muscles during the pull movements.",
+    "explanations": "Exercises selected target the back and biceps effectively while incorporating machine-based movements to enhance joint longevity and reduce intensity, addressing last week's hard feedback.",
+    "rest_time": 240
+  },
+  "day 3": {
+    "day_type": "LEGS",
+    "exercises": {
+      "Leg Press": {
+        "sets": 3,
+        "counts": 12,
+        "set_rest_time": 180,
+        "actual_weight": 100.0,
+        "recommended_weight": 90.0
+      },
+      "Goblet Squat": {
+        "sets": 3,
+        "counts": 10,
+        "set_rest_time": 180,
+        "actual_weight": 30.0,
+        "recommended_weight": 27.0
+      },
+      "Standing Calf Raise Machine": {
+        "sets": 3,
+        "counts": 15,
+        "set_rest_time": 120,
+        "actual_weight": 50.0,
+        "recommended_weight": 45.0
+      },
+      "Glute Bridge Machine": {
+        "sets": 2,
+        "counts": 12,
+        "set_rest_time": 120,
+        "actual_weight": 60.0,
+        "recommended_weight": 54.0
+      },
+      "Machine Press": {
+        "sets": 2,
+        "counts": 10,
+        "set_rest_time": 240,
+        "actual_weight": 40.0,
+        "recommended_weight": 36.0
+      }
+    },
+    "notes": "Execute each squat and leg press with a controlled tempo (3-1-1-0) to enhance joint longevity. Ensure full extension on all movements.",
+    "explanations": "Focused on leg development with a balanced approach to quads, hamstrings, and calves. Incorporated machine exercises to support joint health and reduce workout intensity as per feedback.",
+    "rest_time": 240
+  },
+  "day 4": {
+    "day_type": "PUSH",
+    "exercises": {
+      "Incline Smith Machine Press": {
+        "sets": 3,
+        "counts": 10,
+        "set_rest_time": 180,
+        "actual_weight": 50.0,
+        "recommended_weight": 45.0
+      },
+      "Flat Smith Machine Press": {
+        "sets": 3,
+        "counts": 10,
+        "set_rest_time": 180,
+        "actual_weight": 45.0,
+        "recommended_weight": 40.5
+      },
+      "Machine Fly": {
+        "sets": 2,
+        "counts": 12,
+        "set_rest_time": 180,
+        "actual_weight": 40.0,
+        "recommended_weight": 36.0
+      },
+      "DB Overhead Extension": {
+        "sets": 2,
+        "counts": 12,
+        "set_rest_time": 120,
+        "actual_weight": 20.0,
+        "recommended_weight": 18.0
+      },
+      "DB Seated Lateral Raises": {
+        "sets": 2,
+        "counts": 15,
+        "set_rest_time": 120,
+        "actual_weight": 12.0,
+        "recommended_weight": 10.8
+      }
+    },
+    "notes": "Focus on a controlled tempo (3-1-1-0) for all exercises. Engage the core to maintain stability during pressing movements.",
+    "explanations": "Selected exercises emphasize chest, shoulders, and triceps with a mix of machine and dumbbell movements to balance volume and reduce overall intensity, catering to user feedback.",
+    "rest_time": 240
+  },
+  "day 5": {
+    "day_type": "PULL",
+    "exercises": {
+      "Supinated Pulldown": {
+        "sets": 3,
+        "counts": 10,
+        "set_rest_time": 180,
+        "actual_weight": 55.0,
+        "recommended_weight": 49.5
+      },
+      "Single Arm DB Row": {
+        "sets": 3,
+        "counts": 10,
+        "set_rest_time": 180,
+        "actual_weight": 25.0,
+        "recommended_weight": 22.5
+      },
+      "Machine Tricep Pushdowns": {
+        "sets": 2,
+        "counts": 12,
+        "set_rest_time": 120,
+        "actual_weight": 28.0,
+        "recommended_weight": 25.2
+      },
+      "Hammer Curls": {
+        "sets": 2,
+        "counts": 12,
+        "set_rest_time": 120,
+        "actual_weight": 14.0,
+        "recommended_weight": 12.6
+      }
+    },
+    "notes": "Maintain a controlled tempo (4-1-1-0) and focus on muscle contraction during each pull.",
+    "explanations": "Focused on back and biceps with exercises that ensure muscle engagement and joint safety. Reduced volume and weight to accommodate previous high-intensity feedback.",
+    "rest_time": 240
+  },
+  "day 6": {
+    "day_type": "LEGS",
+    "exercises": {
+      "Leg Press": {
+        "sets": 3,
+        "counts": 12,
+        "set_rest_time": 180,
+        "actual_weight": 95.0,
+        "recommended_weight": 85.5
+      },
+      "Deficit Bulgarian DB Split Squats": {
+        "sets": 3,
+        "counts": 10,
+        "set_rest_time": 180,
+        "actual_weight": 30.0,
+        "recommended_weight": 27.0
+      },
+      "Seated Calf Raise Machine": {
+        "sets": 3,
+        "counts": 15,
+        "set_rest_time": 120,
+        "actual_weight": 45.0,
+        "recommended_weight": 40.5
+      },
+      "Glute Bridge Machine": {
+        "sets": 2,
+        "counts": 12,
+        "set_rest_time": 120,
+        "actual_weight": 55.0,
+        "recommended_weight": 49.5
+      },
+      "Machine Press": {
+        "sets": 2,
+        "counts": 10,
+        "set_rest_time": 240,
+        "actual_weight": 38.0,
+        "recommended_weight": 34.2
+      }
+    },
+    "notes": "Use a controlled tempo (4-1-1-0) for all movements. Focus on engaging the core during deficit RDLs for stability.",
+    "explanations": "Emphasized leg strength and stability with a balanced selection of compound and machine exercises. Adjusted weights and sets to reduce overall workout intensity while maintaining muscle engagement.",
+    "rest_time": 240
+  },
+  "day 7": {
+    "day_type": "REST_DAY"
+  }
+}

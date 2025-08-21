@@ -1,22 +1,65 @@
-This plan emphasizes:
-    1. Safe, stable movements using mostly machines and cables
-    2. Slightly higher reps (10–15) to promote skill learning and muscular endurance
-    3. Controlled tempo and full range of motion
-    4. Core and arm volume sprinkled into nearly every session
+### Profile
+Age 45, 5'5", 120 lb.
+Fitness level: Beginner.
+Focus: Abs & Arms (full-body emphasis with core/arms volume throughout).
+Frequency: 5 days/week. Emphasis on safe, stable machine/cable work, higher reps (10–15), controlled tempo and full ROM.
 
+### Workout duration
+50 minutes per session. 
 
-Profile: 45 years old , 1.65m/54.4kg, beginner, abs arms priority.
+### Training program (weekly split)
+Day 1 — Full Body (Arm + Core Focus)
+Seated lat pulldown 3×10–12;
+Machine chest press 3×10–12;
+Rope cable biceps 3×12–15;
+Cable triceps pushdowns 3×12–15;
+Lying cable curls 2×10–15;
+Machine/stability-ball crunch 3×15–20.
 
-Principles: machine/cable stability, 10‑15reps, tempo control.
+Day 2 — Lower (Glutes & Stability)
+Glute bridge (machine/floor) 3×12–15;
+Assisted step-ups 3×10/leg; Leg press 3×10–12;
+Seated leg curl 3×12–15;
+Standing calf raise 3×15–20;
+Plank 3×30 s.
 
-Split:
+Day 3 — Upper (Push + Arms)
+Incline machine/DB press 3×10–12;
+Cable chest fly 2×12–15;
+Rope OH triceps 3×12–15;
+Hammer curls 3×12–15;
+Cable lateral raise 2×8–12;
+Ab machine/hanging knee raise 3×12–15.
 
-Full Body(arms+core): lat‑pull 3×10‑12 → machine press 3×10‑12 → rope curl 3×12‑15 → push‑down 3×12‑15 → lying cable curl 2×10‑15 → crunch 3×15‑20.
+Day 4 — Full Body
+Leg press 2×10–12;
+Lat pulldown 2×8–12;
+Cable chest press 2×10–12;
+Cable biceps curl 2×8–12;
+Cable triceps kickbacks 2×10–15;
+Quad extension 2×8–12;
+Plate-loaded row 2×8–12.
 
-Lower(Glute&Stability): glute bridge 3×12‑15 → assisted step‑up 3×10/leg → leg‑press 3×10‑12 → seated curl 3×12‑15 → calf raise 3×15‑20 → plank 3×30s.
+Day 5 — Upper (Pull + Arms)
+Seated row 3×10–12;
+Assisted pull-up/lat pulldown 3×10–12;
+Preacher curl 3×12–15;
+Triceps pushdowns 3×12–15;
+Single-arm bench-supported row 2×10–15;
+Cable rope pullover 2×8–12;
+Bench-supported curls 2×8–12.
 
-Upper(Push+Arms): incline machine press 3×10‑12 → cable fly 2×12‑15 → rope OH‑triceps 3×12‑15 → hammer curl 3×12‑15 → cable lat‑raise 2×8‑12 → knee‑raise 3×12‑15.
+### Estimated time
+Using the document’s 2.5-min/set budgeting:
+Day 1: 17 sets ≈ ~42–43 min
+Day 2: 18 sets ≈ ~45 min
+Day 3: 16 sets ≈ ~40 min
+Day 4: 14 sets ≈ ~35 min
+Day 5: 18 sets ≈ ~45 min
 
-Full‑Body Circuit: leg‑press 2×10‑12 → lat‑pull 2×8‑12 → cable press 2×10‑12 → cable curl 2×8‑12 → triceps kick‑back 2×10‑15 → quad‑ext 2×8‑12 → plate‑row 2×8‑12.
+All fit within the stated 50-minute session duration. 
 
-Upper(Pull+Arms): seated row 3×10‑12 → lat‑pull 3×10‑12 → preacher curl 3×12‑15 → push‑down 3×12‑15 → one‑arm row 2×10‑15 → rope pullover 2×8‑12 → bench‑curl 2×8‑12.
+### Notes
+Beginner-friendly, machine/cable heavy;
+higher reps, controlled tempo, core/arm work nearly every session;
+stable patterns to build skill and muscular endurance.

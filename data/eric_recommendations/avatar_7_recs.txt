@@ -1,0 +1,121 @@
+Notable Training Style Differences (AI vs. Eric)
+
+1. Sets & Volume Distribution
+
+AI style: Fixed 3×8–12 per lift; ~6 total movements/week; no weekly budgeting; generic tempos.
+
+Eric style: 2 sets/exercise (≈8 sets/session) across 2 days; each day keeps chest/shoulder volume high while touching legs with low-fatigue work; tempos specified per movement.
+
+2. Exercise Selection / Novelty
+
+AI style: Barbell bench/squat plus DB presses; sparse cable/machine use; no stretch-biased cable fly or bench-supported cable press; lateral raises are DB-only.
+
+Eric style: Cable/machine dominant with stretch-biased selections: incline cable fly, flat bench cable press, unilateral cable laterals, machine/Smith pressing, and glute-biased leg press/RDL options.
+
+3. Muscle Group Structuring / Order
+
+AI style: Two generic FULL_BODY days; chest/shoulder priority is implied but not enforced by order; lower body appears as one heavy squat or RDL block.
+
+Eric style: Day 1: Heavy push first → posterior chain finisher; Day 2: upper isolation first → quad/glute volume. Chest/shoulders are prioritized both days; legs integrated with controlled fatigue.
+
+4. Rest Times
+
+AI style: Uniform 120 s (or 90 s) with no rationale; mixed day-level vs per-exercise rest fields.
+
+Eric style: Pragmatic 90–120 s rests aligned to controlled eccentrics; rest supports quality under moderate total set counts.
+
+5. Back & Pull Days
+
+AI style: Minimal back isolation/angle variety; no pullovers; no bench-supported rows.
+
+Eric style: Back is de-emphasized in this microcycle (chest/shoulder priority) but posture is supported via posterior chain (RDL/leg press bias); delt isolation (lateral/Y-raise) supplies upper-back stability.
+
+6. Leg Days
+
+AI style: One squat or RDL block per day, heavier compound bias; no explicit quad-biased machine or glute-biased press instruction.
+
+Eric style: Low-fatigue lower integration: Day 1 RDL/GB leg press; Day 2 machine/Smith squat (quad-biased)—both with strict tempos, modest volume.
+
+Training Style Prompt for AI
+
+“Generate a 2-day program in Eric’s style for a lifter with chest/shoulder priority and lower-body integration. Use machine/cable-dominant, stretch-biased selections. Output valid JSON only.
+
+Session & Volume Rules
+
+Days: 2 — "day 1" and "day 2".
+
+Day types & themes:
+
+UPPER_PUSH_PLUS_POSTERIOR_CHAIN — heavy push first, posterior-chain finisher.
+
+UPPER_ISO_PLUS_QUAD_GLUTE_VOLUME — upper isolation first, then quad/glute volume.
+
+Working sets/session: target 8 total (4 exercises × 2 sets).
+
+Lead with chest/shoulder work on both days; integrate legs with low-fatigue patterns.
+
+Exercise Selection (use these patterns)
+
+Day 1 (Upper Focus: Heavy Push + Posterior Chain)
+
+Incline DB Press — 2×8–10 @ 3-1-1-0
+
+Flat Bench Cable Press (Bench-Supported) — 2×10–12 @ 3-1-1-0
+
+Cable Lateral Raise (Unilateral) — 2×10–12 @ 3-1-1-0
+
+DB RDL or Glute-Biased Leg Press — 2×8–12 @ 3-1-1-0
+
+Day 2 (Upper Isolation + Quad/Glute Volume)
+
+Incline Bench Cable Stretch Fly — 2×10–12 @ 4-1-1-0
+
+Machine or Smith Shoulder Press — 2×8–10 @ 3-1-1-0
+
+Machine or Smith Squat (Quad-Biased) — 2×10–12 @ 3-1-1-0
+
+Machine Lateral Raise or Incline Cable Y-Raise — 2×12–15 @ 3-1-1-0
+
+Preference order: cable/machine/Smith; DB only where listed. Avoid redundant heavy barbell compounds.
+
+Reps, Tempo, Rest
+
+Use the rep ranges shown above per exercise (upper: 8–12, isolations 10–15).
+
+Tempo: as specified (mostly 3-1-1-0, stretch-biased fly 4-1-1-0).
+
+Rest (rest_sec): 90–120 for compounds, 60–90 for isolations.
+
+JSON Output Schema (per day)
+
+{
+  "day X": {
+    "day_type": "UPPER_PUSH_PLUS_POSTERIOR_CHAIN|UPPER_ISO_PLUS_QUAD_GLUTE_VOLUME",
+    "notes": "Prioritize chest/shoulders first; integrate low-fatigue lower-body work; controlled eccentrics.",
+    "exercises": {
+      "Exercise Name": {
+        "movement_pattern": "e.g., incline DB press, flat bench cable press, unilateral cable lateral raise, DB RDL, glute-biased leg press, incline cable stretch fly, machine/Smith shoulder press, quad-biased machine/smith squat, machine lateral raise, incline cable Y-raise",
+        "equipment_preference": "cable|machine|smith|db",
+        "sets": 2,
+        "rep_range": "as specified (8-10, 10-12, or 12-15)",
+        "tempo": "3-1-1-0",
+        "rest_sec": 90,
+        "actual_weight": null
+      }
+      /* Include exactly 4 exercises to keep ~8 total sets per session */
+    }
+  }
+}
+
+
+Constraints
+
+Keep to 2 sets per exercise; no extra accessories beyond the four listed per day.
+
+Use bench support for cable presses where noted; prefer unilateral laterals on Day 1.
+
+Do not include 1RMs or suggested weights; leave "actual_weight": null.
+
+Ensure both days maintain high chest/shoulder volume and brief, hypertrophy-oriented lower work.
+
+Return only the JSON object.

@@ -21,21 +21,28 @@ train_assistant:
         
     Avatar examples:
       {avatars_examples}
+      
+    Eric recommendations:
+      {merged_recs}
     
     While generating program Ask yourself: 
-      1. What is their session time limit? (dictates # of sets) 
-      2. What are their priority muscle groups? (lead each day with those) 
-      3. What’s their frequency? (split strategy: FB vs PPL vs UL etc.) 
-      4. What’s their level? (impacts load, movement complexity, RIR targets) 
-      5. What equipment do they have? (machine-based vs free weights vs cables) 
-      6. How adaptable are they to variety? (some need more novelty; others less) 
+      1. What is user's estimated workout time? (dictates # of sets) 
+      2. What are user's priority muscle groups? (lead each day with those) 
+      3. What’s user's frequency? (split strategy: FB vs PPL vs UL etc.) 
+      4. What’s user's level? (impacts load, movement complexity, RIR targets) 
+      5. How adaptable is user to variety? (some need more novelty; others less) 
       
   For each training day where day_type not REST_DAY, fill in:
     • 'exercises': a dict of exercises. 
-      Body contains 'sets', 'counts' and 'set_rest_time'. 
+      Every exercise takes around 10 minutes. 
+      So, if workout_time is 30 minutes there will be 2-3 exercises. If workout time is 60 minutes there will be 5-6 exercises. If workout is 80 minutes there will be 7-8 exercises. 
+      Body contains 'sets', 'counts', 'set_rest_time', 'actual_weight' and 'recommended_weight'. 
       Key 'sets' means number of sets on this exercise.
       Key 'counts' means number of repetitions per one set.
-      Key 'set_rest_time' means the rest time  between two sets in seconds. Choose rest between 120 (short rest), 180 (mid rest) or 240 (long rest) seconds
+      Key 'set_rest_time' means the rest time  between two sets in seconds. Choose rest between 90 seconds, short rest for for smaller muscle groups (delts, triceps, biceps), 120 seconds for larger (chest, back, quads, hamstrings, glutes)
+      Key 'actual_weight' should be null.
+      Key 'recommended_weight' means the recommended weight based on scanner recommendations and user data. Weights must be in kilograms.
+      If exercise is bodyweight, set recommended_weight as 0.
       Choose the exercises that are, firstly, most suitable for the current DAY_TYPE, and secondly, that develop the body parts, specified by the user in user_data.
       Also, try to create balanced workouts for different muscle groups,
       It is important to:
@@ -50,7 +57,6 @@ train_assistant:
        Indicate if some exercises were not selected due to exercise limitations
     • 'rest_time': rest time between two exercises in seconds. 
        When choosing the rest time between sets, focus on the user's readiness for training and age. 
-       Its good for health to rest more. Try to give a user more time for rest, like 3, 4 or 5 minutes. 
        Key 'rest_time' Should be integer.  
   
   Explanations for each DAY_TYPE:
@@ -77,18 +83,43 @@ train_assistant:
   2. Keep the exact JSON structure.  Output **only** valid JSON.
   3. Do not reorder days or change DAY_TYPE.
   4. Make sure explanations tie back to user data and age/scanner recommendations.
-  5. Body of exercise should contain only 'sets', 'counts' and 'set_rest_time' keys. All should be integers
-  6. Focus on generating a diverse program on different muscles in current group. Training one muscle can be dangerous.
-  7. The training program must take no less time than the user specifies in workout_time.
+  5. Body of exercise should contain only 'sets', 'counts', 'set_rest_time', 'actual_weight' and 'recommended_weight' keys.
+  Keys 'sets', 'counts', 'set_rest_time' should be integers, 'recommended_weight' keys should be float.
+  'recommended_weight' keys should be measured in kilograms. 'actual_weight' should be null.
+  6. There could be only 2 to 3 sets of any given exercise.
+  7. Focus on generating a diverse program on different muscles in current group. Training one muscle can be dangerous.
+    Prevent overuse of any single muscle (no more than 2 consecutive exercises per group; alternate sagittal/frontal/transverse planes).
+  8. The training program must take no less time than the user specifies in workout_time.
+  9. Choose set_rest_time only between 90 seconds, short rest for for smaller muscle groups (delts, triceps, biceps), 120 seconds for larger (chest, back, quads, hamstrings, glutes).
+  10. Make the training plan non-boring: include 2–3 interesting movements per session 
+  (unilateral, multi-plane, tempo/pause variations; kettlebells, TRX, sled, battle ropes, farmer’s carry), 
+  cap the big three to ≤50% of volume, and provide purpose + a safe regression. 
+  11. Mix order of involved muscles.
+  12. Follow Eric recommendations. It is the most important part.
+  13. Follow global style & philosophy:
+    * Hypertrophy via controlled tempo, high ROM, and stable setups.
+    * Favor machines/cables/Smith for joint safety and precision; use DB/barbell only when ROI is high.
+    * Lead sessions with priority muscles; alternate push ↔ pull patterns inside sessions to manage fatigue; isolations at the end.
+    * Avoid redundant heavy pairings (e.g., squat + leg press same day) unless volume is deliberately reduced.
+    * No junk sets; every set has intent.
+  14. Follow exercise selection recommendations (pattern-first; stretch-biased where relevant):
+    * Chest: incline press (DB/Smith/machine), flat/Smith press, incline/upper cable fly (stretch-biased), mid-chest staggered-stance cable fly, decline/downward fly, bench-supported cable press.
+    * Back – Lats: supinated/neutral pulldown, rope pullover (standing or incline), kneeling single-arm low cable row (lat line).
+    * Back – Upper-back thickness: plate-loaded chest-supported row, incline bench unilateral cable row (mid/low origin), rope row to upper chest, face pulls for scapular health.
+    * Shoulders: machine/cable lateral raise (priority), Y-raises, front raises, Smith/DB shoulder press, upright rows (Smith/cable), reverse fly (stretch-biased).
+    * Quads: hack squat (low/close stance), foam-roller backed quad extensions (stretch-biased), quad-biased leg press, deficit Bulgarian split squat.
+    * Ham/Glute: seated/lying ham curl (stretch-biased), RDL or Smith deficit RDL, hip thrust/bridge, long-stride lunges, abduction/kickbacks; glute-biased leg press.
+    * Arms: rope curls, incline cable curls, drag curls, preacher; triceps pushdowns + overhead extensions (long-head bias).
+    * Calves/Core: seated/standing calf raise; machine crunch, hanging knee raise, planks.
+    * Prefer chest-supported and guided-path variants to reduce fatigue leakage.
+    * Include angle/plane rotation week to week (incline → mid; pulldown → pullover; row origins; lateral raise variants).
   
   Produce the completed 7‑day plan as JSON.
-  
   "
   next_week:
     model: "o1-mini"
     temperature: 0.7
     prompt_template: "
-    
     You are a smart fitness assistant.
 Your job is to fill in the following 7‑day plan skeleton with exercises, notes, and explanations for the next training week.
 
@@ -107,27 +138,45 @@ External information:
   Available Exercises (only choose exercises from these!): 
     {available_exercises}
 
+  Avatar examples:
+    {avatars_examples}
+  
+  Eric recommendations:
+    {merged_recs}
+
+While generating program ask yourself: 
+    1. What is user's estimated workout time? (dictates # of sets) 
+    2. What are user's priority muscle groups? (lead each day with those) 
+    3. What’s user's frequency? (split strategy: FB vs PPL vs UL etc.) 
+    4. What’s user's level? (impacts load, movement complexity, RIR targets) 
+    5. How adaptable is user to variety? (some need more novelty; others less) 
+
 For each training day (where day_type not REST_DAY), fill in:
     • 'exercises': a dict of exercises. 
-      Body contains 'sets', 'counts' and 'set_rest_time'. 
+      Every exercise takes around 10 minutes. 
+      So, if workout_time is 30 minutes there will be 2-3 exercises. If workout time is 60 minutes there will be 5-6 exercises. If workout is 80 minutes there will be 7-8 exercises. 
+      Body contains 'sets', 'counts', 'set_rest_time', 'actual_weight' and 'recommended_weight'. 
       Key 'sets' means number of sets on this exercise.
       Key 'counts' means number of repetitions per one set.
-      Key 'set_rest_time' means the rest time  between two sets in seconds. Choose rest between 120 (short rest), 180 (mid rest) or 240 (long rest) seconds
+      Key 'set_rest_time' means the rest time  between two sets in seconds. Choose rest between 90 seconds, short rest for for smaller muscle groups (delts, triceps, biceps), 120 seconds for larger (chest, back, quads, hamstrings, glutes)
+      Key 'actual_weight' means the weight from the previous training. In new program it should be null.
+      Key 'recommended_weight' means the recommended weight based on feedback and previous week. Weights must be in kilograms.
+      If exercise is bodyweight, set recommended_weight as 0.
+      If feedback is 'easy', increase the weight from previous week. If feedback is 'normal', dont change the weight.
+      If feedback is 'hard', lower the weight.
       Choose the exercises that are, firstly, most suitable for the current DAY_TYPE, and secondly, that develop the body parts, specified by the user in user_data.
       Also, try to create balanced workouts for different muscle groups,
       It is important to:
       - remember about user exercises limitations 
       - remember about user nutrition goal
-      - remember about scanner recommendations
       - follow the workout time specified by user
-      - remember about user safety and injury prevention if it is specified in Age-Based Recommendations
+      - remember about user safety and injury prevention if it is specified in age-based recommendations
       
-    • 'notes': any special instructions (e.g. tempo, rest intervals)
+    • 'notes': any special instructions (e.g. tempo, rest intervals). Write this notes directly for user.
     • 'explanations': why each exercise was chosen. 
-       Indicate if some exercises were not selected due to exercise limitations
+       Indicate if some exercises were not selected due to exercise limitations. Write explanations directly for user
     • 'rest_time': rest time between two exercises in seconds. 
        When choosing the rest time between sets, focus on the user's readiness for training and age. 
-       Its good for health to rest more. Try to give a user more time for rest, like 3, 4 or 5 minutes. 
        Key 'rest_time' Should be integer.  
 
 
@@ -147,19 +196,45 @@ Explanations for each DAY_TYPE:
   LEGS:
     Quads, hamstrings, glutes, calves.
   PPL_DAY:
-    Placeholder “Push‑Pull‑Legs”—pick one of PUSH, PULL, or LEGS.
+    Placeholder “Push‑Pull‑Legs” --- pick one of PUSH, PULL, or LEGS. Focus on user preferences
     If multiple PPL_DAY entries, do not repeat the same selection.
 
 Rules:
-
- 1. Only select exercises from Available Exercises.
+  1. Only select exercises from Available Exercises.
   2. Keep the exact JSON structure.  Output **only** valid JSON.
   3. Do not reorder days or change DAY_TYPE.
   4. Make sure explanations tie back to user data and age/scanner recommendations.
   5. Tie explanations to `previous_week` data and `feedback`.  
-  5. Body of exercise should contain only 'sets', 'counts' and 'set_rest_time' keys. All should be integers
-  6. Focus on generating a diverse program on different muscles in current group. Training one muscle can be dangerous.
-  7. The training program must take no less time than the user specifies in workout_time.
+  6. Body of exercise should contain only 'sets', 'counts', 'set_rest_time', 'actual_weight' and 'recommended_weight' keys.
+  Keys 'sets', 'counts', 'set_rest_time' should be integers, 'recommended_weight' keys should be float.
+  'recommended_weight' keys should be measured in kilograms. 'actual_weight' should be null.
+  7. There could be only 2 to 3 sets of any given exercise.
+  8. Focus on generating a diverse program on different muscles in current group. Training one muscle can be dangerous.
+     Prevent overuse of any single muscle (no more than 2 consecutive exercises per group; alternate sagittal/frontal/transverse planes).
+  9. The training program must take no less time than the user specifies in workout_time.
+  10. Choose set_rest_time only between 90 seconds, short rest for for smaller muscle groups (delts, triceps, biceps), 120 seconds for larger (chest, back, quads, hamstrings, glutes). Only 90 or 120 seconds.
+  11. Make the training plan non-boring: include 2–3 interesting movements per session 
+  (unilateral, multi-plane, tempo/pause variations; kettlebells, TRX, sled, battle ropes, farmer’s carry), 
+  cap the big three to ≤50% of volume, and provide purpose + a safe regression. 
+  12. Mix order of involved muscles.
+  13. Follow Eric recommendations. It is the most important part.
+  14. Follow global style & philosophy:
+    * Hypertrophy via controlled tempo, high ROM, and stable setups.
+    * Favor machines/cables/Smith for joint safety and precision; use DB/barbell only when ROI is high.
+    * Lead sessions with priority muscles; alternate push ↔ pull patterns inside sessions to manage fatigue; isolations at the end.
+    * Avoid redundant heavy pairings (e.g., squat + leg press same day) unless volume is deliberately reduced.
+    * No junk sets; every set has intent.
+  14. Follow exercise selection recommendations (pattern-first; stretch-biased where relevant):
+    * Chest: incline press (DB/Smith/machine), flat/Smith press, incline/upper cable fly (stretch-biased), mid-chest staggered-stance cable fly, decline/downward fly, bench-supported cable press.
+    * Back – Lats: supinated/neutral pulldown, rope pullover (standing or incline), kneeling single-arm low cable row (lat line).
+    * Back – Upper-back thickness: plate-loaded chest-supported row, incline bench unilateral cable row (mid/low origin), rope row to upper chest, face pulls for scapular health.
+    * Shoulders: machine/cable lateral raise (priority), Y-raises, front raises, Smith/DB shoulder press, upright rows (Smith/cable), reverse fly (stretch-biased).
+    * Quads: hack squat (low/close stance), foam-roller backed quad extensions (stretch-biased), quad-biased leg press, deficit Bulgarian split squat.
+    * Ham/Glute: seated/lying ham curl (stretch-biased), RDL or Smith deficit RDL, hip thrust/bridge, long-stride lunges, abduction/kickbacks; glute-biased leg press.
+    * Arms: rope curls, incline cable curls, drag curls, preacher; triceps pushdowns + overhead extensions (long-head bias).
+    * Calves/Core: seated/standing calf raise; machine crunch, hanging knee raise, planks.
+    * Prefer chest-supported and guided-path variants to reduce fatigue leakage.
+    * Include angle/plane rotation week to week (incline → mid; pulldown → pullover; row origins; lateral raise variants).
   
 Produce the completed 7‑day plan as JSON.
 "

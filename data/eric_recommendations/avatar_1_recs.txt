@@ -1,0 +1,133 @@
+Notable Training Style Differences (AI vs. Eric)
+
+1. Sets & Volume Distribution
+
+AI style: Fixed 3 sets per exercise across the board; ~5 exercises/day ⇒ ~15 working sets; no RIR; no explicit time cap.
+
+Eric style: Mostly 2 hard working sets per exercise; time-boxed sessions (≈50 min) with ~14 true working sets; explicit 0–3 RIR guidance and planned effort progression over weeks.
+
+2. Exercise Selection / Novelty
+
+AI style: Classic barbell/free-weight compounds (bench, squat) plus a few machines; core every session; little age specificity; no planned variation blocks.
+
+Eric style: Machine/cable-biased selection for >40 to reduce injury risk and increase stability/ROM; frequent variation via 4–6-week rotation blocks; movement patterns (lat-biased pull, upper-back row, fly, hack squat, ham curl, etc.) prioritized over specific lifts.
+
+3. Muscle Group Structuring / Order
+
+AI style: Generic full-body lists; no explicit priority ordering; push/pull not alternated intentionally; core added as a finisher.
+
+Eric style: Leads each day with priority body parts (chest/back; glutes/hams early); alternates push/pull to manage fatigue; isolates (arms/delts/calves) at the end; weekly bias (extra sets) to focus areas.
+
+4. Rest Times
+
+AI style: Per-exercise rest fields (90–120 s) plus a generic day “rest_time”; no differentiation by movement size; no time-under-tension targets.
+
+Eric style: Practical rest rules: big compounds ≈120+ s; isolations 60–90 s; calves ≈45 s; rests chosen to fit session time budget and maintain quality.
+
+5. Back & Pull Days
+
+AI style: Standard lat pulldown/row/1-arm row; no lat vs upper-back emphasis; no tempo; no pullover patterns.
+
+Eric style: Clear alternation between lat-biased and upper-back-biased pulls; includes pullovers and rows from varied angles; explicit tempo (e.g., 4-1-1-0) and RIR; adds 2–4 weekly sets to chest/back focus.
+
+6. Leg Days
+
+AI style: Squat, leg press, calf raises; no dedicated hamstring isolation; no redundancy control; no tempo cues.
+
+Eric style: Separates quad vs ham/glute patterns; prioritizes hams/glutes early; favors stable machines (hack squat, leg extension, seated ham curl, hip hinge/thrust); avoids redundant squat+leg-press pairings; explicit tempo (sometimes longer eccentrics like 6-1-1-0).
+
+Training Style Prompt for AI
+
+“Generate a 3-day full-body training plan in Eric’s style and output valid JSON. Follow these rules:
+
+Audience & Philosophy
+
+Assume a 45-year-old intermediate lifter.
+
+Bias toward machine/cable exercises; minimize heavy barbell compounds to reduce injury risk.
+
+Hypertrophy focus via controlled tempo and time under tension; use 0–3 RIR depending on comfort.
+
+Program Structure
+
+Days per week: 3 (all FULL_BODY).
+
+Session time target: ~50 minutes; working sets per session: ~14 (±2).
+
+Lead each day with priority body parts (chest/back and glutes/hams).
+
+Alternate push and pull patterns to manage fatigue; place isolations at the end.
+
+Sets, Reps, Tempo, RIR
+
+Default 2 working sets per exercise (occasionally 3 for large compounds only).
+
+Use rep ranges 8–15 for upper body, 7–12 for legs; calves 8–12.
+
+Include a tempo field (e.g., "4-1-1-0"; squats may use "6-1-1-0" on day 3).
+
+Include a rir field per exercise (0–3).
+
+No forced failure on every set; progress from higher RIR to lower RIR across weeks.
+
+Rest Times
+
+rest_sec: compounds 120+, isolations 60–90, calves 45.
+
+Exercise Selection Rules
+
+Back: alternate lat-biased (vertical pull, pullovers) and upper-back-biased (rows to chest, upright row).
+
+Chest: rotate incline press → mid-press → fly across the week; prefer machines/cables.
+
+Legs: one quad pattern (hack squat/leg press/extension) and one ham/glute pattern (seated ham curl/RDL/hip hinge or thrust). Avoid pairing squat + leg press in the same session unless volume is reduced.
+
+Delts/Arms/Calves: lateral raise priority; include both triceps pushdown (short head bias) and overhead extension (long head bias); calves each week with shorter rests.
+
+Variation & Progression
+
+Note a 4–6 week rotation plan (swap variations, keep patterns).
+
+Progress by adding reps to the top of the range, then modest load increases; optionally longer eccentrics/pauses before load jumps.
+
+JSON Output Requirements
+
+Top level keys: "day 1", "day 2", "day 3".
+
+Each day object must include:
+
+"day_type": "FULL_BODY"
+
+"session_duration_min": 50
+
+"exercises": an ordered object of exercises.
+
+Each exercise entry must include:
+
+"movement_pattern" (e.g., "lat-focused pull", "upper-back row", "incline chest press", "hack squat", "seated ham curl", "lateral raise", "triceps pushdown", "triceps overhead extension", "calf raise"),
+
+"equipment_preference": "machine" | "cable" | "db" | "barbell",
+
+"sets": 2 (or 3 only for a large compound),
+
+"rep_range": "8-15" (legs "7-12", calves "8-12"),
+
+"tempo": "4-1-1-0" (squats may be "6-1-1-0" on day 3),
+
+"rir": 0–3,
+
+"rest_sec" per rule above,
+
+optional "notes" for cues (ROM, pauses, cable path).
+
+Include day-level "notes" summarizing priority focus (e.g., "Lead with lats and hams today").
+
+Do not invent 1RM or recommended weights; leave "actual_weight": null.
+
+Ensure total working sets ≈ 14 per day.
+
+Weekly Focus
+
+Add 2–4 extra weekly sets total to chest/back priority by distributing across the 3 days (without exceeding time budget).
+
+Return only the JSON object.”

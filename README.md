@@ -28,6 +28,7 @@ TRAIN_ASSISTANT_CONFIG_PATH=/app/configs/train_assistant_config.yaml
 TRAIN_WEEKS_TEMPLATES_PATH=/app/configs/week_templates.json
 FEEDBACK_CONFIG_PATH=/app/configs/feedback_config.yaml
 TRAINING_PROGRAM_EXAMPLES_DIR=/app/configs/training_program_examples
+ERIC_RECOMMENDATIONS_PATH=/app/data/eric_recommendations/merged_recs.txt
 ```
 
 ## Build and run
@@ -130,3 +131,20 @@ payload = {
 ## UI
 
 ![](resourses/ui_screenshot.png)
+
+## Testing
+
+To execute unit tests:
+```bash
+pytest
+```
+
+To execute special tests:
+```bash
+pytest -m special
+```
+
+To execute integration tests:
+```bash
+pytest -m integration
+```

@@ -35,7 +35,8 @@ class TrainAssistant:
             raw_scanner_data: dict | None,
             train_weeks_templates: dict,
             exercises_processor: ExercisesProcessor,
-            training_program_examples_dir: str | None = None
+            training_program_examples_dir: str | None = None,
+            eric_recommendations_path: str | None = None
     ):
         self.llm = ChatOpenAI(api_key=API_KEY)
 
@@ -56,6 +57,11 @@ class TrainAssistant:
         self.avatar_examples = ""
         if training_program_examples_dir and os.path.isdir(training_program_examples_dir):
             self.avatar_examples = self.__load_avatar_examples(training_program_examples_dir)
+
+        self.merged_recs = ""
+        if eric_recommendations_path and os.path.isfile(eric_recommendations_path):
+            with open(eric_recommendations_path, "r", encoding="utf-8") as file:
+                self.merged_recs = file.read().strip()
 
         self.logger = get_logger(name=self.__class__.__name__, level=logging.DEBUG)
 
@@ -147,11 +153,12 @@ class TrainAssistant:
         age_recommendations = self.age_formatter.data_format()
         exercises_formatted = self.exercises_formatter.data_format(self.available_exercises_by_day_type)
         avatar_examples = self.avatar_examples
+        merged_recs = self.merged_recs
 
         self.logger.debug(f"Week Template: \n{week_template}")
         self.logger.debug(f"User Data Formatted: \n{user_data}")
         self.logger.debug(f"Scanner Recommendations Formatted: \n{scanner_recommendations}")
-        self.logger.debug(f"Age Recommendations Formatted: \n{age_recommendations}")
+        # self.logger.debug(f"Age Recommendations Formatted: \n{age_recommendations}")
         self.logger.debug(f"Exercises List Formatted: \n{exercises_formatted}")
 
         result = chain.invoke(
@@ -161,7 +168,8 @@ class TrainAssistant:
                 "scanner_recommendations": scanner_recommendations,
                 "age_recommendations": age_recommendations,
                 "available_exercises": exercises_formatted,
-                "avatars_examples": avatar_examples
+                "avatars_examples": avatar_examples,
+                "merged_recs": merged_recs
             }
         )
         processed_result = result.content.strip()
@@ -181,6 +189,8 @@ class TrainAssistant:
         exercises_formatted = self.exercises_formatter.data_format(self.available_exercises_by_day_type)
         feedback = self.feedbaack_formatter.data_format(feedback_key)
         prev_week_formatted = self.train_week_formatter.data_format(previous_week)
+        avatar_examples = self.avatar_examples
+        merged_recs = self.merged_recs
 
         self.logger.debug(f"Week Template: \n{week_template}")
         self.logger.debug(f"User Data Formatted: \n{user_data}")
@@ -196,7 +206,9 @@ class TrainAssistant:
                 "previous_week": prev_week_formatted,
                 "feedback": feedback,
                 "age_recommendations": age_recommendations,
-                "available_exercises": exercises_formatted
+                "available_exercises": exercises_formatted,
+                "avatars_examples": avatar_examples,
+                "merged_recs": merged_recs
             }
         )
         processed_result = result.content.strip()
@@ -211,52 +223,4 @@ class TrainAssistant:
             return json.loads(processed_result)
         except json.JSONDecodeError as e:
             raise ValueError("Failed to decode JSON. Output received:\n" + processed_result) from e
-
-
-if __name__ == "__main__":
-    dotenv.load_dotenv()
-
-    user_data_json_path = r""
-    scanner_data_json_path = r""
-
-    with open(user_data_json_path, "r", encoding="utf-8") as file:
-        raw_user_data = json.load(file)
-    with open(scanner_data_json_path, "r", encoding="utf-8") as file:
-        raw_scanner_data = json.load(file)
-
-    API_KEY = os.getenv("API_KEY")
-    TRAIN_ASSISTANT_CONFIG_PATH = os.getenv("TRAIN_ASSISTANT_CONFIG_PATH")
-    train_assistant_config = OmegaConf.load(TRAIN_ASSISTANT_CONFIG_PATH)
-
-    DATA_PROCESSING_CONFIG_PATH = os.getenv("DATA_PROCESSING_CONFIG_PATH")
-    data_processing_config = OmegaConf.load(DATA_PROCESSING_CONFIG_PATH)
-
-    AGE_BASED_ADJUSTMENTS_CONFIG_PATH = os.getenv("AGE_BASED_ADJUSTMENTS_CONFIG_PATH")
-    age_based_adjustments_config = OmegaConf.load(AGE_BASED_ADJUSTMENTS_CONFIG_PATH)
-
-    EXERCISES_CONFIG_PATH = os.getenv("EXERCISES_CONFIG_PATH")
-    exercises_config = OmegaConf.load(EXERCISES_CONFIG_PATH)
-
-    TRAIN_WEEKS_TEMPLATES_PATH = os.getenv("TRAIN_WEEKS_TEMPLATES_PATH")
-    with open(TRAIN_WEEKS_TEMPLATES_PATH, "r", encoding="utf-8") as file:
-        train_weeks_templates = json.load(file)
-
-    EXERCISES_RAW_DF_PATH = os.getenv("EXERCISES_RAW_DF_PATH")
-    raw_df = pd.read_csv(EXERCISES_RAW_DF_PATH, keep_default_na=False)
-
-    TRAINING_PROGRAM_EXAMPLES_DIR = os.getenv("TRAINING_PROGRAM_EXAMPLES_DIR")
-
-    train_assistant = TrainAssistant(
-        API_KEY=API_KEY,
-        train_assistant_config=train_assistant_config,
-        data_processing_config=data_processing_config,
-        age_based_adjustments_config=age_based_adjustments_config,
-        exercises_config=exercises_config,
-        raw_user_data=raw_user_data,
-        raw_scanner_data=raw_scanner_data,
-        train_weeks_templates=train_weeks_templates,
-        training_program_examples_dir=TRAINING_PROGRAM_EXAMPLES_DIR
-    )
-
-    print(train_assistant.generate_first_week())
 

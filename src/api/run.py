@@ -30,6 +30,7 @@ async def lifespan(app: FastAPI):
         open(os.getenv("TRAIN_WEEKS_TEMPLATES_PATH"), encoding="utf-8")
     )
     app.state.training_program_examples_dir = os.getenv("TRAINING_PROGRAM_EXAMPLES_DIR")
+    app.state.eric_recommendations_path = os.getenv("ERIC_RECOMMENDATIONS_PATH")
 
     raw_df = pd.read_csv(os.getenv("EXERCISES_RAW_DF_PATH"), keep_default_na=False)
     ex_cfg = app.state.exercises_config["exercises_processor"]
