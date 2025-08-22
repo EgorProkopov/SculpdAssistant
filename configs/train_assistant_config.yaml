@@ -86,23 +86,27 @@ train_assistant:
   5. Body of exercise should contain only 'sets', 'counts', 'set_rest_time', 'actual_weight' and 'recommended_weight' keys.
   Keys 'sets', 'counts', 'set_rest_time' should be integers, 'recommended_weight' keys should be float.
   'recommended_weight' keys should be measured in kilograms. 'actual_weight' should be null.
-  6. There could be only 2 to 3 sets of any given exercise.
-  7. Focus on generating a diverse program on different muscles in current group. Training one muscle can be dangerous.
+  6. Follow Eric recommendations. It is important part.
+  7. The training program must take no less time than the user specifies in workout_time.
+  8. Follow customizable rules.
+  9. Produce the completed 7‑day plan as JSON.
+
+Customizable rules:
+  1. There could be only 2 to 3 sets of any given exercise.  
+  2. Focus on generating a diverse program on different muscles in current group. Training one muscle can be dangerous.
     Prevent overuse of any single muscle (no more than 2 consecutive exercises per group; alternate sagittal/frontal/transverse planes).
-  8. The training program must take no less time than the user specifies in workout_time.
-  9. Choose set_rest_time only between 90 seconds, short rest for for smaller muscle groups (delts, triceps, biceps), 120 seconds for larger (chest, back, quads, hamstrings, glutes).
-  10. Make the training plan non-boring: include 2–3 interesting movements per session 
+  3. Choose set_rest_time only between 90 seconds, short rest for for smaller muscle groups (delts, triceps, biceps), 120 seconds for larger (chest, back, quads, hamstrings, glutes).
+  4. Make the training plan non-boring: include 2–3 interesting movements per session 
   (unilateral, multi-plane, tempo/pause variations; kettlebells, TRX, sled, battle ropes, farmer’s carry), 
   cap the big three to ≤50% of volume, and provide purpose + a safe regression. 
-  11. Mix order of involved muscles.
-  12. Follow Eric recommendations. It is the most important part.
-  13. Follow global style & philosophy:
+  5. Mix order of involved muscles.
+  6. Follow global style & philosophy:
     * Hypertrophy via controlled tempo, high ROM, and stable setups.
     * Favor machines/cables/Smith for joint safety and precision; use DB/barbell only when ROI is high.
     * Lead sessions with priority muscles; alternate push ↔ pull patterns inside sessions to manage fatigue; isolations at the end.
     * Avoid redundant heavy pairings (e.g., squat + leg press same day) unless volume is deliberately reduced.
     * No junk sets; every set has intent.
-  14. Follow exercise selection recommendations (pattern-first; stretch-biased where relevant):
+  7. Follow exercise selection recommendations (pattern-first; stretch-biased where relevant):
     * Chest: incline press (DB/Smith/machine), flat/Smith press, incline/upper cable fly (stretch-biased), mid-chest staggered-stance cable fly, decline/downward fly, bench-supported cable press.
     * Back – Lats: supinated/neutral pulldown, rope pullover (standing or incline), kneeling single-arm low cable row (lat line).
     * Back – Upper-back thickness: plate-loaded chest-supported row, incline bench unilateral cable row (mid/low origin), rope row to upper chest, face pulls for scapular health.
@@ -113,8 +117,6 @@ train_assistant:
     * Calves/Core: seated/standing calf raise; machine crunch, hanging knee raise, planks.
     * Prefer chest-supported and guided-path variants to reduce fatigue leakage.
     * Include angle/plane rotation week to week (incline → mid; pulldown → pullover; row origins; lateral raise variants).
-  
-  Produce the completed 7‑day plan as JSON.
   "
   next_week:
     model: "o1-mini"
@@ -203,28 +205,32 @@ Rules:
   1. Only select exercises from Available Exercises.
   2. Keep the exact JSON structure.  Output **only** valid JSON.
   3. Do not reorder days or change DAY_TYPE.
-  4. Make sure explanations tie back to user data and age/scanner recommendations.
+  4. Make sure explanations tie back to user data and age recommendations.
   5. Tie explanations to `previous_week` data and `feedback`.  
   6. Body of exercise should contain only 'sets', 'counts', 'set_rest_time', 'actual_weight' and 'recommended_weight' keys.
   Keys 'sets', 'counts', 'set_rest_time' should be integers, 'recommended_weight' keys should be float.
   'recommended_weight' keys should be measured in kilograms. 'actual_weight' should be null.
-  7. There could be only 2 to 3 sets of any given exercise.
-  8. Focus on generating a diverse program on different muscles in current group. Training one muscle can be dangerous.
+  7. Follow Eric recommendations. It is important part.
+  8. The training program must take no less time than the user specifies in workout_time.
+  9. Follow customizable rules.
+  10. Produce the completed 7‑day plan as JSON.
+
+Customizable rules:
+  1. There could be only 2 to 3 sets of any given exercise.
+  2. Focus on generating a diverse program on different muscles in current group. Training one muscle can be dangerous.
      Prevent overuse of any single muscle (no more than 2 consecutive exercises per group; alternate sagittal/frontal/transverse planes).
-  9. The training program must take no less time than the user specifies in workout_time.
-  10. Choose set_rest_time only between 90 seconds, short rest for for smaller muscle groups (delts, triceps, biceps), 120 seconds for larger (chest, back, quads, hamstrings, glutes). Only 90 or 120 seconds.
-  11. Make the training plan non-boring: include 2–3 interesting movements per session 
+  3. Choose set_rest_time only between 90 seconds, short rest for for smaller muscle groups (delts, triceps, biceps), 120 seconds for larger (chest, back, quads, hamstrings, glutes). Only 90 or 120 seconds.
+  4. Make the training plan non-boring: include 2–3 interesting movements per session 
   (unilateral, multi-plane, tempo/pause variations; kettlebells, TRX, sled, battle ropes, farmer’s carry), 
   cap the big three to ≤50% of volume, and provide purpose + a safe regression. 
-  12. Mix order of involved muscles.
-  13. Follow Eric recommendations. It is the most important part.
-  14. Follow global style & philosophy:
+  5. Mix order of involved muscles.
+  6. Follow global style & philosophy:
     * Hypertrophy via controlled tempo, high ROM, and stable setups.
     * Favor machines/cables/Smith for joint safety and precision; use DB/barbell only when ROI is high.
     * Lead sessions with priority muscles; alternate push ↔ pull patterns inside sessions to manage fatigue; isolations at the end.
     * Avoid redundant heavy pairings (e.g., squat + leg press same day) unless volume is deliberately reduced.
     * No junk sets; every set has intent.
-  14. Follow exercise selection recommendations (pattern-first; stretch-biased where relevant):
+  7. Follow exercise selection recommendations (pattern-first; stretch-biased where relevant):
     * Chest: incline press (DB/Smith/machine), flat/Smith press, incline/upper cable fly (stretch-biased), mid-chest staggered-stance cable fly, decline/downward fly, bench-supported cable press.
     * Back – Lats: supinated/neutral pulldown, rope pullover (standing or incline), kneeling single-arm low cable row (lat line).
     * Back – Upper-back thickness: plate-loaded chest-supported row, incline bench unilateral cable row (mid/low origin), rope row to upper chest, face pulls for scapular health.
@@ -235,8 +241,6 @@ Rules:
     * Calves/Core: seated/standing calf raise; machine crunch, hanging knee raise, planks.
     * Prefer chest-supported and guided-path variants to reduce fatigue leakage.
     * Include angle/plane rotation week to week (incline → mid; pulldown → pullover; row origins; lateral raise variants).
-  
-Produce the completed 7‑day plan as JSON.
 "
 
 

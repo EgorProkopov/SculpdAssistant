@@ -1,4 +1,6 @@
 import json
+import os
+
 import dotenv
 import gradio as gr
 
@@ -35,6 +37,7 @@ def generate_next_week(
 
 
 if __name__ == "__main__":
+    dotenv.load_dotenv()
     user_info_placeholder = '{\n"email": "newuser@example.com", \n"image": "http://example.com/image.jpg", \n"name": "New User", \n"gender": "male", \n"birthday": "1995-05-15T00:00:00Z", \n"height": 180.5, \n"height_type": "cm", \n"weight": 75.2, \n"weight_type": "kg", \n"fitness_level": "advanced", \n"improve_body_parts": ["none"], \n"exercise_limitations": ["no_overhead_pressing", "no_squatting", "no_hip_hinge_movements"], \n"nutrition_goal": "maintain_weight", \n"equipment_list": ["barbell", "dumbbells", "machines", "cables"], \n"training_days": 6, \n"workout_time": 80 }'
     previous_week_placeholder = '{}'
 
@@ -43,11 +46,16 @@ if __name__ == "__main__":
         inputs=[
             gr.TextArea(label="User Information", placeholder=user_info_placeholder),
             gr.TextArea(label="Scanner Info"),
+            gr.TextArea(label="Program Generation Rules")
         ],
         outputs=gr.Textbox(label="Training Plan"),
         title="First Week Generation",
         description="Upload user information and scanner output to receive first week training plan",
     )
+
+    next_week_prompt_text_area = gr.TextArea(label="Program Generation Rules")
+    next_week_prompt_placeholder = os.getenv("")
+    next_week_prompt_text_area.value = "need a text placeholder"
 
     next_week_interface = gr.Interface(
         fn=generate_next_week,
@@ -55,6 +63,7 @@ if __name__ == "__main__":
             gr.TextArea(label="User Information", placeholder=user_info_placeholder),
             gr.Textbox(label="Feedback Key", placeholder="hard"),
             gr.TextArea(label="Previous Week JSON", placeholder=previous_week_placeholder),
+            next_week_prompt_text_area
         ],
         outputs=gr.Textbox(label="Training Plan"),
         title="Next Week Generation",
