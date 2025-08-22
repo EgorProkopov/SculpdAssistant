@@ -7,7 +7,11 @@ import gradio as gr
 from src.training_plan.utils import create_train_assistant
 
 
-def generate_first_week(raw_user_data: str, raw_scanner_data: str) -> str:
+def generate_first_week(
+        custom_prompt: str,
+        raw_user_data: str,
+        raw_scanner_data: str,
+) -> str:
     dotenv.load_dotenv()
     raw_user_data = json.loads(raw_user_data)
     raw_scanner_data = json.loads(raw_scanner_data)
@@ -16,11 +20,16 @@ def generate_first_week(raw_user_data: str, raw_scanner_data: str) -> str:
         raw_user_data=raw_user_data,
         raw_scanner_data=raw_scanner_data,
     )
-    return train_assistant.generate_first_week()
+    return train_assistant.generate_first_week_with_custom_prompt(
+        custom_prompt=custom_prompt
+    )
 
 
 def generate_next_week(
-    raw_user_data: str, raw_feedback: str, raw_previous_week: str
+        custom_prompt: str,
+        raw_user_data: str,
+        raw_feedback: str,
+        raw_previous_week: str
 ) -> str:
     dotenv.load_dotenv()
     raw_user_data = json.loads(raw_user_data)
@@ -30,7 +39,8 @@ def generate_next_week(
         raw_user_data=raw_user_data,
         raw_scanner_data=None,
     )
-    return train_assistant.generate_next_week(
+    return train_assistant.generate_next_week_with_prompt(
+        custom_prompt=custom_prompt,
         feedback_key=raw_feedback,
         previous_week=previous_week,
     )

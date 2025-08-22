@@ -190,7 +190,12 @@ class TrainAssistant:
         custom_prompt = custom_prompt_path.read_text()
         return self.generate_next_week_with_prompt(custom_prompt, feedback_key, previous_week)
 
-    def generate_next_week_with_prompt(self, custom_prompt: str, feedback_key: str, previous_week: dict) -> str:
+    def generate_next_week_with_prompt(
+            self,
+            custom_prompt: str,
+            feedback_key: str,
+            previous_week: dict
+    ) -> str:
         prompt = self.train_assistant_config["train_assistant"]["next_week"]["prompt_template"]
         model_name = self.train_assistant_config["train_assistant"]["next_week"]["model"]
         temperature = self.train_assistant_config["train_assistant"]["next_week"]["temperature"]

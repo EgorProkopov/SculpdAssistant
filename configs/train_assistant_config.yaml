@@ -78,7 +78,7 @@ train_assistant:
       A placeholder “Push‑Pull‑Legs” day. The assistant should pick one of PUSH, PULL, or LEGS.
       If there is more than one PPL_DAY in week the selected day type must not be repeated
       
-  Rules:
+Rules:
   1. Only select exercises from Available Exercises.
   2. Keep the exact JSON structure.  Output **only** valid JSON.
   3. Do not reorder days or change DAY_TYPE.
@@ -91,7 +91,7 @@ train_assistant:
   8. Follow customizable rules.
   9. Produce the completed 7‑day plan as JSON.
 
-Customizable rules:
+Rules:
   {custom_rules}
   "
   next_week:
@@ -191,7 +191,7 @@ Rules:
   9. Follow customizable rules.
   10. Produce the completed 7‑day plan as JSON.
 
-Customizable rules:
+Rules:
   {custom_rules}
 "
 
