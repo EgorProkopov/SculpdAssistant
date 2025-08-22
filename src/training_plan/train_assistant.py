@@ -1,9 +1,9 @@
 import os
-import dotenv
+from pathlib import Path
+
 import json
 import logging
-import pandas as pd
-from omegaconf import OmegaConf, DictConfig
+from omegaconf import DictConfig
 
 from langchain_openai import ChatOpenAI
 from langchain.prompts.chat import ChatPromptTemplate, HumanMessagePromptTemplate
@@ -141,6 +141,12 @@ class TrainAssistant:
         self.feedbaack_formatter = FeedbackFormatter(feedback_config)
 
     def generate_first_week(self) -> str:
+        root_dir = Path(__file__).resolve().parent.parent
+        custom_prompt_path = root_dir / r"data/prompt_rules/first_week/prompt_placeholder.txt"
+        custom_prompt = custom_prompt_path.read_text()
+        return self.generate_first_week_with_custom_prompt(custom_prompt)
+
+    def generate_first_week_with_custom_prompt(self, custom_prompt: str) -> str:
         prompt = self.train_assistant_config["train_assistant"]["first_week"]["prompt_template"]
         model_name = self.train_assistant_config["train_assistant"]["first_week"]["model"]
         temperature = self.train_assistant_config["train_assistant"]["first_week"]["temperature"]
@@ -160,6 +166,7 @@ class TrainAssistant:
         self.logger.debug(f"Scanner Recommendations Formatted: \n{scanner_recommendations}")
         # self.logger.debug(f"Age Recommendations Formatted: \n{age_recommendations}")
         self.logger.debug(f"Exercises List Formatted: \n{exercises_formatted}")
+        self.logger.debug(f"Custom Prompt: \n {custom_prompt}")
 
         result = chain.invoke(
             {
@@ -169,7 +176,8 @@ class TrainAssistant:
                 "age_recommendations": age_recommendations,
                 "available_exercises": exercises_formatted,
                 "avatars_examples": avatar_examples,
-                "merged_recs": merged_recs
+                "merged_recs": merged_recs,
+                "custom_rules": custom_prompt
             }
         )
         processed_result = result.content.strip()
@@ -177,6 +185,12 @@ class TrainAssistant:
         return processed_result
 
     def generate_next_week(self, feedback_key: str, previous_week: dict) -> str:
+        root_dir = Path(__file__).resolve().parent.parent
+        custom_prompt_path = root_dir / r"data/prompt_rules/nextt_week/prompt_placeholder.txt"
+        custom_prompt = custom_prompt_path.read_text()
+        return self.generate_next_week_with_prompt(custom_prompt, feedback_key, previous_week)
+
+    def generate_next_week_with_prompt(self, custom_prompt: str, feedback_key: str, previous_week: dict) -> str:
         prompt = self.train_assistant_config["train_assistant"]["next_week"]["prompt_template"]
         model_name = self.train_assistant_config["train_assistant"]["next_week"]["model"]
         temperature = self.train_assistant_config["train_assistant"]["next_week"]["temperature"]
@@ -198,6 +212,7 @@ class TrainAssistant:
         self.logger.debug(f"Feedback formatted: \n{feedback}")
         self.logger.debug(f"Age Recommendations Formatted: \n{age_recommendations}")
         self.logger.debug(f"Exercises List Formatted: \n{exercises_formatted}")
+        self.logger.debug(f"Custom Prompt: \n {custom_prompt}")
 
         result = chain.invoke(
             {
@@ -208,7 +223,8 @@ class TrainAssistant:
                 "age_recommendations": age_recommendations,
                 "available_exercises": exercises_formatted,
                 "avatars_examples": avatar_examples,
-                "merged_recs": merged_recs
+                "merged_recs": merged_recs,
+                "custom_rules": custom_prompt
             }
         )
         processed_result = result.content.strip()
