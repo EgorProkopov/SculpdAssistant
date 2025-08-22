@@ -41,6 +41,10 @@ if __name__ == "__main__":
     user_info_placeholder = '{\n"email": "newuser@example.com", \n"image": "http://example.com/image.jpg", \n"name": "New User", \n"gender": "male", \n"birthday": "1995-05-15T00:00:00Z", \n"height": 180.5, \n"height_type": "cm", \n"weight": 75.2, \n"weight_type": "kg", \n"fitness_level": "advanced", \n"improve_body_parts": ["none"], \n"exercise_limitations": ["no_overhead_pressing", "no_squatting", "no_hip_hinge_movements"], \n"nutrition_goal": "maintain_weight", \n"equipment_list": ["barbell", "dumbbells", "machines", "cables"], \n"training_days": 6, \n"workout_time": 80 }'
     previous_week_placeholder = '{}'
 
+    first_week_prompt_text_area = gr.TextArea(label="Program Generation Rules")
+    first_week_prompt_placeholder = os.getenv("")
+    first_week_prompt_text_area.value = "need a text placeholder"
+
     first_week_interface = gr.Interface(
         fn=generate_first_week,
         inputs=[
