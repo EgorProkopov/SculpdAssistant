@@ -187,7 +187,7 @@ class TrainAssistant:
 
     def generate_next_week(self, feedback_key: str, previous_week: dict) -> str:
         root_dir = Path(__file__).resolve().parent.parent
-        custom_prompt_path = root_dir / r"data/prompt_rules/nextt_week/prompt_placeholder.txt"
+        custom_prompt_path = root_dir / r"data/prompt_rules/next_week/prompt_placeholder.txt"
         custom_prompt = custom_prompt_path.read_text()
         return self.generate_next_week_with_prompt(custom_prompt, feedback_key, previous_week)
 
