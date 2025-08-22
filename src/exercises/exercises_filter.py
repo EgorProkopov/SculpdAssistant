@@ -88,8 +88,6 @@ if __name__ == "__main__":
         df=processed_df, skill_level=skill_level
     )
     print(len(available_exercises))
-    # print(available_exercises.columns.tolist())
-    # print(available_exercises)
 
     available_exercises = exercises_filter.get_available_exercises_by_equipment(
         df=available_exercises, available_equipment=available_equipment

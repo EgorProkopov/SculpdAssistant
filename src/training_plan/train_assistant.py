@@ -161,6 +161,7 @@ class TrainAssistant:
         avatar_examples = self.avatar_examples
         merged_recs = self.merged_recs
 
+        self.logger.debug(f"FIRST WEEK GENERATION")
         self.logger.debug(f"Week Template: \n{week_template}")
         self.logger.debug(f"User Data Formatted: \n{user_data}")
         self.logger.debug(f"Scanner Recommendations Formatted: \n{scanner_recommendations}")
@@ -211,6 +212,7 @@ class TrainAssistant:
         avatar_examples = self.avatar_examples
         merged_recs = self.merged_recs
 
+        self.logger.debug(f"NEXT WEEK GENERATION")
         self.logger.debug(f"Week Template: \n{week_template}")
         self.logger.debug(f"User Data Formatted: \n{user_data}")
         self.logger.debug(f"Previous Week Formatted: \n{prev_week_formatted}")
